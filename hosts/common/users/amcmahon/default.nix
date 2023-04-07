@@ -10,6 +10,6 @@ in
   };
 
   services.geoclue2.enable = true;
-  
+
   security.pam.services = { swaylock = { }; };
 }

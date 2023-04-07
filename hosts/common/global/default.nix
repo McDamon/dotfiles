@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./fish.nix    
+    ./fish.nix
     ./greetd.nix
     ./locale.nix
     ./nix.nix
