@@ -13,13 +13,17 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    loader.efi.efiSysMountPoint = "/boot/efi";
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    # Setup keyfile
+    initrd.secrets = {
+      "/crypto_keyfile.bin" = null;
+    };
   };
 
   networking.hostName = "merovingian";
