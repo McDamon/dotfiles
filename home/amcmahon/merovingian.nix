@@ -2,10 +2,10 @@
   imports = [
     ./global
     ./features/desktop/hyprland
+    ./features/developer
     ./features/productivity
     ./features/games
     ./features/music
-    ./features/developer
   ];
 
   home.sessionVariables.EDITOR = "vim";
