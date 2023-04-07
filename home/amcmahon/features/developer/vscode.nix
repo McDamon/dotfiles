@@ -1,10 +1,10 @@
 { pkgs, lib, ... }: {
   programs.vscode = {
     enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      jnoortheen.nix-ide
+      mkhl.direnv
+    ];
   };
-  extensions = with pkgs.vscode-extensions; [
-    dracula-theme.theme-dracula
-    jnoortheen.nix-ide
-    mkhl.direnv
-  ];
 }
