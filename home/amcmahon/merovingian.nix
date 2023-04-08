@@ -10,6 +10,8 @@
 
   home.sessionVariables.EDITOR = "vim";
 
+  home.sessionVariables.XDG_DATA_HOME = "$HOME/.local/share";
+
   wallpaper = (import ./wallpapers).enami-beyond-hill-and-dale;
   colorscheme = inputs.nix-colors.colorschemes.embers;
 
