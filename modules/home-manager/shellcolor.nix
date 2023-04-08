@@ -37,21 +37,6 @@ in
       '';
     };
 
-    enableBashSshFunction = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = ''
-        Whether to enable SSH integration by replacing ssh with a bash function.
-      '';
-    };
-    enableFishSshFunction = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-      description = ''
-        Whether to enable SSH integration by replacing ssh with a fish function.
-      '';
-    };
-
     settings = lib.mkOption {
       type = lib.types.attrsOf lib.types.str;
       default = { };
@@ -99,12 +84,5 @@ in
       (lib.mkBefore ''
         ${package}/bin/shellcolord $fish_pid & disown
       '');
-
-    programs.fish.functions.ssh = lib.mkIf cfg.enableFishSshFunction ''
-      ${package}/bin/shellcolor disable $fish_pid
-      command ssh $argv
-      ${package}/bin/shellcolor enable $fish_pid
-      ${package}/bin/shellcolor apply $fish_pid
-    '';
   };
 }

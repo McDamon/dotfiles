@@ -4,7 +4,7 @@ in
 {
   users.users.amcmahon = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     description = "Andrew McMahon";
     extraGroups = [ "networkmanager" "wheel" ];
   };

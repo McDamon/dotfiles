@@ -2,8 +2,8 @@
   imports = [
     ./bash.nix
     ./direnv.nix
-    ./fish.nix
     ./shellcolor.nix
+    ./zsh.nix
   ];
   home.packages = with pkgs; [
     nil
