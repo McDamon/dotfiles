@@ -66,14 +66,6 @@ in
     programs.bash.initExtra = lib.mkIf cfg.enableBashIntegration
       (lib.mkBefore ''
         ${package}/bin/shellcolord $$ & disown
-        ${lib.optionalString cfg.enableBashSshFunction ''
-        ssh() {
-          ${package}/bin/shellcolor disable $$
-          command ssh "$@"
-          ${package}/bin/shellcolor enable $$
-          ${package}/bin/shellcolor apply $$
-        }
-        ''}
       '');
 
     programs.zsh.initExtra = lib.mkIf cfg.enableZshIntegration (lib.mkBefore ''

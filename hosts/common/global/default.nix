@@ -5,6 +5,7 @@
     ./greetd.nix
     ./locale.nix
     ./nix.nix
+    ./zsh.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager = {
