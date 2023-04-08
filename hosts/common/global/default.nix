@@ -5,6 +5,9 @@
     ./greetd.nix
     ./locale.nix
     ./nix.nix
+    ./openssh.nix
+    ./sops.nix
+    ./systemd-initrd.nix
     ./zsh.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
