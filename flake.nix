@@ -30,7 +30,7 @@
       devShells = forEachPkgs (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachPkgs (pkgs: pkgs.nixpkgs-fmt);
 
-      # Available through 'nixos-rebuild --flake .#merovingian'
+      # Available through 'sudo nixos-rebuild switch --flake .#merovingian'
       nixosConfigurations = {
         merovingian = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
@@ -41,7 +41,7 @@
       };
 
       # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#amcmahon@merovingian'
+      # Available through 'home-manager switch --flake .#amcmahon@merovingian'
       homeConfigurations = {
         "amcmahon@merovingian" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;

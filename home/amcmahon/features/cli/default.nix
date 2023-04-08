@@ -10,5 +10,8 @@
     nixfmt
     nixpkgs-fmt
     vim
+    neofetch
+    glances
+    htop
   ];
 }

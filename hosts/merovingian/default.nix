@@ -67,6 +67,7 @@
     systemPackages = with pkgs; [
       tmux
       pciutils
+      usbutils
       steam-run
     ];
   };
