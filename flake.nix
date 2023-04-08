@@ -11,6 +11,7 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:

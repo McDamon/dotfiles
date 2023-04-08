@@ -1,8 +1,9 @@
 { pkgs, ... }: {
   imports = [
     ./lutris.nix
+    ./lutris.nix
     ./steam.nix
-    ./prism-launcher.nix
+    ./faf-client.nix
   ];
   home.packages = with pkgs; [ gamescope ];
 }
