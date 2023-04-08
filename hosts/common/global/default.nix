@@ -26,4 +26,6 @@
   environment = {
     enableAllTerminfo = true;
   };
+
+  networking.domain = "lab.apm-games.com";
 }

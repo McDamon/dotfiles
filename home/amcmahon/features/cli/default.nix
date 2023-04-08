@@ -1,8 +1,12 @@
 { pkgs, ... }: {
   imports = [
     ./bash.nix
+    ./git.nix
     ./direnv.nix
+    ./keychain.nix
+    ./screen.nix
     ./shellcolor.nix
+    ./ssh.nix
     ./zsh.nix
   ];
   home.packages = with pkgs; [
