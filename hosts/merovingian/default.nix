@@ -40,6 +40,7 @@
 
     prime = {
       offload.enable = true;
+      modesetting.enable = true;
 
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
@@ -84,6 +85,8 @@
     enable = true;
     wlr.enable = true;
   };
+
+  home.sessionVariables.XDG_DATA_HOME="$HOME/.local/share";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
