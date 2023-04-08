@@ -2,7 +2,7 @@
   imports = [
     ./lutris.nix
     ./lutris.nix
-    ./steam.nix
+    ./protontricks.nix
     ./faf-client.nix
   ];
   home.packages = with pkgs; [ gamescope ];

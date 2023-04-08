@@ -1,3 +1,6 @@
-{ pkgs, lib, ... }: {
-  home.packages = [ pkgs.prismlauncher ];
+{ pkgs, lib, ... }:
+{
+  home.packages = [
+    pkgs.prismlauncher
+  ];
 }

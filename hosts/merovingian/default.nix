@@ -67,12 +67,18 @@
     systemPackages = with pkgs; [
       tmux
       pciutils
+      steam-run
     ];
   };
 
   programs = {
     light.enable = true;
     dconf.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    }
   };
 
   services.logind = {
