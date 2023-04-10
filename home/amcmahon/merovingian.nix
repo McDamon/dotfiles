@@ -13,7 +13,7 @@
   home.sessionVariables.XDG_DATA_HOME = "$HOME/.local/share";
 
   wallpaper = (import ./wallpapers).enami-beyond-hill-and-dale;
-  colorscheme = inputs.nix-colors.colorschemes.embers;
+  colorscheme = inputs.nix-colors.colorschemes.atelier-forest;
 
   monitors = [
   {

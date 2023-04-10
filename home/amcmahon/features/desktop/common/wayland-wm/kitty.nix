@@ -14,7 +14,6 @@ in
     };
   };
 
-
   programs.kitty = {
     enable = true;
     font = {
@@ -22,6 +21,8 @@ in
       size = 12;
     };
     settings = {
+      scrollback_lines = 4000;
+      scrollback_pager_history_size = 2048;
       window_padding_width = 15;
       foreground = "#${colors.base05}";
       background = "#${colors.base00}";

@@ -12,9 +12,6 @@
     khal = prev.khal.overridePythonAttrs (_: {
       doCheck = false;
     });
-    todoman = prev.todoman.overridePythonAttrs (_: {
-      doCheck = false;
-    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
