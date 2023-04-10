@@ -2,6 +2,7 @@
   description = "amcmahon nixos config";
 
   inputs = {
+    devenv.url = "github:cachix/devenv/latest";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
