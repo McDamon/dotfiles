@@ -28,14 +28,14 @@ in
       {
         name = "direnv";
         publisher = "mkhl";
-        version = "0.10.1";
-        sha256 = "0m89sx1qqdkwa9pfmd9b11lp8z0dqpi6jn27js5q4ymscyg41bqd";
+        version = "0.12.1";
+        sha256 = "0lizp7r2l6dayhvxkz3ghsgywz9magvy7lzkc5dkcqxcsi1p4klb";
       }
       {
         name = "rust-analyzer";
         publisher = "rust-lang";
-        version = "0.4.1470";
-        sha256 = "0h6whqqvwzc37rwhwj9ysn5csyxd07lvkvdvd76dxfzqxx2ml3x9";
+        version = "0.4.1496";
+        sha256 = "056x8m7pfrhb4gx0fsqdypmaf7xz8ks1hsslbj16cy1d10dpl13f";
       }
     ];
     userSettings = {

@@ -66,8 +66,10 @@
   environment = {
     systemPackages = with pkgs; [
       tmux
+      dig
       pciutils
       usbutils
+      inetutils
       steam-run
     ];
   };
