@@ -1,10 +1,13 @@
 { config, ... }:
+let
+  configThemeNormal = ./p10k.zsh;
+in
 {
   programs.zsh = {
     enable = true;
     initExtra = ''
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      '';
+      [[ ! -f ${configThemeNormal} ]] || source ${configThemeNormal}
+    '';
     shellAliases = {
       nixos-rebuild-switch = "sudo nixos-rebuild switch --flake .#merovingian";
       home-manager-switch = "home-manager switch --flake .#amcmahon@merovingian";
