@@ -10,12 +10,12 @@ Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
 
 - `flake.nix`: Entrypoint for hosts and home configurations. Also exposes a
   devshell for boostrapping (`nix develop` or `nix-shell`).
-- `hosts`: NixOS Configurations, accessible via `nixos-rebuild --flake`.
+- `hosts`: NixOS Configurations
   - `common`: Shared configurations consumed by the machine-specific ones.
     - `global`: Configurations that are globally applied to all my machines.
     - `optional`: Opt-in configurations my machines can use.
   - `merovingian`: Dell Precision 5560
-- `home`: My Home-manager configuration, acessible via `home-manager --flake`
+- `home`: My Home-manager configuration
 - `modules`: A few actual modules (with options) I haven't upstreamed yet.
 - `overlay`: Patches and version overrides for some packages. Accessible via
   `nix build`.
@@ -39,9 +39,9 @@ If you already have nix 2.4+, git, and have already enabled `flakes` and
 nix develop
 ```
 
-`nixos-rebuild --flake .` To build system configurations
+`sudo nixos-rebuild switch --flake .#merovingian` To build system configurations
 
-`home-manager --flake .` To build user configurations
+`home-manager switch --flake .#amcmahon@merovingian` To build user configurations
 
 `nix build` (or shell or run) To build and use packages
 

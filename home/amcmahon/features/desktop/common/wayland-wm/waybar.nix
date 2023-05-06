@@ -1,5 +1,4 @@
 { outputs, config, lib, pkgs, ... }:
-
 let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
@@ -76,7 +75,7 @@ in
           "memory"
           "clock"
           "pulseaudio"
-          "custom/gammastep"
+          "custom/unread-mail"
         ];
         modules-right = [
           "custom/gamemode"
@@ -98,7 +97,7 @@ in
           on-click = systemMonitor;
         };
         memory = {
-          format = "  {}%";
+          format = "󰍛  {}%";
           interval = 5;
           on-click = systemMonitor;
         };
@@ -107,7 +106,7 @@ in
           format-muted = "   0%";
           format-icons = {
             headphone = "";
-            headset = "";
+            headset = "󰋎";
             portable = "";
             default = [ "" "" "" ];
           };
@@ -116,17 +115,21 @@ in
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = "零";
-            deactivated = "鈴";
+            activated = "";
+            deactivated = "";
           };
         };
         battery = {
-          bat = "BAT0";
-          interval = 10;
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-          format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
-          onclick = "";
+          states = {
+            good = 90;
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% 󰂄";
+          format-plugged = "{capacity}% ";
+          format-alt = "{time} {icon}";
+          format-icons = [ "" "" "" "" "" ];
         };
         "sway/window" = {
           max-length = 20;
@@ -134,7 +137,7 @@ in
         network = {
           interval = 3;
           format-wifi = "   {essid}";
-          format-ethernet = " Connected";
+          format-ethernet = "󰈀 Connected";
           format-disconnected = "";
           tooltip-format = ''
             {ifname}
@@ -155,6 +158,38 @@ in
           exec = "echo $USER@$(hostname)";
           on-click = terminal;
         };
+        "custom/unread-mail" = {
+          interval = 5;
+          return-type = "json";
+          exec = jsonOutput "unread-mail" {
+            pre = ''
+              count=$(find ~/Mail/*/Inbox/new -type f | wc -l)
+              if [ "$count" == "0" ]; then
+                subjects="No new mail"
+                status="read"
+              else
+                subjects=$(\
+                  grep -h "Subject: " -r ~/Mail/*/Inbox/new | cut -d ':' -f2- | \
+                  perl -CS -MEncode -ne 'print decode("MIME-Header", $_)' | ${xml} esc | sed -e 's/^/\-/'\
+                )
+                status="unread"
+              fi
+              if pgrep mbsync &>/dev/null; then
+                status="syncing"
+              fi
+            '';
+            text = "$count";
+            tooltip = "$subjects";
+            alt = "$status";
+          };
+          format = "{icon}  ({})";
+          format-icons = {
+            "read" = "";
+            "unread" = "";
+            "syncing" = "󱋇";
+          };
+          on-click = mail;
+        };
         "custom/gamemode" = {
           exec-if = "${gamemoded} --status | grep 'is active' -q";
           interval = 2;
@@ -163,36 +198,6 @@ in
             tooltip = "Gamemode is active";
           };
           format = " ";
-        };
-        "custom/gammastep" = {
-          interval = 5;
-          return-type = "json";
-          exec = jsonOutput "gammastep" {
-            pre = ''
-              if unit_status="$(${systemctl} --user is-active gammastep)"; then
-                status="$unit_status ($(${journalctl} --user -u gammastep.service -g 'Period: ' | tail -1 | cut -d ':' -f6 | xargs))"
-              else
-                status="$unit_status"
-              fi
-            '';
-            alt = "\${status:-inactive}";
-            tooltip = "Gammastep is $status";
-          };
-          format = "{icon}";
-          format-icons = {
-            "activating" = " ";
-            "deactivating" = " ";
-            "inactive" = "? ";
-            "active (Night)" = " ";
-            "active (Nighttime)" = " ";
-            "active (Transition (Night)" = " ";
-            "active (Transition (Nighttime)" = " ";
-            "active (Day)" = " ";
-            "active (Daytime)" = " ";
-            "active (Transition (Day)" = " ";
-            "active (Transition (Daytime)" = " ";
-          };
-          on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
         };
         "custom/currentplayer" = {
           interval = 2;
@@ -214,14 +219,10 @@ in
           format = "{icon}{}";
           format-icons = {
             "No player active" = " ";
-            "Celluloid" = " ";
-            "spotify" = " 阮";
-            "ncspot" = " 阮";
-            "qutebrowser" = "爵";
+            "spotify" = " ";
             "firefox" = " ";
             "discord" = " ﭮ ";
             "sublimemusic" = " ";
-            "kdeconnect" = " ";
           };
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
@@ -234,9 +235,9 @@ in
           max-length = 30;
           format = "{icon} {}";
           format-icons = {
-            "Playing" = "契";
-            "Paused" = " ";
-            "Stopped" = "栗";
+            "Playing" = "";
+            "Paused" = "";
+            "Stopped" = "";
           };
           on-click = "${playerctl} play-pause";
         };

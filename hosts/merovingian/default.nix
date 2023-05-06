@@ -67,6 +67,7 @@
     systemPackages = with pkgs; [
       tmux
       dig
+      git
       pciutils
       usbutils
       inetutils

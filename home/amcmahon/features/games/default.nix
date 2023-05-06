@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    ./lutris.nix
     ./protontricks.nix
     ./faf-client.nix
   ];

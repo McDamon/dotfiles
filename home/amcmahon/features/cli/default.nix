@@ -12,7 +12,6 @@
   home.packages = with pkgs; [
     bc
     bottom
-    
     nil
     nixfmt
     nixpkgs-fmt
