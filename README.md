@@ -2,7 +2,7 @@
 
 # amcmahon NixOS configurations
 
-Here's my NixOS/home-manager config files. Requires [Nix flakes](https://nixos.wiki/wiki/Flakes).
+NixOS/home-manager config files. Requires [Nix flakes](https://nixos.wiki/wiki/Flakes).
 
 Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
 
@@ -12,13 +12,12 @@ Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
   devshell for boostrapping (`nix develop` or `nix-shell`).
 - `hosts`: NixOS Configurations
   - `common`: Shared configurations consumed by the machine-specific ones.
-    - `global`: Configurations that are globally applied to all my machines.
-    - `optional`: Opt-in configurations my machines can use.
+    - `global`: Configurations that are globally applied to all machines.
+    - `optional`: Opt-in configurations any machines can use.
   - `merovingian`: Dell Precision 5560
-- `home`: My Home-manager configuration
-- `modules`: A few actual modules (with options) I haven't upstreamed yet.
-- `overlay`: Patches and version overrides for some packages. Accessible via
-  `nix build`.
+- `home`: Home-manager configuration
+- `modules`: Modules (with options).
+- `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
 - `pkgs`: My custom packages. Also accessible via `nix build`. You can compose
   these into your own configuration by using my flake's overlay, or consume them through NUR.
 - `templates`: A couple project templates for different languages. Accessible
@@ -44,5 +43,7 @@ nix develop
 `home-manager switch --flake .#amcmahon@merovingian` To build user configurations
 
 `nix build` (or shell or run) To build and use packages
+
+# TODO
 
 [`sops-nix`](https://github.com/Mic92/sops-nix) To manage secrets
