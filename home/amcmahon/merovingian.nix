@@ -25,13 +25,13 @@
     workspace = "1";
   }
   {
-    name = "DP-3";
+    name = "DP-2";
     width = 2560;
     height = 1440;
     refreshRate = 144;
     x = 100;
     y = 1440;
-    workspace = "2";
+    workspace = "3";
   }
   {
     name = "DP-1";
@@ -39,6 +39,6 @@
     height = 1440;
     refreshRate = 144;
     x = 0;
-    workspace = "3";
+    workspace = "2";
   }];
 }
