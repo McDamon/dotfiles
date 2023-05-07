@@ -9,6 +9,10 @@ in
       net = {
         host = builtins.concatStringsSep " " hostnames;
         forwardAgent = true;
+        remoteForwards = [{
+          bind.address = ''/%d/.gnupg-sockets/S.gpg-agent'';
+          host.address = ''/%d/.gnupg-sockets/S.gpg-agent.extra'';
+        }];
       };
       trusted = lib.hm.dag.entryBefore [ "net" ] {
         host = "lab.apm-games.com *.lab.apm-games.com";

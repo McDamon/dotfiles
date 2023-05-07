@@ -5,6 +5,8 @@
     inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-laptop-ssd
 
+    ./services
+    
     ./hardware-configuration.nix
 
     ../common/global
@@ -29,6 +31,9 @@
   networking.hostName = "merovingian";
   networking.networkmanager.enable = true;
 
+  # Allow spotifyd sync
+  networking.firewall.allowedTCPPorts = [ 57621 ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -51,6 +56,10 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;

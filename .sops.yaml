@@ -1,0 +1,18 @@
+keys:
+  - &users:
+    - &amcmahon 9F87B447B6939AF6CA23C62010DD2A7A4279BB15
+  - &hosts:
+    - &merovingian age1ka8h0mqrgtggrtug3y9ae2r240zyw9kxzkpjvapa67h7w08jyq5smld0j8
+creation_rules:
+  - path_regex: hosts/merovingian/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *merovingian
+      pgp:
+      - *amcmahon
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *merovingian
+      pgp:
+      - *amcmahon

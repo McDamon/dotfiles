@@ -43,7 +43,3 @@ nix develop
 `home-manager switch --flake .#amcmahon@merovingian` To build user configurations
 
 `nix build` (or shell or run) To build and use packages
-
-# TODO
-
-[`sops-nix`](https://github.com/Mic92/sops-nix) To manage secrets

@@ -9,6 +9,7 @@
     ./sops.nix
     ./systemd-initrd.nix
     ./zsh.nix
+    ./yubikey.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager = {

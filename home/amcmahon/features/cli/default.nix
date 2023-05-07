@@ -2,8 +2,8 @@
   imports = [
     ./bash.nix
     ./git.nix
+    ./gpg.nix
     ./direnv.nix
-    ./keychain.nix
     ./screen.nix
     ./shellcolor.nix
     ./ssh.nix
@@ -12,6 +12,7 @@
   home.packages = with pkgs; [
     bc
     bottom
+    jq
     nil
     nixfmt
     nixpkgs-fmt

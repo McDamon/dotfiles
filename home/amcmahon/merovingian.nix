@@ -22,16 +22,8 @@
     height = 1200;
     refreshRate = 60;
     x = 3440;
-    workspace = "1";
-  }
-  {
-    name = "DP-2";
-    width = 2560;
-    height = 1440;
-    refreshRate = 144;
-    x = 100;
     y = 1440;
-    workspace = "3";
+    workspace = "1";
   }
   {
     name = "DP-1";
@@ -39,6 +31,16 @@
     height = 1440;
     refreshRate = 144;
     x = 0;
+    y = 1440;
     workspace = "2";
+  }
+  {
+    name = "DP-2";
+    width = 2560;
+    height = 1440;
+    refreshRate = 144;
+    x = 100;
+    y = 0;
+    workspace = "3";
   }];
 }

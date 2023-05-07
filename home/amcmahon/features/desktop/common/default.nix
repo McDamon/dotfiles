@@ -1,6 +1,7 @@
 { pkgs, lib, outputs, ... }:
 {
   imports = [
+    ./blueman.nix
     ./chromium.nix
     ./dragon.nix
     ./firefox.nix
