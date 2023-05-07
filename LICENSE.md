@@ -1,4 +1,4 @@
-amcmahon dotfiles derived from:
+amcmahon dotfiles derived from https://github.com/Misterio77/nix-config
 
 Copyright (c) 2021 Gabriel Fontes
 
