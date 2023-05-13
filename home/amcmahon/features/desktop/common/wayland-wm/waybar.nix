@@ -240,8 +240,7 @@ in
             "No player active" = " ";
             "spotify" = " ";
             "firefox" = " ";
-            "discord" = " ﭮ ";
-            "sublimemusic" = " ";
+            "chrome" = "  ";
           };
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
