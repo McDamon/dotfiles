@@ -11,6 +11,7 @@
         global = {
           username = "Maypolen";
           password = config.sops.secrets.spotify-password.path;
+          use_mpris = true;
         };
       };
   };

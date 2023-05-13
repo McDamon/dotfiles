@@ -18,7 +18,7 @@ Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
-- `pkgs`: My custom packages. Also accessible via `nix build`. You can compose
+- `pkgs`: Custom packages. Also accessible via `nix build`. You can compose
   these into your own configuration by using my flake's overlay, or consume them through NUR.
 - `templates`: A couple project templates for different languages. Accessible
   via `nix init`.
