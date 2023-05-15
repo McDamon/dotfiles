@@ -9,8 +9,8 @@ in
       [[ ! -f ${configThemeNormal} ]] || source ${configThemeNormal}
     '';
     shellAliases = {
-      nixos-rebuild-switch = "sudo nixos-rebuild switch --flake .#merovingian";
-      home-manager-switch = "home-manager switch --flake .#amcmahon@merovingian";
+      nixos-rebuild-switch = "sudo nixos-rebuild switch --flake .#${builtins.getEnv "HOSTNAME"}";
+      home-manager-switch = "home-manager switch --flake .#amcmahon@${builtins.getEnv "HOSTNAME"}";
     };
     zplug = {
       enable = true;

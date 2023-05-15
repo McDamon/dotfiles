@@ -32,7 +32,7 @@
       devShells = forEachPkgs (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachPkgs (pkgs: pkgs.nixpkgs-fmt);
 
-      # Available through 'sudo nixos-rebuild switch --flake .#merovingian'
+      # Available through 'sudo nixos-rebuild switch --flake .#<hostname>'
       nixosConfigurations = {
         merovingian = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
@@ -40,16 +40,29 @@
             ./hosts/merovingian
           ];
         };
+        persephone = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/persephone
+          ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager switch --flake .#amcmahon@merovingian'
+      # Available through 'home-manager switch --flake .#amcmahon@<hostname>'
       homeConfigurations = {
         "amcmahon@merovingian" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/amcmahon/merovingian.nix
+          ];
+        };
+        "amcmahon@persephone" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home/amcmahon/persephone.nix
           ];
         };
       };

@@ -15,6 +15,7 @@ Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
     - `global`: Configurations that are globally applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
   - `merovingian`: Dell Precision 5560
+  - `persephone`: Ryzen 5950X desktop
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
@@ -38,8 +39,8 @@ If you already have nix 2.4+, git, and have already enabled `flakes` and
 nix develop
 ```
 
-`sudo nixos-rebuild switch --flake .#merovingian` To build system configurations
+`sudo nixos-rebuild switch --flake .#<hostname>` To build system configurations
 
-`home-manager switch --flake .#amcmahon@merovingian` To build user configurations
+`home-manager switch --flake .#amcmahon@<hostname>` To build user configurations
 
 `nix build` (or shell or run) To build and use packages
