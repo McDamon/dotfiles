@@ -6,6 +6,8 @@ NixOS/home-manager config files. Requires [Nix flakes](https://nixos.wiki/wiki/F
 
 Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
 
+Contains some derivations from <https://github.com/fufexan/nix-gaming>
+
 ## Structure
 
 - `flake.nix`: Entrypoint for hosts and home configurations. Also exposes a
@@ -19,8 +21,7 @@ Shamelessly inspired/ripped-off from <https://github.com/misterio77/nix-config>
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
-- `pkgs`: Custom packages. Also accessible via `nix build`. You can compose
-  these into your own configuration by using my flake's overlay, or consume them through NUR.
+- `pkgs`: Custom packages. Also accessible via `nix build`.
 - `templates`: A couple project templates for different languages. Accessible
   via `nix init`.
 
