@@ -35,6 +35,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;
+
     modesetting.enable = true;
   };
   hardware.opengl = {
@@ -87,11 +88,6 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
-  };
-
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
   };
 
   xdg.portal = {

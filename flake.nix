@@ -12,7 +12,6 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
-    nix-gaming.url = "github:fufexan/nix-gaming";
     sops-nix.url = "github:mic92/sops-nix";
   };
 
