@@ -16,39 +16,12 @@
   colorscheme = inputs.nix-colors.colorschemes.atelier-forest;
 
   monitors = [
-  {
-    name = "eDP-1";
-    width = 1920;
-    height = 1200;
-    refreshRate = 60;
-    x = 0;
-    y = 1440;
-    workspace = "1";
-  }
-  {
-    name = "DP-3";
-    width = 3440;
-    height = 1440;
-    refreshRate = 144;
-    workspace = "2";
-  }
-  #{
-  #  name = "DP-3";
-  #  width = 3440;
-  #  height = 1440;
-  #  refreshRate = 144;
-  #  x = 0;
-  #  y = 1440;
-  #  workspace = "2";
-  #}
-  #{
-  #  name = "DP-2";
-  #  width = 2560;
-  #  height = 1440;
-  #  refreshRate = 144;
-  #  x = 100;
-  #  y = 0;
-  #  workspace = "3";
-  #}
+    {
+      name = "eDP-1";
+      width = 1920;
+      height = 1200;
+      refreshRate = 60;
+      workspace = "1";
+    }
   ];
 }
