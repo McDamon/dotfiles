@@ -12,15 +12,17 @@
 
   home.sessionVariables.XDG_DATA_HOME = "$HOME/.local/share";
 
+  home.sessionVariables.WLR_NO_HARDWARE_CURSORS = 1;
+
   wallpaper = (import ./wallpapers).enami-beyond-hill-and-dale;
   colorscheme = inputs.nix-colors.colorschemes.atelier-forest;
 
   monitors = [
     {
-      name = "DP-1";
+      name = "HDMI-A-1";
       width = 3840;
       height = 2160;
-      refreshRate = 120;
+      refreshRate = 60;
       workspace = "1";
     }
   ];

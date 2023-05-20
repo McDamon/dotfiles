@@ -2,7 +2,6 @@
   # You can import other NixOS modules here
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-laptop-ssd
     
     ./hardware-configuration.nix
@@ -33,6 +32,7 @@
   services.printing.enable = true;
 
   # Enable Nvidia GPU
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     modesetting.enable = true;
@@ -42,6 +42,10 @@
 
     driSupport = true;
     driSupport32Bit = true;
+
+    extraPackages = with pkgs; [
+      vaapiVdpau
+    ];
   };
 
   # Enable bluetooth

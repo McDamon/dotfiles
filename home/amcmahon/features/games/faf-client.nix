@@ -1,4 +1,4 @@
 { pkgs, config, inputs, ... }:
 {
-  home.packages = [ inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.faf-client ];
+  home.packages = [ inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.faf-client-unstable ];
 }
