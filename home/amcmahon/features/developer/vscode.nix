@@ -34,8 +34,8 @@ in
       {
         name = "rust-analyzer";
         publisher = "rust-lang";
-        version = "0.4.1521";
-        sha256 = "1a0rx0i2irqjp85yh413kyax7bbrdk5gcbapm37j383zdw9fdd37";
+        version = "0.4.1546";
+        sha256 = "Lt48ZLqp65ltYW/YmgygmEG2mxBt4Ht2DpoGRgfLldQ=";
       }
     ];
     userSettings = {

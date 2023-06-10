@@ -20,5 +20,7 @@
     neofetch
     glances
     htop
+    picocom
+    screen
   ];
 }
