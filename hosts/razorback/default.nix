@@ -1,5 +1,8 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common/global
     ../common/users/amcmahon
@@ -7,7 +10,28 @@
 
   networking.hostName = "razorback";
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  networking.networkmanager.enable = true;
+
+  # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+    ];
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+
+  hardware.nvidia.prime = {
+    sync.enable = true;
+
+    # Make sure to use the correct Bus ID values for your system!
+    amdgpuBusId = "PCI:102:0:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

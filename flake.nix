@@ -2,7 +2,7 @@
   description = "amcmahon nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,9 +11,17 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-wsl, home-manager, ... }:
+  outputs =
+    inputs@{ self
+    , hardware
+    , nixos-wsl
+    , home-manager
+    , nixpkgs
+    , ...
+    }:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;

@@ -16,12 +16,13 @@ Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
     - `global`: Configurations that are globally applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
   - `nixos-wsl`: WSL
+  - `razorback`: Asus TUF A15 2023
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
 - `pkgs`: Custom packages. Also accessible via `nix build`.
 
-## How to bootstrap
+## How to bootstrap WSL
 
 Add following to ```/etc/nixos/configuration.nix```
 
