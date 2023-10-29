@@ -12,6 +12,9 @@
       xkbVariant = "";
     };
     geoclue2.enable = true;
-    gnome.games.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      core-utilities.enable = false;
+    }
   };
 }
