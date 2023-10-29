@@ -5,12 +5,21 @@
     inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common/global
+    ../common/optional/gnome.nix
+    ../common/optional/pipewire.nix
     ../common/users/amcmahon
   ];
 
   networking.hostName = "razorback";
 
   networking.networkmanager.enable = true;
+
+  environment = {
+    systemPackages = with pkgs; [
+      git
+      wget
+    ];
+  };
 
   # Enable OpenGL
   hardware.opengl = {
