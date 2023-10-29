@@ -42,6 +42,20 @@ in
 
     sessionPath = [ "$HOME/.local/bin" ];
   };
-  
+
+  wallpaper =
+    let
+      largest = f: xs: builtins.head (builtins.sort (a: b: a > b) (map f xs));
+      largestWidth = largest (x: x.width) config.monitors;
+      largestHeight = largest (x: x.height) config.monitors;
+    in
+    lib.mkDefault (nixWallpaperFromScheme
+      {
+        scheme = config.colorscheme;
+        width = largestWidth;
+        height = largestHeight;
+        logoScale = 4;
+      });
+
   home.file.".colorscheme".text = config.colorscheme.slug;
 }

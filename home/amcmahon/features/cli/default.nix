@@ -5,6 +5,7 @@
     ./direnv.nix
     ./keychain.nix
     ./screen.nix
+    ./shellcolor.nix
     ./ssh.nix
     ./zsh.nix
   ];

@@ -45,6 +45,8 @@
       devShells = forEachSystem (pkgs: import ./devshell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
+      wallpapers = import ./home/amcmahon/wallpapers;
+
       nixosConfigurations = {
         nixos-wsl = lib.nixosSystem {
           modules = [
