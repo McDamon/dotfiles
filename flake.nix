@@ -11,6 +11,7 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
@@ -19,6 +20,7 @@
     , hardware
     , nixos-wsl
     , home-manager
+    , nix-colors
     , nixpkgs
     , ...
     }:
