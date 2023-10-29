@@ -12,6 +12,7 @@
     systemPackages = with pkgs; [
       git
       wget
+      vim
     ];
   };
 
