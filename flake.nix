@@ -40,6 +40,7 @@
       overlays = import ./overlays { inherit inputs outputs; };
 
       packages = forEachSystem (pkgs: (import ./pkgs { inherit pkgs; }) // { });
+      devShells = forEachSystem (pkgs: import ./devshell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
       nixosConfigurations = {
