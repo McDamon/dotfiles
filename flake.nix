@@ -35,19 +35,32 @@
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
       nixosConfigurations = {
-        nixos-wsl = lib.nixosSystem {          
+        nixos-wsl = lib.nixosSystem {
           modules = [
             nixos-wsl.nixosModules.default
             ./hosts/nixos-wsl
           ];
           specialArgs = { inherit inputs outputs; };
         };
+        razorback = lib.nixosSystem {
+          modules = [
+            ./hosts/razorback
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
       homeConfigurations = {
-        "amcmahon@nixos-wsl" = lib.homeManagerConfiguration {          
+        "amcmahon@nixos-wsl" = lib.homeManagerConfiguration {
           modules = [
             ./home/amcmahon/nixos-wsl.nix
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+        "amcmahon@razorback" = lib.homeManagerConfiguration {
+          modules = [
+            ./home/amcmahon/razorback.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
