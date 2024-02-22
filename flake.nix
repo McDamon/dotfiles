@@ -2,23 +2,15 @@
   description = "amcmahon nixos config";
 
   inputs = {
-    hardware.url = "github:nixos/nixos-hardware";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    hardware.url = "github:nixos/nixos-hardware";
+    home-manager.url = "github:nix-community/home-manager";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
     inputs@{ self
     , hardware
-    , nixos-wsl
     , home-manager
     , nix-colors
     , nixpkgs
@@ -48,13 +40,6 @@
       wallpapers = import ./home/amcmahon/wallpapers;
 
       nixosConfigurations = {
-        nixos-wsl = lib.nixosSystem {
-          modules = [
-            nixos-wsl.nixosModules.default
-            ./hosts/nixos-wsl
-          ];
-          specialArgs = { inherit inputs outputs; };
-        };
         razorback = lib.nixosSystem {
           modules = [
             ./hosts/razorback
@@ -64,13 +49,6 @@
       };
 
       homeConfigurations = {
-        "amcmahon@nixos-wsl" = lib.homeManagerConfiguration {
-          modules = [
-            ./home/amcmahon/nixos-wsl.nix
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-        };
         "amcmahon@razorback" = lib.homeManagerConfiguration {
           modules = [
             ./home/amcmahon/razorback.nix

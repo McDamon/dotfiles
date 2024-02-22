@@ -15,18 +15,19 @@ Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
   - `common`: Shared configurations consumed by the machine-specific ones.
     - `global`: Configurations that are globally applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
-  - `nixos-wsl`: WSL
   - `razorback`: Asus TUF A15 2023
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
 - `pkgs`: Custom packages. Also accessible via `nix build`.
 
-## How to bootstrap WSL
+## How to bootstrap
 
 Add following to ```/etc/nixos/configuration.nix```
 
-```
+```nix
+networking.hostName = "razorback";
+
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 environment.systemPackages = with pkgs; [
@@ -38,15 +39,10 @@ environment.systemPackages = with pkgs; [
 
 Then:
 
-```
-sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/main.tar.gz nixos-wsl
-sudo nix-channel --update
-```
-
-```
+```bash
 cd ~/.config
 git clone https://github.com/McDamon/dotfiles.git
 cd dotfiles
-sudo nixos-rebuild switch --flake .#nixos-wsl
-home-manager switch --flake .#amcmahon@nixos-wsl
+sudo nixos-rebuild switch --flake .#rocinante
+home-manager switch --flake .#amcmahon@rocinante
 ```
