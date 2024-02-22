@@ -38,7 +38,7 @@ in
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "23.05";
+    stateVersion = "23.11";
 
     sessionPath = [ "$HOME/.local/bin" ];
   };
