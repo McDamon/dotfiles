@@ -5,7 +5,7 @@
   ];
   
   colorscheme = inputs.nix-colors.colorschemes.tokyo-night-storm;
-  wallpaper = outputs.wallpapers.watercolor-beach;
+  wallpaper = pkgs.wallpapers.watercolor-beach;
   
   home.sessionVariables.EDITOR = "vim";
 }

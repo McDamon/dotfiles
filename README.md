@@ -44,5 +44,6 @@ cd ~/.config
 git clone https://github.com/McDamon/dotfiles.git
 cd dotfiles
 sudo nixos-rebuild switch --flake .#razorback
+nix run home-manager/master -- init --switch
 home-manager switch --flake .#amcmahon@razorback
 ```
