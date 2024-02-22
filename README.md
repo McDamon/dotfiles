@@ -43,6 +43,6 @@ Then:
 cd ~/.config
 git clone https://github.com/McDamon/dotfiles.git
 cd dotfiles
-sudo nixos-rebuild switch --flake .#rocinante
-home-manager switch --flake .#amcmahon@rocinante
+sudo nixos-rebuild switch --flake .#razorback
+home-manager switch --flake .#amcmahon@razorback
 ```
