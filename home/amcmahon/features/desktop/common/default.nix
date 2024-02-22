@@ -5,4 +5,8 @@
     ./gtk.nix
     ./qt.nix
   ];
+  
+  home.packages = with pkgs; [
+    google-chrome
+  ];
 }
