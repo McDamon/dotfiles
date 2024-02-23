@@ -10,7 +10,7 @@ in
     '';
     shellAliases = {
       nixos-rebuild-switch = "sudo nixos-rebuild switch --flake .#${builtins.getEnv "HOSTNAME"}";
-      home-manager-switch = "home-manager switch --flake .#amcmahon@${builtins.getEnv "HOSTNAME"}";
+      home-manager-switch = "home-manager switch --flake .";
     };
     zplug = {
       enable = true;

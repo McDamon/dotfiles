@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ./fwupd.nix
     ./locale.nix
     ./nix.nix
     ./nix-ld.nix
