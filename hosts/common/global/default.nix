@@ -4,6 +4,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./fwupd.nix
     ./gpg.nix
+    ./libvirtd.nix
     ./locale.nix
     ./nix.nix
     ./nix-ld.nix
