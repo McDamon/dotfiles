@@ -2,11 +2,14 @@
   imports = [
     ./bash.nix
     ./git.nix
+    ./gpg.nix
     ./direnv.nix
     ./screen.nix
+    ./yubikey.nix
     ./zsh.nix
   ];
   home.packages = with pkgs; [
+    ansible
     bc
     bottom
     jq
@@ -20,5 +23,6 @@
     pciutils
     picocom
     screen
+    usbutils
   ];
 }

@@ -1,6 +1,5 @@
-{ outputs, lib, config, ... }:
-{
-  services.openssh = {
+
+{  services.openssh = {
     enable = true;
     settings = {
       # Harden

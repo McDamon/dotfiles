@@ -1,8 +1,9 @@
-{ lib, inputs, outputs, ... }:
+{ inputs, outputs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./fwupd.nix
+    ./gpg.nix
     ./locale.nix
     ./nix.nix
     ./nix-ld.nix

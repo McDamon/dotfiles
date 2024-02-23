@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 let
   kitty-xterm = pkgs.writeShellScriptBin "xterm" ''
     ${config.programs.kitty.package}/bin/kitty -1 "$@"

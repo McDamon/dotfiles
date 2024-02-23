@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 let
   configThemeNormal = ./p10k.zsh;
 in

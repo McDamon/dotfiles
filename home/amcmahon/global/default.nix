@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, config, outputs, ... }:
+{ lib, pkgs, config, outputs, ... }:
 {
   imports = [
     ../features/cli
