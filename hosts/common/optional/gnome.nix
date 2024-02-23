@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   services = {
     xserver = {
@@ -8,13 +9,8 @@
       displayManager.gdm = {
         enable = true;
       };
-      layout = "gb";
-      xkbVariant = "";
-    };
-    geoclue2.enable = true;
-    gnome = {
-      gnome-keyring.enable = true;
-      core-utilities.enable = false;
     };
   };
+
+  environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator gnome3.gnome-tweaks ];
 }

@@ -35,12 +35,19 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 
-  hardware.nvidia.prime = {
-    sync.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    open = false;
+    nvidiaPersistenced = true;
+    powerManagement.enable = true;
+    prime = {
+      reverseSync.enable = true;
 
-    # Make sure to use the correct Bus ID values for your system!
-    amdgpuBusId = "PCI:102:0:0";
-    nvidiaBusId = "PCI:1:0:0";
+      # Make sure to use the correct Bus ID values for your system!
+      amdgpuBusId = "PCI:66:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

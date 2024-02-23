@@ -5,14 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
     inputs@{ self
     , hardware
     , home-manager
-    , nix-colors
     , nixpkgs
     , ...
     }:
@@ -31,13 +29,8 @@
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 
-      overlays = import ./overlays { inherit inputs outputs; };
-
-      packages = forEachSystem (pkgs: (import ./pkgs { inherit pkgs; }) // { });
       devShells = forEachSystem (pkgs: import ./devshell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
-
-      wallpapers = import ./home/amcmahon/wallpapers;
 
       nixosConfigurations = {
         razorback = lib.nixosSystem {

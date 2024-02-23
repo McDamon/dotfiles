@@ -1,11 +1,19 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
+let
+  theme = with pkgs; {
+    qt = {
+      name = "kvantum";
+      package = qt6Packages.qtstyleplugin-kvantum;
+    };
+  };
+in
 {
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme = "lxqt";
     style = {
-      name = "gtk2";
-      package = pkgs.qt6Packages.qt6gtk2;
+      name = theme.qt.name;
+      package = theme.qt.package;
     };
   };
 }

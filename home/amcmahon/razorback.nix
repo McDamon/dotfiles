@@ -2,10 +2,8 @@
   imports = [
     ./global
     ./features/desktop/common
+    ./features/developer
   ];
-  
-  colorscheme = inputs.nix-colors.colorschemes.tokyo-night-storm;
-  wallpaper = pkgs.wallpapers.watercolor-beach;
   
   home.sessionVariables.EDITOR = "vim";
 }

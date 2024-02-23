@@ -1,29 +1,18 @@
-{ config, pkgs, inputs, ... }:
-let
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
-in
-rec {
+{ config, pkgs, ... }:
+{
   gtk = {
     enable = true;
     font = {
       name = config.fontProfiles.regular.family;
-      size = 11;
+      size = 12;
     };
     theme = {
-      name = "${config.colorscheme.slug}";
-      package = gtkThemeFromScheme { scheme = config.colorscheme; };
+      name = "Materia-dark";
+      package = pkgs.materia-theme;
     };
     iconTheme = {
-      name = "Papirus";
+      name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
-    };
-  };
-
-  services.xsettingsd = {
-    enable = true;
-    settings = {
-      "Net/ThemeName" = "${gtk.theme.name}";
-      "Net/IconThemeName" = "${gtk.iconTheme.name}";
     };
   };
 }

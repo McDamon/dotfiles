@@ -3,9 +3,7 @@
     ./bash.nix
     ./git.nix
     ./direnv.nix
-    ./keychain.nix
     ./screen.nix
-    ./shellcolor.nix
     ./ssh.nix
     ./zsh.nix
   ];
@@ -20,6 +18,7 @@
     neofetch
     glances
     htop
+    pciutils
     picocom
     screen
   ];

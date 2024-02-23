@@ -2,12 +2,12 @@
   fontProfiles = {
     enable = true;
     monospace = {
-      family = "FiraCode Nerd Font";
-      package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      family = "JetBrainsMono Nerd Font Mono";
+      package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
     };
     regular = {
-      family = "Fira Sans";
-      package = pkgs.fira;
+      family = "Ubuntu";
+      package = pkgs.ubuntu_font_family;
     };
   };
 }
