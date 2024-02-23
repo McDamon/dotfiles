@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
+    lanzaboote.url = "github:nix-community/lanzaboote";
   };
 
   outputs =
@@ -12,6 +13,7 @@
     , hardware
     , home-manager
     , nixpkgs
+    , lanzaboote
     , ...
     }:
     let
@@ -36,6 +38,7 @@
         razorback = lib.nixosSystem {
           modules = [
             ./hosts/razorback
+            lanzaboote.nixosModules.lanzaboote
           ];
           specialArgs = { inherit inputs outputs; };
         };

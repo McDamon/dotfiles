@@ -4,7 +4,6 @@
     ./git.nix
     ./direnv.nix
     ./screen.nix
-    ./ssh.nix
     ./zsh.nix
   ];
   home.packages = with pkgs; [

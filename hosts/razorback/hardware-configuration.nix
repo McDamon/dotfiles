@@ -11,8 +11,14 @@
   boot.extraModulePackages = [ ];
 
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    loader.efi.canTouchEfiVariables = true;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+  };
 
   # Use the latest kernel to support Wi-Fi
   boot.kernelPackages = pkgs.linuxPackages_latest;
