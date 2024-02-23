@@ -23,8 +23,8 @@ in
     theme = "Desert";
     settings = {
       remember_window_size = "no";
-      initial_window_width = 1920;
-      initial_window_height = 1070;
+      initial_window_width = 1080;
+      initial_window_height = 760;
       wayland_titlebar_color = "system";
       linux_display_server = "wayland";
       scrollback_lines = 4000;

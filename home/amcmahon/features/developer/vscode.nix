@@ -29,10 +29,10 @@
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "Default Dark Modern";
       "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
-      "terminal.integrated.fontLigatures" = true;
       "terminal.integrated.fontSize" = 12;
+      "terminal.integrated.fontLigatures" = true;
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
-      "editor.fontLigatures" = 12;
+      "editor.fontLigatures" = true;
     };
   };
 }
