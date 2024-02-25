@@ -13,6 +13,7 @@
     bc
     bottom
     jq
+    glxinfo
     nil
     nixfmt
     nixpkgs-fmt
@@ -24,5 +25,7 @@
     picocom
     screen
     usbutils
+    xorg.xauth
+    xorg.xclock
   ];
 }
