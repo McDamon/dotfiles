@@ -10,7 +10,10 @@
         enable = true;
       };
     };
+    gnome.gnome-keyring.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator gnome3.gnome-tweaks ];
+  programs.dconf.enable = true;
+
+  environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator gnome.gnome-tweaks ];
 }

@@ -21,6 +21,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtdAp9hxzhMNP1NgEGnwkHURfm9Z93p0vL2HG9wRDSu andre@rocinante"
   ];
 
-  # Passwordless sudo when SSH'ing with keys
   security.pam.sshAgentAuth.enable = true;
+
+  security.pam.services.sddm.enableGnomeKeyring = true;
 }
