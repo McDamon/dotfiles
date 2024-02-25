@@ -1,5 +1,5 @@
 {
   programs.nix-ld = {
-    enable = false;
+    enable = true; 
   };
 }
