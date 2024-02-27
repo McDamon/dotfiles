@@ -27,7 +27,7 @@ Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
 Add following to ```/etc/nixos/configuration.nix```
 
 ```nix
-networking.hostName = "razorback";
+networking.hostName = "razorback"; # or "nixos-wsl"
 
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -45,6 +45,8 @@ cd ~/.config
 git clone https://github.com/McDamon/dotfiles.git
 cd dotfiles
 sudo nixos-rebuild switch --flake .#razorback
+sudo nixos-rebuild switch --flake .#nixos-wsl
 nix run home-manager/master -- init --switch
 home-manager switch --flake .#amcmahon@razorback
+home-manager switch --flake .#amcmahon@nixos-wsl
 ```
