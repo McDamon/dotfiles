@@ -19,6 +19,8 @@
       git
       wget
       vim
+      docker-compose  
+      podman-compose
     ];
   };
 
@@ -50,9 +52,28 @@
     };
   };
 
-  virtualisation.docker = {
-    enable = true;
-    enableNvidia = true;
+  virtualisation = {
+    containers.cdi.dynamic.nvidia.enable = true;
+    podman = {
+      enable = true;
+      autoPrune = {
+        enable = true;
+        dates = "daily";
+      };
+    };
+    docker = {
+      enable = true;
+      package = pkgs.docker_25;
+      autoPrune = {
+        enable = true;
+        dates = "daily";
+      };
+      daemon.settings = {
+        features = {
+          cdi = true;
+        };
+      };
+    };
   };
 
   services.asusd = {

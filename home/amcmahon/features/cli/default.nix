@@ -14,6 +14,7 @@
     bottom
     jq
     glxinfo
+    killall
     nil
     nixfmt
     nixpkgs-fmt

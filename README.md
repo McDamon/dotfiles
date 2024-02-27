@@ -4,7 +4,7 @@
 
 NixOS/home-manager config files. Requires [Nix flakes](https://nixos.wiki/wiki/Flakes).
 
-Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/nix-config).
+Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/nix-config) and [archer-65](https://github.com/archer-65/nix-dotfiles)
 
 Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
 
