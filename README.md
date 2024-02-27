@@ -15,6 +15,7 @@ Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
   - `common`: Shared configurations consumed by the machine-specific ones.
     - `global`: Configurations that are globally applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
+  - `nixos-wsl`: NixOS on WSL
   - `razorback`: Asus TUF A15 2023
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
