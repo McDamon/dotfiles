@@ -27,7 +27,7 @@
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
-    wslConf.network.generateResolvConf = false;
+    wslConf.network.generateResolvConf = true;
     defaultUser = "amcmahon";
     startMenuLaunchers = true;
     nativeSystemd = true;
