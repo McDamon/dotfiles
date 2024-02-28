@@ -35,14 +35,14 @@
   };
 
   # usbipd-win
-  #fileSystems."/var/run/usbipd-win" = {
-  #  device = "C:\\Program Files\\usbipd-win\\WSL";
-  #  fsType = "drvfs";
-  #  options = [
-  #    "ro"
-  #    "umask=222"
-  #  ];
-  #};
+  fileSystems."/var/run/usbipd-win" = {
+    device = "C:\\Program Files\\usbipd-win\\WSL";
+    fsType = "drvfs";
+    options = [
+      "ro"
+      "umask=222"
+    ];
+  };
 
   # Enable OpenGL
   hardware.opengl = {
