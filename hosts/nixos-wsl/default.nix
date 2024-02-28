@@ -21,6 +21,7 @@
       vim
       docker-compose  
       podman-compose
+      linuxPackages.usbip
     ];
   };
 
