@@ -6,7 +6,8 @@
     hardware.url = "github:nixos/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
     lanzaboote.url = "github:nix-community/lanzaboote";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nix-ld-rs.url = "github:nix-community/nix-ld-rs";
   };
 
   outputs =
@@ -16,6 +17,7 @@
     , nixpkgs
     , lanzaboote
     , nixos-wsl
+    , nix-ld-rs
     , ...
     }:
     let

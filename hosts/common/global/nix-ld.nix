@@ -1,5 +1,7 @@
+{ nix-ld-rs }:
 {
   programs.nix-ld = {
-    enable = true; 
+    enable = true;
+    package = nix-ld-rs;
   };
 }
