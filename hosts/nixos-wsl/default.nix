@@ -30,6 +30,7 @@
     enable = true;
     wslConf.automount.root = "/mnt";
     wslConf.network.generateResolvConf = true;
+    useWindowsDriver = true;
     defaultUser = "amcmahon";
     startMenuLaunchers = true;
     nativeSystemd = true;
