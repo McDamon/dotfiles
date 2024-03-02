@@ -12,7 +12,7 @@
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "gtk2";
     };
   };
 }
