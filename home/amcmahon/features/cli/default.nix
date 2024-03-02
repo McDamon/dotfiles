@@ -19,6 +19,7 @@
     nil
     nixfmt
     nixpkgs-fmt
+    minio-client
     vim
     neofetch
     glances
