@@ -2,12 +2,10 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./fwupd.nix
     ./gpg.nix
-    ./libvirtd.nix
+    ./nix-ld.nix
     ./locale.nix
     ./nix.nix
-    ./nix-ld.nix
     ./openssh.nix
     ./zsh.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
