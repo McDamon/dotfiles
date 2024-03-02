@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 {
   programs.nix-ld = {
     enable = true;
-    package = pkgs.nix-ld-rs;
+    package = self.inputs.nix-ld-rs.packages.${pkgs.hostPlatform.system}.nix-ld-rs;
   };
 }
