@@ -1,10 +1,15 @@
-{ pkgs, inputs, lib, config, ... }:
 {
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}: {
   nix = {
     settings = {
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
     };
 
     gc = {
@@ -16,7 +21,7 @@
 
     # Add each flake input as a registry
     # To make nix3 commands consistent with the flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # Map registries to channels
     # Very useful when using legacy commands

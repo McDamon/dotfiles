@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./bash.nix
     ./git.nix
@@ -9,6 +9,7 @@
     ./zsh.nix
   ];
   home.packages = with pkgs; [
+    alejandra
     ansible
     bc
     bottom

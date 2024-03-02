@@ -1,4 +1,9 @@
-{ inputs, lib, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-amd
@@ -21,7 +26,7 @@
       git
       wget
       vim
-      docker-compose  
+      docker-compose
       podman-compose
     ];
   };
@@ -37,7 +42,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;

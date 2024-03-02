@@ -11,6 +11,8 @@
     ../common/global
     ../common/users/amcmahon
   ];
+  
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos-wsl";
 
@@ -19,7 +21,7 @@
       git
       wget
       vim
-      docker-compose  
+      docker-compose
       podman-compose
     ];
   };
@@ -53,7 +55,7 @@
       vaapiVdpau
     ];
   };
-  
+
   virtualisation = {
     containers.cdi.dynamic.nvidia.enable = true;
     podman = {

@@ -1,5 +1,5 @@
-
-{  services.openssh = {
+{
+  services.openssh = {
     enable = true;
     settings = {
       # Harden
@@ -12,10 +12,12 @@
       X11Forwarding = true;
     };
 
-    hostKeys = [{
-      path = "/etc/ssh/ssh_host_ed25519_key";
-      type = "ed25519";
-    }];
+    hostKeys = [
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
   };
 
   users.users."amcmahon".openssh.authorizedKeys.keys = [

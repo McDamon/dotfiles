@@ -1,12 +1,11 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
 
     package = pkgs.vscode;
-   
+
     enableExtensionUpdateCheck = false;
-  
+
     enableUpdateCheck = false;
 
     extensions = with pkgs.vscode-extensions; [

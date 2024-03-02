@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
@@ -12,6 +11,6 @@
       user.signing.key = "AD4C8118B97C38DC6647F7D34EADEA4DCA9F786A";
     };
     lfs.enable = true;
-    ignores = [ ".direnv" "result" ];
+    ignores = [".direnv" "result"];
   };
 }
