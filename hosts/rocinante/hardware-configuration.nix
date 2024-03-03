@@ -16,7 +16,7 @@
 
   # Bootloader
   boot = {
-    loader.systemd-boot.enable = lib.mkForce false;
+    loader.systemd-boot.enable = lib.mkForce true;
     loader.efi.canTouchEfiVariables = true;
   };
 
