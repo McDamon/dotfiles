@@ -1,8 +1,7 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ inputs
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
@@ -41,12 +40,14 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
     open = false;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
   };
 
   virtualisation = {
@@ -71,10 +72,6 @@
         };
       };
     };
-  };
-
-  services.asusd = {
-    enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
