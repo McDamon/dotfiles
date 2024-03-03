@@ -51,6 +51,12 @@
         ];
         specialArgs = {inherit inputs outputs;};
       };
+      rocinante = lib.nixosSystem {
+        modules = [
+          ./hosts/rocinante
+        ];
+        specialArgs = {inherit inputs outputs;};
+      };
     };
 
     homeConfigurations = {
@@ -61,9 +67,9 @@
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
       };
-      "amcmahon@razorback" = lib.homeManagerConfiguration {
+      "amcmahon@rocinante" = lib.homeManagerConfiguration {
         modules = [
-          ./home/amcmahon/razorback.nix
+          ./home/amcmahon/rocinante.nix
         ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};

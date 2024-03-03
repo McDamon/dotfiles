@@ -16,7 +16,8 @@ Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
     - `global`: Configurations that are globally applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
   - `nixos-wsl`: NixOS on WSL
-  - `razorback`: Asus TUF A15 2023
+  - `razorback`: Asus TUF A17 2023 Laptop
+  - `rocinante`: AMD 5950x / NVIDIA 4090 Desktop
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
