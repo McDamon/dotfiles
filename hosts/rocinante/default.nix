@@ -47,8 +47,6 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     open = false;
-    nvidiaPersistenced = true;
-    powerManagement.enable = true;
   };
 
   virtualisation = {
