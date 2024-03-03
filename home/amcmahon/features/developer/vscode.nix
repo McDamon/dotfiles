@@ -31,7 +31,7 @@
       "terminal.integrated.fontSize" = 12;
       "terminal.integrated.fontLigatures" = true;
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
-      "editor.fontLigatures" = true;
+      "cmake.showOptionsMovedNotification" = false;
     };
   };
 }
