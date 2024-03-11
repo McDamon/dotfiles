@@ -29,9 +29,10 @@
       "workbench.colorTheme" = "Default Dark Modern";
       "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
       "terminal.integrated.fontSize" = 12;
-      "terminal.integrated.fontLigatures" = true;
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
       "cmake.showOptionsMovedNotification" = false;
+      "C_Cpp.intelliSenseEngine" = "disabled";
+      "cmake.showConfigureWithDebuggerNotification" = false;
     };
   };
 }

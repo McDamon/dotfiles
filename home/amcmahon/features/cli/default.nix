@@ -30,5 +30,6 @@
     usbutils
     xorg.xauth
     xorg.xclock
+    xclip
   ];
 }
