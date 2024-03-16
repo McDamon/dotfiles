@@ -1,7 +1,12 @@
 { config
 , pkgs
+, inputs
 , ...
-}: {
+}:
+let
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+in
+{
   gtk = {
     enable = true;
     font = {
@@ -9,11 +14,11 @@
       size = 12;
     };
     theme = {
-      name = "Materia-dark";
-      package = pkgs.materia-theme;
+      name = "${config.colorscheme.slug}";
+      package = gtkThemeFromScheme { scheme = config.colorscheme; };
     };
     iconTheme = {
-      name = "Papirus-Dark";
+      name = "Papirus";
       package = pkgs.papirus-icon-theme;
     };
   };

@@ -15,6 +15,10 @@
   };
 
   environment.systemPackages = [
-    pkgs.elegant-sddm
+    (pkgs.elegant-sddm.override {
+      themeConfig.General = {
+        background = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray-bottom.gnomeFilePath}";
+      };
+    })
   ];
 }

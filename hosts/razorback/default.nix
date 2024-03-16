@@ -94,6 +94,13 @@
     enable = true;
   };
 
+  powerManagement.powertop.enable = true;
+  
+  programs = {
+    light.enable = true;
+    dconf.enable = true;
+  };
+
   boot.bootspec.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

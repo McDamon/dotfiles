@@ -20,7 +20,7 @@ Contains code from [K900](https://github.com/K900/vscode-remote-workaround)
   - `rocinante`: AMD 5950x / NVIDIA 4090 Desktop
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
-- `overlay`: Patches and version overrides for some packages. Accessible via `nix build`.
+- `overlays`: Patches and version overrides for some packages. Accessible via `nix build`.
 - `pkgs`: Custom packages. Also accessible via `nix build`.
 
 ## How to bootstrap

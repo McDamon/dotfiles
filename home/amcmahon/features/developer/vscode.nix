@@ -23,9 +23,9 @@
     userSettings = {
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "Default Dark Modern";
-      "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
+      "terminal.integrated.fontFamily" = "FiraCode Nerd Font";
       "terminal.integrated.fontSize" = 12;
-      "editor.fontFamily" = "JetBrainsMono Nerd Font";
+      "editor.fontFamily" = "FiraCode Nerd Font";
       "cmake.showOptionsMovedNotification" = false;
       "C_Cpp.intelliSenseEngine" = "disabled";
       "cmake.showConfigureWithDebuggerNotification" = false;

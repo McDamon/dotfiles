@@ -3,22 +3,34 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager";
-    lanzaboote.url = "github:nix-community/lanzaboote";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nix-ld-rs.url = "github:nix-community/nix-ld-rs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-ld-rs = {
+      url = "github:nix-community/nix-ld-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-contrib.url = "github:hyprwm/contrib";
   };
 
   outputs =
     inputs @ { self
-    , hardware
     , home-manager
     , nixpkgs
     , lanzaboote
     , nixos-wsl
-    , nix-ld-rs
     , hyprland
     , ...
     }:
@@ -38,6 +50,9 @@
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 
+      overlays = import ./overlays { inherit inputs outputs; };
+      
+      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       devShells = forEachSystem (pkgs: import ./devshell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
@@ -51,6 +66,7 @@
         razorback = lib.nixosSystem {
           modules = [
             ./hosts/razorback
+            hyprland.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
           ];
           specialArgs = { inherit inputs outputs; };
