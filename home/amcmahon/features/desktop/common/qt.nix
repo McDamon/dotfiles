@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  theme = with pkgs; {
+  theme = {
     qt = {
       name = "gtk2";
       package = pkgs.qt6Packages.qt6gtk2;
