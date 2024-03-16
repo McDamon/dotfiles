@@ -1,17 +1,16 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ inputs
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     inputs.nixos-wsl.nixosModules.default
     ../common/global
     ../common/users/amcmahon
   ];
-  
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos-wsl";

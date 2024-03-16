@@ -1,8 +1,7 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ inputs
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
@@ -11,7 +10,6 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/fwupd.nix
-    ../common/optional/gnome.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
     ../common/users/amcmahon
@@ -42,7 +40,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;

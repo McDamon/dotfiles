@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services = {
     xserver = {
       enable = true;
@@ -12,7 +12,5 @@
     };
   };
 
-  programs.dconf.enable = true;
-
-  environment.systemPackages = with pkgs; [gnomeExtensions.appindicator gnome.gnome-tweaks];
+  environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator gnome.gnome-tweaks ];
 }

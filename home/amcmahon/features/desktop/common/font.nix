@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   fontProfiles = {
     enable = true;
     monospace = {
       family = "JetBrainsMono Nerd Font Mono";
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+      package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
     };
     regular = {
       family = "Ubuntu";

@@ -1,7 +1,6 @@
-{
-  inputs,
-  outputs,
-  ...
+{ inputs
+, outputs
+, ...
 }: {
   imports =
     [
@@ -17,7 +16,7 @@
 
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = { inherit inputs outputs; };
   };
 
   nixpkgs = {
@@ -29,6 +28,9 @@
   environment = {
     enableAllTerminfo = true;
   };
+
+
+  programs.dconf.enable = true;
 
   networking.domain = "lab.apm-games.com";
 }

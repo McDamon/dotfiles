@@ -1,9 +1,8 @@
-{
-  lib,
-  pkgs,
-  config,
-  outputs,
-  ...
+{ lib
+, pkgs
+, config
+, outputs
+, ...
 }: {
   imports =
     [
@@ -22,7 +21,7 @@
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       warn-dirty = false;
     };
   };
@@ -42,6 +41,6 @@
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "23.11";
 
-    sessionPath = ["$HOME/.local/bin"];
+    sessionPath = [ "$HOME/.local/bin" ];
   };
 }

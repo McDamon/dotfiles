@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.vscode = {
     enable = true;
 
@@ -30,6 +30,17 @@
       "C_Cpp.intelliSenseEngine" = "disabled";
       "cmake.showConfigureWithDebuggerNotification" = false;
       "terminal.integrated.defaultProfile.linux" = "zsh";
+      "nix.serverPath" = "nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            "command" = [ "nixpkgs-fmt" ];
+          };
+          "flake" = {
+            "autoArchive" = false;
+          };
+        };
+      };
     };
   };
 }
