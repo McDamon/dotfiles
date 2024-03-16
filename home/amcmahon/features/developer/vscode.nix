@@ -33,6 +33,7 @@
       "cmake.showOptionsMovedNotification" = false;
       "C_Cpp.intelliSenseEngine" = "disabled";
       "cmake.showConfigureWithDebuggerNotification" = false;
+      "terminal.integrated.defaultProfile.linux" = "zsh";
     };
   };
 }
