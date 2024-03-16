@@ -15,7 +15,5 @@
       pinentryPackage = pkgs.pinentry-gnome3;
       enableSshSupport = true;
     };
-
-    gnome-keyring.enable = true;
   };
 }

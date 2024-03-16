@@ -24,7 +24,9 @@
   };
 
   # Use the latest kernel to support Wi-Fi
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest; 
+
+  boot.plymouth.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9c72fa2e-b599-4bd2-9220-ca5fb36daa8e";

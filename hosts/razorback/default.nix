@@ -9,6 +9,8 @@
     inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common/global
+    ../common/optional/hyprland.nix
+    ../common/optional/sddm.nix
     ../common/optional/fwupd.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
@@ -48,11 +50,12 @@
     open = false;
     nvidiaPersistenced = true;
     powerManagement.enable = true;
+    powerManagement.finegrained = true;
     prime = {
       reverseSync.enable = true;
 
       # Make sure to use the correct Bus ID values for your system!
-      amdgpuBusId = "PCI:66:0:0";
+      amdgpuBusId = "PCI:102:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
@@ -79,6 +82,12 @@
         };
       };
     };
+  };
+
+  # Lid settings
+  services.logind = {
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "lock";
   };
 
   services.asusd = {

@@ -73,7 +73,6 @@
         };
         "amcmahon@razorback" = lib.homeManagerConfiguration {
           modules = [
-            hyprland.homeManagerModules.default
             ./home/amcmahon/razorback.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
