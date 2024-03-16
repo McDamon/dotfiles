@@ -4,10 +4,6 @@
 
     package = pkgs.vscode;
 
-    enableExtensionUpdateCheck = false;
-
-    enableUpdateCheck = false;
-
     extensions = with pkgs.vscode-extensions; [
       llvm-vs-code-extensions.vscode-clangd
       ms-vscode.cpptools
