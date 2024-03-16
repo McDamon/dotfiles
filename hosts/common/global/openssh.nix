@@ -21,6 +21,6 @@
   };
 
   users.users."amcmahon".openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtdAp9hxzhMNP1NgEGnwkHURfm9Z93p0vL2HG9wRDSu andre@rocinante"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPO9UIdcXQgu7nVbT12veKl6eG6SQykjHePZEP3xoGcu cardno:10_957_991"
   ];
 }
