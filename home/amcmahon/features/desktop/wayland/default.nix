@@ -16,7 +16,17 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
   home.packages = with pkgs; [
+    grim
+    gtk3 # For gtk-launch
+    imv
+    mimeo
     pulseaudio
+    slurp
+    waypipe
+    wf-recorder
+    wl-clipboard
+    wl-mirror
+    ydotool
   ];
 
   xdg.mimeApps.enable = true;

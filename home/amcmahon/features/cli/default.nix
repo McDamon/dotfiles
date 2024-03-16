@@ -25,6 +25,9 @@
     neofetch
     glances
     htop
+    iotop
+    atop
+    glances
     pciutils
     picocom
     screen
@@ -32,5 +35,6 @@
     xorg.xauth
     xorg.xclock
     xclip
+    xdg-utils
   ];
 }

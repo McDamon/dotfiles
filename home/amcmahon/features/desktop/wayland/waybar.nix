@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 let
   # Dependencies
   cat = "${pkgs.coreutils}/bin/cat";
@@ -180,36 +179,6 @@ in
           };
           on-click = "";
         };
-        "custom/gammastep" = {
-          interval = 5;
-          return-type = "json";
-          exec = jsonOutput "gammastep" {
-            pre = ''
-              if unit_status="$(${systemctl} --user is-active gammastep)"; then
-                status="$unit_status ($(${journalctl} --user -u gammastep.service -g 'Period: ' | ${tail} -1 | ${cut} -d ':' -f6 | ${xargs}))"
-              else
-                status="$unit_status"
-              fi
-            '';
-            alt = "\${status:-inactive}";
-            tooltip = "Gammastep is $status";
-          };
-          format = "{icon}";
-          format-icons = {
-            "activating" = "󰁪 ";
-            "deactivating" = "󰁪 ";
-            "inactive" = "? ";
-            "active (Night)" = " ";
-            "active (Nighttime)" = " ";
-            "active (Transition (Night)" = " ";
-            "active (Transition (Nighttime)" = " ";
-            "active (Day)" = " ";
-            "active (Daytime)" = " ";
-            "active (Transition (Day)" = " ";
-            "active (Transition (Daytime)" = " ";
-          };
-          on-click = "${systemctl} --user is-active gammastep && ${systemctl} --user stop gammastep || ${systemctl} --user start gammastep";
-        };
         "custom/currentplayer" = {
           interval = 2;
           return-type = "json";
@@ -230,15 +199,9 @@ in
           format = "{icon}{}";
           format-icons = {
             "No player active" = " ";
-            "Celluloid" = "󰎁 ";
             "spotify" = "󰓇 ";
             "ncspot" = "󰓇 ";
-            "qutebrowser" = "󰖟 ";
-            "firefox" = " ";
-            "discord" = " 󰙯 ";
-            "sublimemusic" = " ";
-            "kdeconnect" = "󰄡 ";
-            "chromium" = " ";
+            "ungoogled-chrome" = " ";
           };
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
@@ -258,7 +221,84 @@ in
           on-click = "${playerctl} play-pause";
         };
       };
-
     };
+
+    # Cheatsheet:
+    # x -> all sides
+    # x y -> vertical, horizontal
+    # x y z -> top, horizontal, bottom
+    # w x y z -> top, right, bottom, left
+    style = let inherit (config.colorscheme) palette; in ''
+      * {
+        font-family: ${config.fontProfiles.regular.family}, ${config.fontProfiles.monospace.family};
+        font-size: 12pt;
+        padding: 0;
+        margin: 0 0.4em;
+      }
+      window#waybar {
+        padding: 0;
+        opacity: 0.75;
+        border-radius: 0.5em;
+        background-color: #${palette.base00};
+        color: #${palette.base05};
+      }
+      .modules-left {
+        margin-left: -0.65em;
+      }
+      .modules-right {
+        margin-right: -0.65em;
+      }
+      #workspaces button {
+        background-color: #${palette.base00};
+        color: #${palette.base05};
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+        margin-top: 0.15em;
+        margin-bottom: 0.15em;
+      }
+      #workspaces button.hidden {
+        background-color: #${palette.base00};
+        color: #${palette.base04};
+      }
+      #workspaces button.focused,
+      #workspaces button.active {
+        background-color: #${palette.base0A};
+        color: #${palette.base00};
+      }
+      #clock {
+        background-color: #${palette.base01};
+        padding-right: 1em;
+        padding-left: 1em;
+        border-radius: 0.5em;
+      }
+      #custom-menu {
+        background-color: #${palette.base01};
+        padding-right: 1.5em;
+        padding-left: 1em;
+        margin-right: 0;
+        border-radius: 0.5em;
+      }
+      #custom-menu.fullscreen {
+        background-color: #${palette.base0C};
+        color: #${palette.base00};
+      }
+      #custom-hostname {
+        background-color: #${palette.base01};
+        padding-right: 1em;
+        padding-left: 1em;
+        margin-left: 0;
+        border-radius: 0.5em;
+      }
+      #custom-currentplayer {
+        padding-right: 0;
+      }
+      #tray {
+        color: #${palette.base05};
+      }
+      #custom-gpu, #cpu, #memory {
+        margin-left: 0.05em;
+        margin-right: 0.55em;
+      }
+    '';
   };
 }

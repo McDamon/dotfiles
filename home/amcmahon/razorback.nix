@@ -11,10 +11,10 @@ in
 
   home.sessionVariables.EDITOR = "vim";
 
-  wallpaper = pkgs.wallpapers.aenami-dawn;
-  colorscheme = lib.mkDefault colorSchemes.atelier-heath;
+  wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
+  colorscheme = lib.mkDefault colorSchemes.rose-pine-moon;
   specialisation = {
-    light.configuration.colorscheme = colorSchemes.atelier-heath-light;
+    light.configuration.colorscheme = colorSchemes.rose-pine-dawn;
   };
 
   monitors = [
