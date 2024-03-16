@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs = {
     gpg = {
@@ -11,6 +12,7 @@
   services = {
     gpg-agent = {
       enable = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
       enableSshSupport = true;
     };
   };
