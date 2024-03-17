@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/hyprland.nix
-    ../common/optional/sddm.nix
+    ../common/optional/themed-sddm.nix
     ../common/optional/fwupd.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
