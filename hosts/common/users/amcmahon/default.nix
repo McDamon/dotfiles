@@ -20,6 +20,10 @@ in
         "docker"
         "podman"
         "git"
+        "i2c"
+        "libvirtd"
       ];
   };
+
+  security.pam.services = { swaylock = { }; };
 }
