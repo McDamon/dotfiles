@@ -28,7 +28,7 @@ in
       scrollback_lines = 4000;
       scrollback_pager_history_size = 2048;
       window_padding_width = 15;
-      linux_display_server = "wayland";
+      linux_display_server = "x11";
       wayland_titlebar_color = "system";
       foreground = "#${palette.base05}";
       background = "#${palette.base00}";

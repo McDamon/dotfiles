@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./global
+    ./features/cli/gpg-agent-gnome.nix
     ./features/desktop/common
     ./features/desktop/wayland
     ./features/developer

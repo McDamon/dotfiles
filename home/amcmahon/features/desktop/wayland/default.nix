@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
-    ./kitty.nix
+    #./kitty.nix
+    ./wezterm.nix
   ];
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;

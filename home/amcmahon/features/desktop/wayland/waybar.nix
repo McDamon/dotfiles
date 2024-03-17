@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   # Dependencies
   cat = "${pkgs.coreutils}/bin/cat";
