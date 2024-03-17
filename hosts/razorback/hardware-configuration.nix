@@ -1,6 +1,4 @@
-{ config
-, lib
-, pkgs
+{ lib
 , modulesPath
 , ...
 }: {
@@ -9,6 +7,7 @@
   ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" ];
+  boot.blacklistedKernelModules = [ "snd_pcsp" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -22,10 +21,7 @@
       pkiBundle = "/etc/secureboot";
     };
   };
-
-  # Use the latest kernel to support Wi-Fi
-  boot.kernelPackages = pkgs.linuxPackages_latest; 
-
+  
   boot.plymouth.enable = true;
 
   fileSystems."/" = {
@@ -49,5 +45,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.enableAllFirmware = true;
+  hardware.cpu.amd.updateMicrocode = true;
 }

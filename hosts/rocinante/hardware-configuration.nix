@@ -1,6 +1,4 @@
-{ config
-, lib
-, pkgs
+{ lib
 , modulesPath
 , ...
 }: {
@@ -18,8 +16,6 @@
     loader.systemd-boot.enable = lib.mkForce true;
     loader.efi.canTouchEfiVariables = true;
   };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/da78d952-e0e2-498a-93ed-e1cb3562f4aa";
@@ -39,5 +35,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.enableAllFirmware = true; 
+  hardware.cpu.amd.updateMicrocode = true;
 }

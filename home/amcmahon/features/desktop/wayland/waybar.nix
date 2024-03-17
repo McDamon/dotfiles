@@ -4,17 +4,14 @@ let
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
   grep = "${pkgs.gnugrep}/bin/grep";
-  tail = "${pkgs.coreutils}/bin/tail";
   wc = "${pkgs.coreutils}/bin/wc";
-  xargs = "${pkgs.findutils}/bin/xargs";
 
   jq = "${pkgs.jq}/bin/jq";
   systemctl = "${pkgs.systemd}/bin/systemctl";
-  journalctl = "${pkgs.systemd}/bin/journalctl";
-  playerctl = "${pkgs.playerctl}/bin/playerctl";
-  playerctld = "${pkgs.playerctl}/bin/playerctld";
+  playerctl = "${config.services.playerctld.package}/bin/playerctl";
+  playerctld = "${config.services.playerctld.package}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-  wofi = "${pkgs.wofi}/bin/wofi";
+  wofi = "${config.programs.wofi.package}/bin/wofi";
 
   # Function to simplify making waybar outputs
   jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
@@ -29,7 +26,6 @@ let
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
 
-  hasHyprland = config.wayland.windowManager.hyprland.enable;
   hyprland = config.wayland.windowManager.hyprland.package;
 in
 {
@@ -39,6 +35,9 @@ in
   };
   programs.waybar = {
     enable = true;
+    package = pkgs.waybar.overrideAttrs (oa: {
+      mesonFlags = (oa.mesonFlags or  [ ]) ++ [ "-Dexperimental=true" ];
+    });
     systemd.enable = true;
     settings = {
       primary = {
@@ -49,10 +48,8 @@ in
         position = "top";
         modules-left = [
           "custom/menu"
-        ] ++ (lib.optionals hasHyprland [
           "hyprland/workspaces"
           "hyprland/submap"
-        ]) ++ [
           "custom/currentplayer"
           "custom/player"
         ];
@@ -82,7 +79,6 @@ in
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
         };
-
         cpu = {
           format = "  {usage}%";
         };
@@ -95,7 +91,6 @@ in
           format = "  {}%";
           interval = 5;
         };
-
         pulseaudio = {
           format = "{icon}  {volume}%";
           format-muted = "   0%";
@@ -139,9 +134,7 @@ in
         };
         "custom/menu" =
           let
-            isFullScreen =
-              if hasHyprland then "${hyprland}/bin/hyprctl activewindow -j | ${jq} -e '.fullscreen' &>/dev/null"
-              else "false";
+            isFullScreen = "${hyprland}/bin/hyprctl activewindow -j | ${jq} -e '.fullscreen' &>/dev/null";
           in
           {
             interval = 1;
@@ -152,10 +145,7 @@ in
               class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
             };
             on-click-left = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
-            on-click-right = lib.concatStringsSep ";" (
-              (lib.optional hasHyprland "${hyprland}/bin/hyprctl dispatch togglespecialworkspace")
-            );
-
+            on-click-right = "${hyprland}/bin/hyprctl dispatch togglespecialworkspace";
           };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
@@ -199,8 +189,7 @@ in
           format = "{icon}{}";
           format-icons = {
             "No player active" = " ";
-            "spotify" = "󰓇 ";
-            "ncspot" = "󰓇 ";
+            "spotify-player" = "󰓇 ";
             "ungoogled-chrome" = " ";
           };
           on-click = "${playerctld} shift";

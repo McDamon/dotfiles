@@ -15,6 +15,7 @@ in
         "wheel"
       ]
       ++ ifTheyExist [
+        "audio"
         "networkmanager"
         "docker"
         "podman"

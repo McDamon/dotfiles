@@ -7,6 +7,5 @@
     ./obs-studio.nix
     ./pavucontrol.nix
     ./playerctl.nix
-    ./spotifyd.nix
   ];
 }

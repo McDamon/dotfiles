@@ -113,7 +113,7 @@
           grimblast = "${inputs.hyprland-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
           tesseract = "${pkgs.tesseract}/bin/tesseract";
 
-          pactl = "${pkgs.pulseaudio}/bin/pactl";
+          wpctl = "${pkgs.pulseaudio}/bin/wpctl";
           notify-send = "${pkgs.libnotify}/bin/notify-send";
 
           gtk-launch = "${pkgs.gtk3}/bin/gtk-launch";
@@ -131,11 +131,11 @@
           "SUPER,v,exec,${editor}"
           "SUPER,b,exec,${browser}"
           # Volume
-          ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-          ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-          ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-          "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-          ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+          ",XF86AudioRaiseVolume,exec,${wpctl} set-sink-volume @DEFAULT_SINK@ +5%"
+          ",XF86AudioLowerVolume,exec,${wpctl} set-sink-volume @DEFAULT_SINK@ -5%"
+          ",XF86AudioMute,exec,${wpctl} set-sink-mute @DEFAULT_SINK@ toggle"
+          "SHIFT,XF86AudioMute,exec,${wpctl} set-source-mute @DEFAULT_SOURCE@ toggle"
+          ",XF86AudioMicMute,exec,${wpctl} set-source-mute @DEFAULT_SOURCE@ toggle"
           # Screenshotting
           ",Print,exec,${grimblast} --notify --freeze copy output"
           "SUPER,Print,exec,${grimblast} --notify --freeze copy area"

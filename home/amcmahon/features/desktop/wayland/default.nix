@@ -23,6 +23,7 @@
     pulseaudio
     snapshot
     slurp
+    spotify-player
     waypipe
     wf-recorder
     wl-clipboard
