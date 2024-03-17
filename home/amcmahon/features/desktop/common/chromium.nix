@@ -2,13 +2,13 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.ungoogled-chromium;
+    package = pkgs.google-chrome;
   };
 
   xdg.mimeApps.defaultApplications = {
-    "text/html" = [ "ungoogled-chromium.desktop" ];
-    "text/xml" = [ "ungoogled-chromium.desktop" ];
-    "x-scheme-handler/http" = [ "ungoogled-chromium.desktop" ];
-    "x-scheme-handler/https" = [ "ungoogled-chromium.desktop" ];
+    "text/html" = [ "google-chrome.desktop" ];
+    "text/xml" = [ "google-chrome.desktop" ];
+    "x-scheme-handler/http" = [ "google-chrome.desktop" ];
+    "x-scheme-handler/https" = [ "google-chrome.desktop" ];
   };
 }

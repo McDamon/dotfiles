@@ -16,7 +16,8 @@
     loader.systemd-boot.enable = lib.mkForce true;
     loader.efi.canTouchEfiVariables = true;
   };
-
+  boot.plymouth.enable = true;
+  
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/da78d952-e0e2-498a-93ed-e1cb3562f4aa";
     fsType = "ext4";

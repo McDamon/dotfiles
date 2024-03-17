@@ -3,7 +3,19 @@
     ../common
     ../wayland
     ./basic-binds.nix
+    ./mako.nix
+    ./swaylock.nix
+    ./waybar.nix
+    ./wofi.nix
   ];
+  
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    LIBSEAT_BACKEND = "logind";
+    WLR_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
+    WLR_BACKEND = "vulkan";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
 
   home.packages = with pkgs; [
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
