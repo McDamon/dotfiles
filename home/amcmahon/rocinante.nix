@@ -10,6 +10,7 @@ in
     ./features/desktop/wayland
     ./features/desktop/x11-term
     ./features/developer
+    ./features/gaming
   ];
 
   home.sessionVariables.EDITOR = "vim";
