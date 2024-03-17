@@ -14,6 +14,7 @@
     ../common/optional/fwupd.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
+    ../common/optional/steam.nix
     ../common/users/amcmahon
   ];
 
@@ -100,7 +101,7 @@
   boot.bootspec.enable = true;
 
   services.hardware.openrgb.enable = true;
-  
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
 }

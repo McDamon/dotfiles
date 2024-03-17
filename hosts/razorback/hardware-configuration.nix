@@ -21,7 +21,7 @@
       pkiBundle = "/etc/secureboot";
     };
   };
-  
+
   boot.plymouth.enable = true;
 
   fileSystems."/" = {

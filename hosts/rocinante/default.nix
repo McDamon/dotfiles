@@ -12,6 +12,7 @@
     ../common/optional/gnome.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
+    ../common/optional/steam.nix
     ../common/users/amcmahon
   ];
 

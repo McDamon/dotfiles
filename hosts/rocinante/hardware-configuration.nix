@@ -17,7 +17,7 @@
     loader.efi.canTouchEfiVariables = true;
   };
   boot.plymouth.enable = true;
-  
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/da78d952-e0e2-498a-93ed-e1cb3562f4aa";
     fsType = "ext4";
@@ -36,6 +36,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  hardware.enableAllFirmware = true; 
+  hardware.enableAllFirmware = true;
   hardware.cpu.amd.updateMicrocode = true;
 }
