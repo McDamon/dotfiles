@@ -51,8 +51,8 @@ in
       primary = {
         mode = "dock";
         layer = "top";
-        height = 40;
-        margin = "6";
+        height = 30;
+        margin = "1";
         position = "top";
         modules-left = [
           "custom/menu"
