@@ -11,8 +11,8 @@
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
       access-tokens =
-        if builtins.pathExists /home/amcmahon/.config/nix-access-tokens/github then
-          builtins.readFile /home/amcmahon/.config/nix-access-tokens/github else "";
+        if builtins.pathExists /home/amcmahon/nix-access-tokens/github then
+          builtins.readFile /home/amcmahon/nix-access-tokens/github else "";
     };
 
     gc = {

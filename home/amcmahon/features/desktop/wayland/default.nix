@@ -21,6 +21,7 @@
     imv
     mimeo
     pulseaudio
+    snapshot
     slurp
     waypipe
     wf-recorder
