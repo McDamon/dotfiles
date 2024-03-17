@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./global
+    ./features/cli/gpg-agent-qt.nix
     ./features/desktop/hyprland
     ./features/developer
   ];

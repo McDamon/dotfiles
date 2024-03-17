@@ -2,6 +2,7 @@
   imports = [
     ../common
     ../wayland
+    ../wayland-term
     ./basic-binds.nix
     ./mako.nix
     ./swaylock.nix

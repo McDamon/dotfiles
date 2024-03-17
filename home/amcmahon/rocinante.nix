@@ -8,6 +8,7 @@ in
     ./features/cli/gpg-agent-gnome.nix
     ./features/desktop/common
     ./features/desktop/wayland
+    ./features/desktop/x11-term
     ./features/developer
   ];
 

@@ -2,15 +2,15 @@
 let
   theme = {
     qt = {
-      name = "gtk2";
-      package = pkgs.qt6Packages.qt6gtk2;
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt6;
     };
   };
 in
 {
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme = "gnome";
     style = {
       name = theme.qt.name;
       package = theme.qt.package;
