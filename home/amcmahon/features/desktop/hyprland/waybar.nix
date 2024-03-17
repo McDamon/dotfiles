@@ -14,10 +14,18 @@ let
   wofi = "${config.programs.wofi.package}/bin/wofi";
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
+  # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/wayland-wm/waybar.nix
+  jsonOutput = name: { pre ? ""
+                     , text ? ""
+                     , tooltip ? ""
+                     , alt ? ""
+                     , class ? ""
+                     , percentage ? ""
+                     ,
+                     }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
     set -euo pipefail
     ${pre}
-    ${jq} -cn \
+    ${pkgs.jq}/bin/jq -cn \
       --arg text "${text}" \
       --arg tooltip "${tooltip}" \
       --arg alt "${alt}" \
@@ -74,7 +82,7 @@ in
           interval = 1;
           format = "{:%d/%m %H:%M:%S}";
           format-alt = "{:%Y-%m-%d %H:%M:%S %z}";
-          on-click-left = "mode";
+          on-click = "mode";
           tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
@@ -144,7 +152,7 @@ in
               tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
               class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
             };
-            on-click-left = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+            on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
             on-click-right = "${hyprland}/bin/hyprctl dispatch togglespecialworkspace";
           };
         "custom/hostname" = {
