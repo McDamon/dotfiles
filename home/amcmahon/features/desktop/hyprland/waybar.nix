@@ -152,8 +152,7 @@ in
               tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
               class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
             };
-            on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
-            on-click-right = "${hyprland}/bin/hyprctl dispatch togglespecialworkspace";
+            on-click-right = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
           };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
