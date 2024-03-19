@@ -5,19 +5,32 @@ in
 {
   imports = [
     ./global
-    ./features/cli/gpg-agent-gnome.nix
-    ./features/desktop/common
-    ./features/desktop/wayland
-    ./features/desktop/x11-term
+    ./features/cli/gpg-agent-qt.nix
+    ./features/desktop/hyprland
     ./features/developer
     ./features/gaming
   ];
 
-  home.sessionVariables.EDITOR = "vim";
+  home.sessionVariables = {
+    EDITOR = "vim";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 
   wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
   colorscheme = lib.mkDefault colorSchemes.rose-pine-moon;
   specialisation = {
     light.configuration.colorscheme = colorSchemes.rose-pine-dawn;
   };
+
+  monitors = [
+    {
+      name = "HDMI-A-1";
+      width = 3840;
+      height = 2160;
+      refreshRate = 120;
+      workspace = "1";
+      primary = true;
+    }
+  ];
 }

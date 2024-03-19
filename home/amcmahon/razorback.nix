@@ -8,6 +8,7 @@ in
     ./features/cli/gpg-agent-qt.nix
     ./features/desktop/hyprland
     ./features/developer
+    ./features/gaming
   ];
 
   home.sessionVariables.EDITOR = "vim";

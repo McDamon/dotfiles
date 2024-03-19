@@ -1,4 +1,5 @@
-{ lib
+{ pkgs
+, lib
 , modulesPath
 , ...
 }: {
@@ -10,12 +11,14 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Bootloader
   boot = {
     loader.systemd-boot.enable = lib.mkForce true;
     loader.efi.canTouchEfiVariables = true;
   };
+  
   boot.plymouth.enable = true;
 
   fileSystems."/" = {
