@@ -60,7 +60,7 @@
           pseudotile = true;
         };
         misc = {
-          vrr = 1;
+          vrr = 2;
           focus_on_activate = true;
         };
         windowrulev2 =
