@@ -12,6 +12,8 @@ let
   playerctld = "${config.services.playerctld.package}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   wofi = "${config.programs.wofi.package}/bin/wofi";
+  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+  sleep = "${pkgs.coreutils-full}/bin/sleep";
 
   # Function to simplify making waybar outputs
   # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/wayland-wm/waybar.nix
@@ -56,6 +58,7 @@ in
         position = "top";
         modules-left = [
           "custom/menu"
+          "idle_inhibitor"
           "hyprland/workspaces"
           "hyprland/submap"
           "custom/currentplayer"
@@ -75,9 +78,9 @@ in
         modules-right = [
           "network"
           "tray"
+          "bluetooth"
           "custom/hostname"
         ];
-
         clock = {
           interval = 1;
           format = "{:%d/%m %H:%M:%S}";
@@ -123,7 +126,15 @@ in
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
-          onclick = "";
+          on-click = "";
+        };
+        bluetooth = {
+          format = "  {status} ";
+          format-disabled = "";
+          format-connected = " {num_connections} connected";
+          tooltip-format = "{controller_alias}\t{controller_address}";
+          tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
         };
         "sway/window" = {
           max-length = 20;
@@ -140,6 +151,11 @@ in
             Down: {bandwidthDownBits}'';
           on-click = "";
         };
+        "hyprland/language" = {
+          format = " {} ";
+          format-en = "EN";
+          format-uk = "UK";
+        };
         "custom/menu" =
           let
             isFullScreen = "${hyprland}/bin/hyprctl activewindow -j | ${jq} -e '.fullscreen' &>/dev/null";
@@ -152,7 +168,7 @@ in
               tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
               class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
             };
-            on-click-right = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+            on-click = "${sleep} 0.1;${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
           };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
@@ -197,7 +213,7 @@ in
           format-icons = {
             "No player active" = " ";
             "spotify-player" = "󰓇 ";
-            "ungoogled-chrome" = " ";
+            "google-chrome" = " ";
           };
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";

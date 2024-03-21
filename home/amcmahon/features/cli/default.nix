@@ -13,6 +13,7 @@
     ansible
     bc
     bottom
+    cava
     jq
     glxinfo
     gh
@@ -25,6 +26,7 @@
     neofetch
     glances
     htop
+    nvtop
     iotop
     atop
     glances

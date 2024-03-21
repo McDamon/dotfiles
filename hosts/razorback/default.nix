@@ -32,12 +32,24 @@
     ];
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
+  
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
   };
+
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
