@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./global
-    ./features/cli/gpg-agent-qt.nix
+    ./features/cli/gpg-agent-gtk.nix
     ./features/desktop/hyprland
     ./features/developer
     ./features/gaming
