@@ -3,17 +3,14 @@ let
   # Dependencies
   cat = "${pkgs.coreutils}/bin/cat";
   cut = "${pkgs.coreutils}/bin/cut";
-  grep = "${pkgs.gnugrep}/bin/grep";
   wc = "${pkgs.coreutils}/bin/wc";
 
-  jq = "${pkgs.jq}/bin/jq";
-  systemctl = "${pkgs.systemd}/bin/systemctl";
   playerctl = "${config.services.playerctld.package}/bin/playerctl";
   playerctld = "${config.services.playerctld.package}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   wofi = "${config.programs.wofi.package}/bin/wofi";
-  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
   sleep = "${pkgs.coreutils-full}/bin/sleep";
+  wlogout = "${pkgs.wlogout}/bin/wlogout";
 
   # Function to simplify making waybar outputs
   # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/wayland-wm/waybar.nix
@@ -35,20 +32,13 @@ let
       --arg percentage "${percentage}" \
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
-
-  hyprland = config.wayland.windowManager.hyprland.package;
 in
 {
-  # Let it try to start a few more times
-  systemd.user.services.waybar = {
-    Unit.StartLimitBurst = 30;
-  };
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
       mesonFlags = (oa.mesonFlags or  [ ]) ++ [ "-Dexperimental=true" ];
     });
-    systemd.enable = true;
     settings = {
       primary = {
         mode = "dock";
@@ -57,8 +47,7 @@ in
         margin = "1";
         position = "top";
         modules-left = [
-          "custom/menu"
-          "idle_inhibitor"
+          "custom/menu" 
           "hyprland/workspaces"
           "hyprland/submap"
           "custom/currentplayer"
@@ -80,6 +69,7 @@ in
           "tray"
           "bluetooth"
           "custom/hostname"
+          "custom/power"
         ];
         clock = {
           interval = 1;
@@ -156,23 +146,16 @@ in
           format-en = "EN";
           format-uk = "UK";
         };
-        "custom/menu" =
-          let
-            isFullScreen = "${hyprland}/bin/hyprctl activewindow -j | ${jq} -e '.fullscreen' &>/dev/null";
-          in
-          {
-            interval = 1;
-            return-type = "json";
-            exec = jsonOutput "menu" {
-              text = "";
-              tooltip = ''$(${cat} /etc/os-release | ${grep} PRETTY_NAME | ${cut} -d '"' -f2)'';
-              class = "$(if ${isFullScreen}; then echo fullscreen; fi)";
-            };
-            on-click = "${sleep} 0.1;${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
-          };
+        "custom/menu" = {
+          format = "";
+          on-click = "${sleep} 0.1;${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
+        };
+        "custom/power" = {
+          format = "  ";
+          on-click = "${sleep} 0.1;${wlogout}";
+        };
         "custom/hostname" = {
           exec = "echo $USER@$HOSTNAME";
-          on-click = "${systemctl} --user restart waybar";
         };
         "custom/gpg-agent" = {
           interval = 2;

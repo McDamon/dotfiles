@@ -7,6 +7,7 @@
     ./mako.nix
     ./swaylock.nix
     ./waybar.nix
+    ./wlogout.nix
     ./wofi.nix
   ];
 
@@ -117,8 +118,9 @@
           ];
         };
 
-        exec = [
+        exec-once = [
           "${pkgs.swaybg}/bin/swaybg -i ${config.wallpaper} --mode fill"
+          "${pkgs.waybar}/bin/waybar"
         ];
 
         bind =
