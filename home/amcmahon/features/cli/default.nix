@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./bash.nix
+    ./cava.nix
     ./git.nix
     ./gpg.nix
     ./direnv.nix
@@ -13,7 +14,6 @@
     ansible
     bc
     bottom
-    cava
     jq
     glxinfo
     gh
@@ -26,7 +26,7 @@
     neofetch
     glances
     htop
-    nvtop
+    nvtopPackages.full
     iotop
     atop
     glances

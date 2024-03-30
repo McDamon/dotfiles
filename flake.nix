@@ -2,7 +2,7 @@
   description = "amcmahon nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/staging-next";
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
