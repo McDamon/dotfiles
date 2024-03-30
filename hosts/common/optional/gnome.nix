@@ -14,5 +14,9 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator gnome.gnome-tweaks ];
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.appindicator
+    gnomeExtensions.gtile
+    gnome.gnome-tweaks
+  ];
 }
