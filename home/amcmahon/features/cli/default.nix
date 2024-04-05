@@ -19,7 +19,6 @@
     gh
     killall
     nil
-    nixfmt
     nixpkgs-fmt
     minio-client
     vim
