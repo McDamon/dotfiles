@@ -5,6 +5,7 @@
       enable = true;
       pinentryPackage = lib.mkForce pkgs.pinentry-qt;
       enableSshSupport = true;
+      enableExtraSocket = true;
     };
   };
 }
