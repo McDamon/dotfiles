@@ -11,7 +11,11 @@ in
     ./features/gaming
   ];
 
-  home.sessionVariables.EDITOR = "vim";
+  home.sessionVariables = {
+    EDITOR = "vim";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 
   wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
   colorscheme = lib.mkDefault colorSchemes.rose-pine-moon;
@@ -24,6 +28,7 @@ in
       name = "eDP-2";
       width = 1920;
       height = 1080;
+      refreshRate = 144;
       workspace = "1";
       primary = true;
     }
