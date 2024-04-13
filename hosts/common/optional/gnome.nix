@@ -2,6 +2,10 @@
   services = {
     xserver = {
       enable = true;
+      xkb = {
+        layout = "gb";
+        variant = "intl";
+      };
       desktopManager.gnome = {
         enable = true;
       };
