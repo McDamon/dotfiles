@@ -29,7 +29,6 @@
     enableAllTerminfo = true;
   };
 
-
   programs.dconf.enable = true;
 
   networking.domain = "lab.apm-games.com";
