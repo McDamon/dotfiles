@@ -13,8 +13,6 @@ in
 
   home.sessionVariables = {
     EDITOR = "vim";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
   wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
