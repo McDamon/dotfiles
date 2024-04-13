@@ -11,4 +11,6 @@
   '';
 
   hardware.gpgSmartcards.enable = true;
+
+  security.polkit.enable = true;
 }
