@@ -18,6 +18,8 @@
       tamasfe.even-better-toml
       ms-python.python
       zxh404.vscode-proto3
+      hashicorp.hcl
+      hashicorp.terraform
     ];
 
     userSettings = {

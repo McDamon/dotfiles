@@ -26,13 +26,20 @@
     glances
     htop
     nvtopPackages.full
+    onedrive
     iotop
     atop
     glances
+    gvfs
     pciutils
     picocom
+    p7zip
     screen
+    terraform
+    xfce.thunar
+    xfce.thunar-archive-plugin
     usbutils
+    xarchiver
     xorg.xauth
     xorg.xclock
     xclip
