@@ -20,6 +20,7 @@
     killall
     nil
     nixpkgs-fmt
+    kubectl
     minio-client
     vim
     neofetch

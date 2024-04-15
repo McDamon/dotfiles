@@ -5,6 +5,9 @@
     package = pkgs.vscode;
 
     extensions = with pkgs.vscode-extensions; [
+      zxh404.vscode-proto3
+      hashicorp.terraform
+      redhat.vscode-yaml
       llvm-vs-code-extensions.vscode-clangd
       ms-vscode.cpptools
       vadimcn.vscode-lldb
@@ -17,9 +20,6 @@
       serayuzgur.crates
       tamasfe.even-better-toml
       ms-python.python
-      zxh404.vscode-proto3
-      hashicorp.hcl
-      hashicorp.terraform
     ];
 
     userSettings = {
