@@ -15,7 +15,9 @@
     bc
     bottom
     jq
+    fluxcd
     glxinfo
+    kubernetes-helm
     gh
     killall
     nil
