@@ -10,7 +10,7 @@ in
 {
   qt = {
     enable = true;
-    platformTheme = "gnome";
+    platformTheme.name = "adwaita";
     style = {
       name = theme.qt.name;
       package = theme.qt.package;
