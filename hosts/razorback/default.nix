@@ -1,4 +1,5 @@
-{ inputs
+{ config
+, inputs
 , lib
 , pkgs
 , ...
@@ -47,8 +48,11 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
-
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
@@ -67,6 +71,7 @@
       amdgpuBusId = "PCI:102:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   virtualisation = {

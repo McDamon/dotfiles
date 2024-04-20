@@ -1,4 +1,5 @@
-{ inputs
+{ config
+, inputs
 , lib
 , pkgs
 , ...
@@ -47,6 +48,10 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -55,7 +60,8 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
-    open = true;
+    open = false;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   virtualisation = {
