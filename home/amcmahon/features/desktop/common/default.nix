@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ./chromium.nix
+    ./firefox.nix
     ./font.nix
     ./gtk.nix
     ./qt.nix
