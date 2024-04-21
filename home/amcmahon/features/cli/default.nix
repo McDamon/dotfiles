@@ -10,42 +10,48 @@
     ./zsh.nix
   ];
   home.packages = with pkgs; [
-    alejandra
+    age
+    alejandra 
     ansible
+    atop
     bc
     bottom
-    jq
     fluxcd
-    glxinfo
-    kubernetes-helm
     gh
+    glances
+    glances
+    glxinfo
+    gvfs
+    htop
+    iotop
+    jq
     killall
+    kubeconform
+    kubectl
+    kubernetes-helm
+    kustomize
+    minio-client
+    neofetch
     nil
     nixpkgs-fmt
-    kubectl
-    minio-client
-    vim
-    neofetch
-    glances
-    htop
     nvtopPackages.full
     onedrive
-    iotop
-    atop
-    glances
-    gvfs
+    p7zip
     pciutils
     picocom
-    p7zip
     screen
+    sops
+    ssh-to-age
     terraform
-    xfce.thunar
-    xfce.thunar-archive-plugin
     usbutils
+    vim
     xarchiver
-    xorg.xauth
-    xorg.xclock
     xclip
     xdg-utils
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xorg.xauth
+    xorg.xclock
+    yq-go
   ];
 }
