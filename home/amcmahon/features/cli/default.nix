@@ -25,6 +25,7 @@
     iotop
     jq
     killall
+    kompose
     kubeconform
     kubectl
     kubernetes-helm
