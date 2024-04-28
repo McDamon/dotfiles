@@ -22,5 +22,6 @@
     gnomeExtensions.appindicator
     gnomeExtensions.gtile
     gnome.gnome-tweaks
+    gnome.nautilus
   ];
 }

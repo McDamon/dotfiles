@@ -19,7 +19,6 @@
     fluxcd
     gh
     glances
-    glances
     glxinfo
     gvfs
     htop
