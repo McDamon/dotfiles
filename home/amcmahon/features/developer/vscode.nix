@@ -5,7 +5,7 @@
     package = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: {
       src = (builtins.fetchTarball {
         url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
-        sha256 = "sha256:0kcnis32gnclbzvcbinvdl2abgbjisqkzg9h6p97vsswaz2y8wd3";
+        sha256 = "sha256:0q2i189rqyi6m6j0jxhg6z6nb5l6kf9sl51cjhjc4y1s8ayfkcz3";
       });
       version = "latest";
     });
@@ -28,25 +28,25 @@
         name = "cpptools";
         publisher = "ms-vscode";
         version = "1.20.4";
-        sha256 = "sha256-wpaSzYNwMGZ6T1LFbiwpF5koY5y1MDQuNXBosMn12cY=";
+        sha256 = "sha256-VjHw7lIKpv5GqfiShFtCBmChZmrh6WwzN1QabiQn5/M=";
       }
       {
         name = "cmake-tools";
         publisher = "ms-vscode";
         version = "1.18.33";
-        sha256 = "sha256-KDTipUL/Vbd1PJ0GMrUYjWJ6XAW221aRxAIPGdBInQw=";
+        sha256 = "sha256-CAIzeOx1nprn2AUp4ND4dTXACiV40xgHyS/vcuOmeus=";
       }
       {
         name = "python";
         publisher = "ms-python";
-        version = "	2024.7.11241010";
-        sha256 = "sha256-lwjozafL3IQwxmFTzA2OFQo1bC3NCoBKPrr3kpgASMY=";
+        version = "2024.7.11241010";
+        sha256 = "sha256-ZbHTJBKSXkJ1abX1EnXKnFnPvKPhI1U+qkhRyyBkvr4=";
       }
       {
         name = "debugpy";
         publisher = "ms-python";
-        version = "	2024.6.0";
-        sha256 = "sha256-DwPlxnZlwhnT8cdzYd7N52i3SisXUc9WSs00SdNMuhc=";
+        version = "2024.6.0";
+        sha256 = "sha256-VlPe65ViBur5P6L7iRKdGnmbNlSCwYrdZAezStx8Bz8=";
       }
     ];
 
