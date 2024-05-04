@@ -23,6 +23,7 @@
       hashicorp.terraform
       rust-lang.rust-analyzer
       vadimcn.vscode-lldb
+      github.vscode-github-actions
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "cpptools";
