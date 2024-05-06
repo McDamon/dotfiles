@@ -30,6 +30,7 @@
     kubectl
     kubernetes-helm
     kustomize
+    lmstudio
     minio-client
     neofetch
     nil
