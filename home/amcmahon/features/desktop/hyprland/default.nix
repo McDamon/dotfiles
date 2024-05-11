@@ -43,7 +43,6 @@
         general = {
           gaps_in = 1;
           gaps_out = 1;
-          cursor_inactive_timeout = 4;
           "col.active_border" = active;
           "col.inactive_border" = inactive;
         };
