@@ -5,7 +5,7 @@
     ./font.nix
     ./gtk.nix
     ./qt.nix
-    #./obs-studio.nix
+    ./obs-studio.nix
     ./pavucontrol.nix
     ./playerctl.nix
   ];
