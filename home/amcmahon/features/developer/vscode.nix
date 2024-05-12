@@ -5,7 +5,7 @@
     package = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: {
       src = (builtins.fetchTarball {
         url = "https://update.code.visualstudio.com/latest/linux-x64/insider";
-        sha256 = "sha256:0q2i189rqyi6m6j0jxhg6z6nb5l6kf9sl51cjhjc4y1s8ayfkcz3";
+        sha256 = "sha256:0kcnis32gnclbzvcbinvdl2abgbjisqkzg9h6p97vsswaz2y8wd3";
       });
       version = "latest";
     });
@@ -28,8 +28,8 @@
       {
         name = "cpptools";
         publisher = "ms-vscode";
-        version = "1.20.4";
-        sha256 = "sha256-VjHw7lIKpv5GqfiShFtCBmChZmrh6WwzN1QabiQn5/M=";
+        version = "1.20.5";
+        sha256 = "sha256-vxY9hXTk1nu2FfsJOjtENnA9jGW709ujRHNPknbovFg=";
       }
       {
         name = "cmake-tools";
