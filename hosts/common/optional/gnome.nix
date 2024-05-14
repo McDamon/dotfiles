@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   services = {
     xserver = {
       enable = true;
@@ -16,7 +16,9 @@
     };
   };
 
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
+  programs.seahorse.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
