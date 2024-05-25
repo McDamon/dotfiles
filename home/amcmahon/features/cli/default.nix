@@ -11,10 +11,11 @@
   ];
   home.packages = with pkgs; [
     age
-    alejandra 
+    alejandra
     ansible
     atop
     bc
+    bind
     bottom
     fluxcd
     gh
@@ -43,8 +44,10 @@
     sops
     ssh-to-age
     terraform
+    traceroute
     usbutils
     vim
+    wireguard-tools
     xarchiver
     xclip
     xdg-utils

@@ -30,6 +30,7 @@
       ms-vscode.cmake-tools
       ms-python.python
       ms-python.debugpy
+      davidanson.vscode-markdownlint
     ];
 
     userSettings = {

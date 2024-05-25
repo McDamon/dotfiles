@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/gnome.nix
+    ../common/optional/firewall.nix
     ../common/optional/fwupd.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
@@ -42,7 +43,7 @@
       };
     };
   };
-  
+
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
@@ -58,6 +59,14 @@
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 
   hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "555.42.02";
+      sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
+      sha256_aarch64 = lib.fakeSha256;
+      openSha256 = lib.fakeSha256;
+      settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
+      persistencedSha256 = "sha256-3ae31/egyMKpqtGEqgtikWcwMwfcqMv2K4MVFa70Bqs=";
+    };
     modesetting.enable = true;
     nvidiaSettings = true;
     open = false;
@@ -71,11 +80,10 @@
       amdgpuBusId = "PCI:102:0:0";
       nvidiaBusId = "PCI:1:0:0";
     };
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   hardware.nvidia-container-toolkit.enable = true;
-  
+
   virtualisation = {
     podman = {
       enable = true;
