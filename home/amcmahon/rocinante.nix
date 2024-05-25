@@ -6,7 +6,7 @@ in
   imports = [
     ./global
     ./features/cli/gpg-agent-gtk.nix
-    ./features/desktop/hyprland
+    ./features/desktop/gnome
     ./features/developer
     ./features/gaming
   ];
