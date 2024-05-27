@@ -7,6 +7,7 @@ in
     ./global
     ./features/cli/gpg-agent-gtk.nix
     ./features/desktop/gnome
+    #./features/desktop/hyprland
     ./features/developer
     ./features/gaming
   ];

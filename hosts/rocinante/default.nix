@@ -10,6 +10,8 @@
     ./hardware-configuration.nix
     ../common/global
     ../common/optional/gnome.nix
+    #./common/optional/hyprland
+    #./common/optional/themed-sddm
     ../common/optional/fwupd.nix
     ../common/optional/libvirtd.nix
     ../common/optional/pipewire.nix
@@ -68,6 +70,7 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     open = false;
+    nvidiaPersistenced = true;
   };
 
   hardware.nvidia-container-toolkit.enable = true;
