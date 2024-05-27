@@ -39,8 +39,8 @@
       in
       {
         general = {
-          gaps_in = 1;
-          gaps_out = 1;
+          gaps_in = 3;
+          gaps_out = 12;
           "col.active_border" = active;
           "col.inactive_border" = inactive;
         };
@@ -57,7 +57,7 @@
           touchpad.disable_while_typing = false;
         };
         dwindle = {
-          split_width_multiplier = 1.35;
+          #split_width_multiplier = 1.35;
           pseudotile = true;
         };
         misc = {

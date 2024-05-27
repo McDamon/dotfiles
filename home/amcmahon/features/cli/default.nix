@@ -17,6 +17,8 @@
     bc
     bind
     bottom
+    calibre
+    cinnamon.xreader
     fluxcd
     gh
     glances
