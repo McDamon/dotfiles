@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   imports = [
     ../common
     ../wayland
@@ -131,10 +131,7 @@
             makoctl = "${config.services.mako.package}/bin/makoctl";
             wofi = "${config.programs.wofi.package}/bin/wofi";
 
-            tesseract = "${pkgs.tesseract}/bin/tesseract";
-
             wpctl = "${pkgs.pulseaudio}/bin/wpctl";
-            notify-send = "${pkgs.libnotify}/bin/notify-send";
 
             gtk-launch = "${pkgs.gtk3}/bin/gtk-launch";
             xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
