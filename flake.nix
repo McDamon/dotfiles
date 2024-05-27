@@ -21,8 +21,6 @@
       url = "github:nix-community/nix-ld-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprland-contrib.url = "github:hyprwm/contrib";
   };
 
   outputs =
@@ -31,7 +29,6 @@
     , nixpkgs
     , lanzaboote
     , nixos-wsl
-    , hyprland
     , ...
     }:
     let
@@ -66,7 +63,6 @@
         razorback = lib.nixosSystem {
           modules = [
             ./hosts/razorback
-            hyprland.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
           ];
           specialArgs = { inherit inputs outputs; };
@@ -89,7 +85,6 @@
         };
         "amcmahon@razorback" = lib.homeManagerConfiguration {
           modules = [
-            hyprland.homeManagerModules.default
             ./home/amcmahon/razorback.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
@@ -97,7 +92,6 @@
         };
         "amcmahon@rocinante" = lib.homeManagerConfiguration {
           modules = [
-            hyprland.homeManagerModules.default
             ./home/amcmahon/rocinante.nix
           ];
           pkgs = pkgsFor.x86_64-linux;

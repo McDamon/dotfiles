@@ -15,7 +15,6 @@
     LIBSEAT_BACKEND = "logind";
     QT_QPA_PLATFORM = "wayland";
     XDG_SESSION_TYPE = "wayland";
-    WLR_NO_HARDWARE_CURSORS = "1";
     LIBVA_DRIVER_NAME = "nvidia";
     VDPAU_DRIVER = "va_gl";
     GBM_BACKEND = "nvidia-drm";
@@ -23,7 +22,6 @@
   };
 
   home.packages = with pkgs; [
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     hyprpicker
   ];
 
@@ -133,7 +131,6 @@
             makoctl = "${config.services.mako.package}/bin/makoctl";
             wofi = "${config.programs.wofi.package}/bin/wofi";
 
-            grimblast = "${inputs.hyprland-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
             tesseract = "${pkgs.tesseract}/bin/tesseract";
 
             wpctl = "${pkgs.pulseaudio}/bin/wpctl";
@@ -159,11 +156,6 @@
             ",XF86AudioMute,exec,${wpctl} set-sink-mute @DEFAULT_SINK@ toggle"
             "SHIFT,XF86AudioMute,exec,${wpctl} set-source-mute @DEFAULT_SOURCE@ toggle"
             ",XF86AudioMicMute,exec,${wpctl} set-source-mute @DEFAULT_SOURCE@ toggle"
-            # Screenshotting
-            ",Print,exec,${grimblast} --notify --freeze copy output"
-            "SUPER,Print,exec,${grimblast} --notify --freeze copy area"
-            # To OCR
-            "ALT,Print,exec,${grimblast} --freeze save area - | ${tesseract} - - | wl-copy && ${notify-send} -t 3000 'OCR result copied to buffer'"
           ] ++
           # Media control
           (lib.optionals config.services.playerctld.enable [
