@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ lib, config, pkgs, ... }: {
   imports = [
     ../common
     ../wayland
@@ -15,7 +15,6 @@
     LIBSEAT_BACKEND = "logind";
     QT_QPA_PLATFORM = "wayland";
     XDG_SESSION_TYPE = "wayland";
-    WLR_NO_HARDWARE_CURSORS = "1";
     LIBVA_DRIVER_NAME = "nvidia";
     VDPAU_DRIVER = "va_gl";
     GBM_BACKEND = "nvidia-drm";
@@ -23,7 +22,6 @@
   };
 
   home.packages = with pkgs; [
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     hyprpicker
   ];
 
@@ -41,8 +39,8 @@
       in
       {
         general = {
-          gaps_in = 1;
-          gaps_out = 1;
+          gaps_in = 3;
+          gaps_out = 12;
           "col.active_border" = active;
           "col.inactive_border" = inactive;
         };
@@ -59,7 +57,7 @@
           touchpad.disable_while_typing = false;
         };
         dwindle = {
-          split_width_multiplier = 1.35;
+          #split_width_multiplier = 1.35;
           pseudotile = true;
         };
         misc = {
@@ -133,11 +131,7 @@
             makoctl = "${config.services.mako.package}/bin/makoctl";
             wofi = "${config.programs.wofi.package}/bin/wofi";
 
-            grimblast = "${inputs.hyprland-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
-            tesseract = "${pkgs.tesseract}/bin/tesseract";
-
             wpctl = "${pkgs.pulseaudio}/bin/wpctl";
-            notify-send = "${pkgs.libnotify}/bin/notify-send";
 
             gtk-launch = "${pkgs.gtk3}/bin/gtk-launch";
             xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
@@ -159,11 +153,6 @@
             ",XF86AudioMute,exec,${wpctl} set-sink-mute @DEFAULT_SINK@ toggle"
             "SHIFT,XF86AudioMute,exec,${wpctl} set-source-mute @DEFAULT_SOURCE@ toggle"
             ",XF86AudioMicMute,exec,${wpctl} set-source-mute @DEFAULT_SOURCE@ toggle"
-            # Screenshotting
-            ",Print,exec,${grimblast} --notify --freeze copy output"
-            "SUPER,Print,exec,${grimblast} --notify --freeze copy area"
-            # To OCR
-            "ALT,Print,exec,${grimblast} --freeze save area - | ${tesseract} - - | wl-copy && ${notify-send} -t 3000 'OCR result copied to buffer'"
           ] ++
           # Media control
           (lib.optionals config.services.playerctld.enable [

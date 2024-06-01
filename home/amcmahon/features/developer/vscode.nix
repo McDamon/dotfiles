@@ -56,6 +56,7 @@
           };
         };
       };
+      "github.copilot.editor.enableAutoCompletions" = true;
     };
   };
 }
