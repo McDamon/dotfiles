@@ -18,7 +18,7 @@
       donjayamanne.githistory
       jnoortheen.nix-ide
       mkhl.direnv
-      serayuzgur.crates
+      fill-labs.dependi
       tamasfe.even-better-toml
       hashicorp.terraform
       rust-lang.rust-analyzer
