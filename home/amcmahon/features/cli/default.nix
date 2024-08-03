@@ -26,6 +26,7 @@
     gvfs
     htop
     iotop
+    inetutils
     jq
     killall
     kodi-wayland
@@ -36,6 +37,7 @@
     kustomize
     minio-client
     neofetch
+    networkmanager
     nil
     nixpkgs-fmt
     nvtopPackages.full
