@@ -26,7 +26,6 @@
     gvfs
     htop
     iotop
-    inetutils
     jq
     killall
     kodi-wayland
@@ -49,6 +48,7 @@
     sops
     ssh-to-age
     terraform
+    tftp-hpa
     traceroute
     usbutils
     vim
