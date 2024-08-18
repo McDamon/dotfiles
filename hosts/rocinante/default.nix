@@ -13,8 +13,9 @@
     ../common/optional/hyprland.nix
     ../common/optional/themed-sddm.nix
     ../common/optional/fwupd.nix
-    ../common/optional/libvirtd.nix
+    ../common/optional/firewall.nix
     ../common/optional/pipewire.nix
+    ../common/optional/1password.nix
     ../common/optional/steam.nix
     ../common/users/amcmahon
   ];
