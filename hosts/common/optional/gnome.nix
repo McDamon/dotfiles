@@ -16,11 +16,11 @@
     };
   };
 
-  programs.seahorse.enable = lib.mkForce false;
+  programs.seahorse.enable = true;
 
-  security.pam.services.gdm.enableGnomeKeyring = lib.mkForce false;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
+  services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator

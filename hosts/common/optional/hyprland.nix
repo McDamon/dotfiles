@@ -5,5 +5,5 @@
 
   environment.systemPackages = with pkgs; [ qt6.qtwayland ];
 
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
+  services.gnome.gnome-keyring.enable = true;
 }

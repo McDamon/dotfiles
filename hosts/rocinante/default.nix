@@ -9,9 +9,9 @@
     inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common/global
-    #../common/optional/gnome.nix
-    ../common/optional/hyprland.nix
-    ../common/optional/themed-sddm.nix
+    ../common/optional/gnome.nix
+    #../common/optional/hyprland.nix
+    #../common/optional/themed-sddm.nix
     ../common/optional/fwupd.nix
     ../common/optional/firewall.nix
     ../common/optional/pipewire.nix
