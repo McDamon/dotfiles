@@ -66,8 +66,8 @@
       reverseSync.enable = true;
     
       # Make sure to use the correct Bus ID values for your system!
-      amdgpuBusId = "PCI:102:0:0";
-      nvidiaBusId = "PCI:1:0:0";
+      intelgpuBusId = "PCI:00:02:0";
+      nvidiaBusId = "PCI:01:00:0";
     };
   };
 
