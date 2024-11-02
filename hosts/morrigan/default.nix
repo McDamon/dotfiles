@@ -62,13 +62,13 @@
     nvidiaPersistenced = true;
     powerManagement.enable = true;
     powerManagement.finegrained = true;
-    #prime = {
-    #  reverseSync.enable = true;
-    #
+    prime = {
+      reverseSync.enable = true;
+    
       # Make sure to use the correct Bus ID values for your system!
-    #  amdgpuBusId = "PCI:102:0:0";
-    #  nvidiaBusId = "PCI:1:0:0";
-    #};
+      amdgpuBusId = "PCI:102:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   hardware.nvidia-container-toolkit.enable = true;

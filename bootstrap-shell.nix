@@ -7,6 +7,7 @@
       git
       gnupg
       home-manager
+      lshw
       nix
       sbctl
       sops
