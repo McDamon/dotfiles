@@ -16,6 +16,7 @@ Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/
     - `common`: Configurations that are applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
   - `razorback`: Asus TUF A17 2023 Laptop
+  - `morrigan`: Dell Precision 5560
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
 - `overlays`: Patches and version overrides for some packages. Accessible via `nix build`.

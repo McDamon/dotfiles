@@ -52,12 +52,26 @@
           ];
           specialArgs = { inherit inputs outputs; };
         };
+        morrigan = lib.nixosSystem {
+          modules = [
+            ./hosts/morrigan
+            lanzaboote.nixosModules.lanzaboote
+          ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
       homeConfigurations = {
         "amcmahon@razorback" = lib.homeManagerConfiguration {
           modules = [
             ./home/amcmahon/razorback.nix
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+        "amcmahon@morrigan" = lib.homeManagerConfiguration {
+          modules = [
+            ./home/amcmahon/morrigan.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
