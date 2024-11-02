@@ -22,5 +22,8 @@ in
         "i2c"
         "libvirtd"
       ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFz3ShYwpagRCcUEiCDLO2+QUrr5BbjiBhxCJsh6STsq andrew.p.mcmahon@gmail.com"
+    ];
   };
 }

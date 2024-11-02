@@ -24,6 +24,8 @@ in
     };
     settings = {
       remember_window_size = "no";
+      initial_window_width = 1280;
+      initial_window_height = 720;
       scrollback_lines = 4000;
       scrollback_pager_history_size = 2048;
       window_padding_width = 15;

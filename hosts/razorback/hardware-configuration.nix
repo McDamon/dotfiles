@@ -16,6 +16,7 @@
       };
     };
     kernelModules = [ "kvm-amd" ];
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [ ];
     loader.systemd-boot.enable = lib.mkForce false;
     loader.efi.canTouchEfiVariables = true;

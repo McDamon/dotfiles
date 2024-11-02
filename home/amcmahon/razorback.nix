@@ -10,13 +10,15 @@ in
   ];
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "code";
+    DEFAULT_BROWSER = "google-chrome";
+    BROWSER = "google-chrome";
   };
 
   wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
-  colorscheme = lib.mkDefault colorSchemes.rose-pine-moon;
+  colorscheme = lib.mkDefault colorSchemes.paraiso;
   specialisation = {
-    light.configuration.colorscheme = colorSchemes.rose-pine-dawn;
+    light.configuration.colorscheme = colorSchemes.paraiso;
   };
 
   monitors = [

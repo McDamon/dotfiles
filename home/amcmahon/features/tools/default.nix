@@ -5,22 +5,24 @@
     ./git.nix
     ./direnv.nix
     ./screen.nix
-    ./yubikey.nix
   ];
   home.packages = with pkgs; [
     age
     ansible
+    appimage-run
     atop
     bc
     bind
     bottom
-    xreader
+    ffmpeg
     fluxcd
     gh
     glances
     glxinfo
+    gthumb
     gvfs
     htop
+    imagemagick
     iotop
     jq
     killall
@@ -30,6 +32,7 @@
     kubectl
     kubernetes-helm
     kustomize
+    lshw
     minio-client
     neofetch
     networkmanager
@@ -41,14 +44,20 @@
     pciutils
     picocom
     sbctl
+    sbctl
     screen
+    simplescreenrecorder
     sops
     ssh-to-age
     terraform
     tftp-hpa
+    tmux
     traceroute
+    tree
     usbutils
     vim
+    vlc
+    wget
     wireguard-tools
     xarchiver
     xclip
@@ -57,6 +66,8 @@
     xfce.thunar-archive-plugin
     xorg.xauth
     xorg.xclock
+    xorg.xkill
+    xreader
     yq-go
   ];
 }
