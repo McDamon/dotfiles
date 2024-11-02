@@ -37,14 +37,17 @@ environment.systemPackages = with pkgs; [
   vim
   wget
   git
+
+services.openssh.enable = true;
 ];
 ```
 
 Then:
 
 ```bash
-cd ~/.config
-git clone https://github.com/McDamon/dotfiles.git
+mkdir -p Sources
+cd Sources
+git clone git@github.com:McDamon/dotfiles.git
 cd dotfiles
 nix develop
 sudo nixos-rebuild switch --flake .#razorback
