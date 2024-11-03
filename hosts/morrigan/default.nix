@@ -52,6 +52,10 @@
     ];
   };
 
+  services.fprintd = {
+    enable = true;
+  };
+
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 
@@ -64,7 +68,7 @@
     powerManagement.finegrained = true;
     prime = {
       reverseSync.enable = true;
-    
+
       # Make sure to use the correct Bus ID values for your system!
       intelBusId = "PCI:00:02:0";
       nvidiaBusId = "PCI:01:00:0";
