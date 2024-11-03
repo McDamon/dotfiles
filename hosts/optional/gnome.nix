@@ -25,7 +25,7 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
     gnomeExtensions.gtile
-    gnome-tweaks
-    nautilus
+    gnome.gnome-tweaks
+    gnome.nautilus
   ];
 }

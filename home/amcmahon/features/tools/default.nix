@@ -67,7 +67,7 @@
     xorg.xauth
     xorg.xclock
     xorg.xkill
-    xreader
+    cinnamon.xreader
     yq-go
   ];
 }
