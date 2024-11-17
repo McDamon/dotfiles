@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
@@ -19,6 +20,7 @@
     inputs @ { self
     , home-manager
     , nixpkgs
+    , nixpkgs-unstable
     , lanzaboote
     , ...
     }:
@@ -29,6 +31,11 @@
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
       pkgsFor = lib.genAttrs systems (system:
         import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        });
+      unstablePkgsFor = lib.genAttrs systems (system:
+        import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         });
@@ -67,6 +74,7 @@
             ./home/amcmahon/razorback.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
+          unstablePkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };
         "amcmahon@morrigan" = lib.homeManagerConfiguration {
@@ -74,7 +82,10 @@
             ./home/amcmahon/morrigan.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            unstablePkgs = unstablePkgsFor.x86_64-linux;
+          };
         };
       };
     };
