@@ -26,7 +26,6 @@
         "luks-43fd632b-4061-4a76-9d25-f932696bb07b".device = "/dev/disk/by-uuid/43fd632b-4061-4a76-9d25-f932696bb07b";
       };
     };
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     loader.systemd-boot.enable = lib.mkForce false;
