@@ -13,6 +13,7 @@
       sbctl
       sops
       ssh-to-age
+      wget
     ];
   };
 }
