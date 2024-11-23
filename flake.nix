@@ -2,8 +2,7 @@
   description = "amcmahon nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
@@ -33,13 +32,6 @@
       pkgsFor = lib.genAttrs systems (
         system:
         import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-      );
-      unstablePkgsFor = lib.genAttrs systems (
-        system:
-        import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         }
@@ -85,7 +77,6 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;
-            unstablePkgs = pkgsFor.x86_64-linux;
           };
         };
         "amcmahon@morrigan" = lib.homeManagerConfiguration {
@@ -95,7 +86,6 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;
-            unstablePkgs = unstablePkgsFor.x86_64-linux;
           };
         };
       };

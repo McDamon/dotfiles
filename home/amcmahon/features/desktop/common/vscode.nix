@@ -1,7 +1,7 @@
-{ unstablePkgs, ... }:
+{ pkgs, ... }:
 {
   programs.vscode = {
     enable = true;
-    package = unstablePkgs.vscode.fhs;
+    package = pkgs.vscode.fhs;
   };
 }
