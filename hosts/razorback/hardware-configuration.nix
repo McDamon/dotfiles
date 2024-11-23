@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   modulesPath,
@@ -25,6 +26,7 @@
         "luks-33e2e3db-01a3-439f-bd6a-f09b82e6c6f1".device = "/dev/disk/by-uuid/33e2e3db-01a3-439f-bd6a-f09b82e6c6f1";
       };
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
     loader.systemd-boot.enable = lib.mkForce false;
