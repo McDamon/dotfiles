@@ -26,7 +26,7 @@ Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/
 
 Using `razorback as an example:
 
-Add following to ```/etc/nixos/configuration.nix```
+1. Add following to ```/etc/nixos/configuration.nix```
 
 ```nix
 networking.hostName = "razorback";
@@ -42,7 +42,24 @@ services.openssh.enable = true;
 ];
 ```
 
-Then:
+2. `sudo nixos-rebuild switch`
+
+3. Clone the generated hardware configuration (we will modify this later):
+
+```
+cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/razorback/
+```
+
+4. Add the following lines to `hardware-configuration.nix`:
+
+```
+# Bootloader.
+boot.loader.systemd-boot.enable = true;
+boot.loader.efi.canTouchEfiVariables = true;
+```
+
+
+3. Then:
 
 ```bash
 mkdir -p Sources

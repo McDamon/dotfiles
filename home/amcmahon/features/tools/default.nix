@@ -2,7 +2,6 @@
 {
   imports = [
     ./terminal.nix
-    ./cava.nix
     ./git.nix
     ./direnv.nix
     ./screen.nix
@@ -68,7 +67,7 @@
     xorg.xauth
     xorg.xclock
     xorg.xkill
-    cinnamon.xreader
+    xreader
     yq-go
   ];
 }

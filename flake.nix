@@ -20,7 +20,6 @@
       self,
       home-manager,
       nixpkgs,
-      nixpkgs-unstable,
       lanzaboote,
       ...
     }:
