@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs,... }:
 {
   services = {
     xserver = {
@@ -15,6 +15,7 @@
         wayland = true;
       };
     };
+    displayManager.sddm.wayland.enable = true;
   };
 
   programs.seahorse.enable = true;

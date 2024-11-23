@@ -52,6 +52,7 @@
     terraform
     tftp-hpa
     tmux
+    tpm2-tss
     traceroute
     tree
     usbutils

@@ -44,20 +44,6 @@ services.openssh.enable = true;
 
 2. `sudo nixos-rebuild switch`
 
-3. Clone the generated hardware configuration (we will modify this later):
-
-```
-cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/razorback/
-```
-
-4. Add the following lines to `hardware-configuration.nix`:
-
-```
-# Bootloader.
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
-```
-
 
 3. Then:
 
@@ -69,4 +55,27 @@ cd dotfiles
 nix develop
 sudo nixos-rebuild switch --flake .#razorback
 home-manager switch --flake .#amcmahon@razorback
+```
+journalctl -u display-manager
+
+4. Clone the generated hardware configuration (we will modify this later):
+
+```
+cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/razorback/
+```
+
+5. Add the following lines to `hardware-configuration.nix`:
+
+```
+# Bootloader.
+boot.loader.systemd-boot.enable = true;
+boot.loader.efi.canTouchEfiVariables = true;
+```
+
+6. Enable secure boot using direction from `https://github.com/nix-community/lanzaboote`, merging in `lanzaboote` from the existing git `hardware-configuration.nix`
+
+7. Enable TPM boot:
+
+```
+sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/nvme1n1p2
 ```

@@ -11,7 +11,7 @@ in
   imports = [
     ./common
     ./features/tools
-    ./features/desktop/gnome
+    ./features/desktop/plasma
   ];
 
   home.sessionVariables = {
