@@ -17,28 +17,33 @@
   };
 
   outputs =
-    inputs @ { self
-    , home-manager
-    , nixpkgs
-    , nixpkgs-unstable
-    , lanzaboote
-    , ...
+    inputs@{
+      self,
+      home-manager,
+      nixpkgs,
+      nixpkgs-unstable,
+      lanzaboote,
+      ...
     }:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system:
+      pkgsFor = lib.genAttrs systems (
+        system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-        });
-      unstablePkgsFor = lib.genAttrs systems (system:
+        }
+      );
+      unstablePkgsFor = lib.genAttrs systems (
+        system:
         import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
-        });
+        }
+      );
     in
     {
       inherit lib;
@@ -57,14 +62,18 @@
             ./hosts/razorback
             lanzaboote.nixosModules.lanzaboote
           ];
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+          };
         };
         morrigan = lib.nixosSystem {
           modules = [
             ./hosts/morrigan
             lanzaboote.nixosModules.lanzaboote
           ];
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+          };
         };
       };
 
@@ -74,8 +83,10 @@
             ./home/amcmahon/razorback.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
-          unstablePkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            unstablePkgs = pkgsFor.x86_64-linux;
+          };
         };
         "amcmahon@morrigan" = lib.homeManagerConfiguration {
           modules = [

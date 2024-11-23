@@ -1,19 +1,18 @@
-{ inputs
-, lib
-, pkgs
-, config
-, outputs
-, ...
+{
+  inputs,
+  lib,
+  pkgs,
+  config,
+  outputs,
+  ...
 }:
 let
   inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
 in
 {
-  imports =
-    [
-      inputs.nix-colors.homeManagerModule
-    ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
+  imports = [
+    inputs.nix-colors.homeManagerModule
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
@@ -48,11 +47,10 @@ in
       largestWidth = largest (x: x.width) config.monitors;
       largestHeight = largest (x: x.height) config.monitors;
     in
-    lib.mkDefault (nixWallpaperFromScheme
-      {
-        scheme = config.colorscheme;
-        width = largestWidth;
-        height = largestHeight;
-        logoScale = 4;
-      });
+    lib.mkDefault (nixWallpaperFromScheme {
+      scheme = config.colorscheme;
+      width = largestWidth;
+      height = largestHeight;
+      logoScale = 4;
+    });
 }

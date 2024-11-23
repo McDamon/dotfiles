@@ -1,8 +1,10 @@
-{ inputs
-, lib
-, pkgs
-, ...
-}: {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
@@ -42,7 +44,6 @@
       };
     };
   };
-
 
   hardware.graphics = {
     enable = true;

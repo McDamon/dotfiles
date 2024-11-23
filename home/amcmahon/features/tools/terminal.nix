@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.bash.enable = true;
   programs.fzf.enable = true;
   programs.starship = {

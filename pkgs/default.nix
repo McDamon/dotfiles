@@ -1,3 +1,4 @@
-{ pkgs }: {
+{ pkgs }:
+{
   wallpapers = pkgs.callPackage ./wallpapers { };
 }
