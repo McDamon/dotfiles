@@ -39,6 +39,7 @@
     nil
     nixpkgs-fmt
     nvtopPackages.full
+    neovim
     onedrive
     p7zip
     pciutils

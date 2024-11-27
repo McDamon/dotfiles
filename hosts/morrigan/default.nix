@@ -11,7 +11,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common
-    ../optional/gnome.nix
+    ../optional/plasma.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix
     ../optional/libvirtd.nix
