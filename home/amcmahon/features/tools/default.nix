@@ -33,6 +33,7 @@
     kubectl
     kubernetes-helm
     kustomize
+    lunarvim
     lshw
     minio-client
     neofetch
