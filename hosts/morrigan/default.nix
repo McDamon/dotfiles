@@ -11,6 +11,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common
+    ../optional/1password.nix
     ../optional/plasma.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix

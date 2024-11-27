@@ -12,5 +12,4 @@
       StreamLocalBindUnlink = "yes";
     };
   };
-  programs.ssh.startAgent = true;
 }

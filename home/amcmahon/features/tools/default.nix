@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./keychain.nix
     ./terminal.nix
     ./git.nix
     ./direnv.nix
