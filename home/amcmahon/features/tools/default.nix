@@ -5,6 +5,7 @@
     ./git.nix
     ./direnv.nix
     ./screen.nix
+    ./ssh.nix
   ];
   home.packages = with pkgs; [
     age

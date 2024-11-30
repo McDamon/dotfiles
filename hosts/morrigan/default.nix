@@ -15,6 +15,7 @@
     ../optional/plasma.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix
+    ../optional/ibus.nix
     ../optional/libvirtd.nix
     ../optional/pipewire.nix
     ../optional/steam.nix
