@@ -1,22 +1,11 @@
 {
   config,
-  pkgs,
   ...
 }:
 let
   inherit (config.colorscheme) palette;
-  kitty-xterm = pkgs.writeShellScriptBin "xterm" ''
-    ${config.programs.kitty.package}/bin/kitty -1 "$@"
-  '';
 in
 {
-  home = {
-    packages = [ kitty-xterm ];
-    sessionVariables = {
-      TERMINAL = "kitty -1";
-    };
-  };
-
   programs.kitty = {
     enable = true;
     font = {
@@ -24,12 +13,8 @@ in
       size = 12;
     };
     settings = {
-      remember_window_size = "no";
-      initial_window_width = 1280;
-      initial_window_height = 720;
-      scrollback_lines = 4000;
+      scrollback_lines = 10000;
       scrollback_pager_history_size = 2048;
-      window_padding_width = 15;
       linux_display_server = "wayland";
       wayland_titlebar_color = "system";
       foreground = "#${palette.base05}";
