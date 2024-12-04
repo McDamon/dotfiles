@@ -35,6 +35,10 @@
     ];
   };
 
+  powerManagement.cpuFreqGovernor = "powersave";
+
+  services.thermald.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
