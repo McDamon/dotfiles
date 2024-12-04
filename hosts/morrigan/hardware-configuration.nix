@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  modulesPath,
-  ...
+{ config
+, lib
+, modulesPath
+, ...
 }:
 {
   imports = [
@@ -34,6 +33,10 @@
       pkiBundle = "/etc/secureboot";
     };
     plymouth.enable = true;
+    extraModprobeConfig = ''
+      options xe force_probe=9a60
+      options i915 force_probe=!9a60
+    '';
   };
 
   fileSystems."/" = {

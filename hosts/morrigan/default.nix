@@ -1,14 +1,11 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ inputs
+, lib
+, pkgs
+, ...
 }:
 {
   imports = [
-    inputs.hardware.nixosModules.common-cpu-intel
-    inputs.hardware.nixosModules.common-gpu-intel
-    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.dell-precision-5560
     ./hardware-configuration.nix
     ../common
     ../optional/1password.nix
@@ -34,8 +31,6 @@
       podman-compose
     ];
   };
-
-  powerManagement.cpuFreqGovernor = "powersave";
 
   services.thermald.enable = true;
 
@@ -76,8 +71,8 @@
       reverseSync.enable = true;
 
       # Make sure to use the correct Bus ID values for your system!
-      intelBusId = "PCI:00:02:0";
-      nvidiaBusId = "PCI:01:00:0";
+      intelBusId = lib.mkForce "PCI:00:02:0";
+      nvidiaBusId = lib.mkForce "PCI:01:00:0";
     };
   };
 
