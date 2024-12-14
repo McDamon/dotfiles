@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ../common
     ../optional/1password.nix
-    ../optional/plasma.nix
+    ../optional/gnome.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix
     ../optional/libvirtd.nix
