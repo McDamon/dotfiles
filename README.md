@@ -53,10 +53,7 @@ cd Sources
 git clone git@github.com:McDamon/dotfiles.git
 cd dotfiles
 nix develop
-sudo nixos-rebuild switch --flake .#razorback
-home-manager switch --flake .#amcmahon@razorback
 ```
-journalctl -u display-manager
 
 4. Clone the generated hardware configuration (we will modify this later):
 
@@ -72,10 +69,21 @@ boot.loader.systemd-boot.enable = true;
 boot.loader.efi.canTouchEfiVariables = true;
 ```
 
-6. Enable secure boot using direction from `https://github.com/nix-community/lanzaboote`, merging in `lanzaboote` from the existing git `hardware-configuration.nix`
+6. Rebuild
 
-7. Enable TPM boot:
+```
+sudo nixos-rebuild switch --flake .#razorback
+home-manager switch --flake .#amcmahon@razorback
+```
+
+7. Reboot, and enable Secure Boot in BIOS
+
+8. Enable secure boot using direction from `https://github.com/nix-community/lanzaboote`, merging in `lanzaboote` from the existing git `hardware-configuration.nix`
+
+9. Enable TPM boot:
 
 ```
 sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/nvme1n1p2
 ```
+
+10. Rebuild and Reboot

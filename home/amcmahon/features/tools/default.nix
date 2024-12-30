@@ -53,7 +53,6 @@
     sops
     ssh-to-age
     terraform
-    tftp-hpa
     tmux
     tpm2-tss
     traceroute

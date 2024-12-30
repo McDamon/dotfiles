@@ -11,7 +11,8 @@
     inputs.hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
     ../common
-    ../optional/plasma.nix
+    ../optional/1password.nix
+    ../optional/gnome.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix
     ../optional/libvirtd.nix
@@ -51,6 +52,10 @@
       vaapiVdpau
       libvdpau-va-gl
     ];
+  };
+
+  services.fprintd = {
+    enable = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -115,5 +120,5 @@
   services.hardware.openrgb.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
