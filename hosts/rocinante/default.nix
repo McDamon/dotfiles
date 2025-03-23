@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    inputs.hardware.nixosModules.dell-precision-5560
     ./hardware-configuration.nix
     ../common
     ../optional/1password.nix
@@ -18,7 +17,7 @@
     ../users/amcmahon
   ];
 
-  networking.hostName = "morrigan";
+  networking.hostName = "rocinante";
 
   networking.networkmanager.enable = true;
 
@@ -31,8 +30,6 @@
       podman-compose
     ];
   };
-
-  services.thermald.enable = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -65,15 +62,6 @@
     nvidiaSettings = true;
     open = true;
     nvidiaPersistenced = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    prime = {
-      reverseSync.enable = true;
-
-      # Make sure to use the correct Bus ID values for your system!
-      intelBusId = lib.mkForce "PCI:00:02:0";
-      nvidiaBusId = lib.mkForce "PCI:01:00:0";
-    };
   };
 
   hardware.nvidia-container-toolkit.enable = true;

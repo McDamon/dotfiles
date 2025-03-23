@@ -57,9 +57,9 @@
             inherit inputs outputs;
           };
         };
-        morrigan = lib.nixosSystem {
+        rocinante = lib.nixosSystem {
           modules = [
-            ./hosts/morrigan
+            ./hosts/rocinante
             lanzaboote.nixosModules.lanzaboote
           ];
           specialArgs = {
@@ -78,9 +78,9 @@
             inherit inputs outputs;
           };
         };
-        "amcmahon@morrigan" = lib.homeManagerConfiguration {
+        "amcmahon@rocinante" = lib.homeManagerConfiguration {
           modules = [
-            ./home/amcmahon/morrigan.nix
+            ./home/amcmahon/rocinante.nix
           ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
