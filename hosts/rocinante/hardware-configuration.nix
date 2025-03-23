@@ -26,7 +26,7 @@
     };
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
-    boot.loader.systemd-boot.enable = true;
+    loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     lanzaboote = {
       enable = true;
