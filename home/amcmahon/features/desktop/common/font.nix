@@ -3,8 +3,8 @@
   fontProfiles = {
     enable = true;
     monospace = {
-      family = "FiraCode Nerd Font";
-      package = pkgs.nerd-fonts.fira-code;
+      family = "JetBrainsMono Nerd Font";
+      package = pkgs.nerd-fonts.jetbrains-mono;
     };
     regular = {
       family = "Fira Sans";
