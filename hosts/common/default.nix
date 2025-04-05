@@ -31,5 +31,7 @@
 
   programs.dconf.enable = true;
 
+  services.flatpak.enable = true;
+
   networking.domain = "lab.apm-games.com";
 }

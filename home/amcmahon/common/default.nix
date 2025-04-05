@@ -39,6 +39,11 @@ in
     stateVersion = "24.11";
 
     sessionPath = [ "$HOME/.local/bin" ];
+
+    shellAliases = {
+      protontricks = "flatpak run com.github.Matoking.protontricks";
+      protontricks-launch = "flatpak run --command=protontricks-launch com.github.Matoking.protontricks";
+    };
   };
 
   wallpaper =

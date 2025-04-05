@@ -15,7 +15,11 @@
   };
 
   # Adds my custom packages
-  additions = final: prev: import ../pkgs { pkgs = final; };
+  additions =
+    final: prev:
+    import ../pkgs {
+      pkgs = final;
+    };
 
   # Modifies existing packages
   modifications = final: prev: { };

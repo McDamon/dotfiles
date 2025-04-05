@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./terminal.nix
@@ -32,13 +32,14 @@
     kubectl
     kubernetes-helm
     kustomize
+    lutris
     lunarvim
     lshw
     minio-client
     neofetch
     networkmanager
     nil
-    nixpkgs-fmt
+    nixfmt-rfc-style
     nvtopPackages.full
     neovim
     onedrive
