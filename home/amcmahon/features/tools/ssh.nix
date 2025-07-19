@@ -8,6 +8,26 @@ in
     extraConfig = ''
     Host *
       IdentityAgent ${onePassPath}
+
+    Host alnilam
+      Hostname alnilam.lab.apm-games.com
+      User amcmahon
+
+    Host antares
+      Hostname antares.lab.apm-games.com
+      User root
+
+    Host arcturus
+      Hostname arcturus.lab.apm-games.com
+      User amcmahon
+    
+    Host donnager
+      Hostname donnager.lab.apm-games.com
+      User root
+
+    Host nauvoo
+      Hostname nauvoo.lab.apm-games.com
+      User root
     '';
   };
 
