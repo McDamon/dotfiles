@@ -24,14 +24,31 @@ in
   options.fontProfiles = {
     enable = lib.mkEnableOption "Whether to enable font profiles";
     monospace = mkFontOption "monospace";
-    regular = mkFontOption "regular";
+    serif = mkFontOption "serif";
+    sansSerif = mkFontOption "sansSerif";
   };
 
   config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
+    fonts.fontconfig.antialiasing = true;
+    fonts.fontconfig.hinting = "slight";
+    fonts.fontconfig = {
+      defaultFonts = {
+        serif = [
+          cfg.serif.family
+        ];
+        sansSerif = [
+          cfg.sansSerif.family
+        ];
+        monospace = [ 
+          cfg.monospace.family 
+        ];
+      };
+    };
     home.packages = [
       cfg.monospace.package
-      cfg.regular.package
+      cfg.serif.package
+      cfg.sansSerif.package
     ];
   };
 }

@@ -18,7 +18,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = config.fontProfiles.regular.family;
+      name = config.fontProfiles.sansSerif.family;
       size = 12;
     };
     theme = {

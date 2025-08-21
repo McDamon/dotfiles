@@ -6,9 +6,13 @@
       family = "JetBrainsMono Nerd Font";
       package = pkgs.nerd-fonts.jetbrains-mono;
     };
-    regular = {
-      family = "Fira Sans";
-      package = pkgs.fira;
+    serif = {
+      family = "EB Garamond";
+      package = pkgs.eb-garamond;
+    };
+    sansSerif = {
+      family = "Overpass";
+      package = pkgs.overpass;
     };
   };
 }
