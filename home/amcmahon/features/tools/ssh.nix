@@ -5,30 +5,37 @@ in
 {
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-    Host *
-      IdentityAgent ${onePassPath}
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "*" = {
+        identityAgent = onePassPath;
+      };
 
-    Host alnilam
-      Hostname alnilam.lab.apm-games.com
-      User amcmahon
+      "alnilam" = {
+        hostname = "alnilam.lab.apm-games.com";
+        user = "amcmahon";
+      };
 
-    Host antares
-      Hostname antares.lab.apm-games.com
-      User root
+      "antares" = {
+        hostname = "antares.lab.apm-games.com";
+        user = "root";
+      };
 
-    Host arcturus
-      Hostname arcturus.lab.apm-games.com
-      User amcmahon
-    
-    Host donnager
-      Hostname donnager.lab.apm-games.com
-      User root
+      "arcturus" = {
+        hostname = "arcturus.lab.apm-games.com";
+        user = "amcmahon";
+      };
 
-    Host nauvoo
-      Hostname nauvoo.lab.apm-games.com
-      User root
-    '';
+      "donnager" = {
+        hostname = "donnager.lab.apm-games.com";
+        user = "root";
+      };
+
+      "nauvoo" = {
+        hostname = "nauvoo.lab.apm-games.com";
+        user = "root";
+      };
+    };
   };
 
   home.file.".ssh/config" = {
