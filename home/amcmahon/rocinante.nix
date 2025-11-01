@@ -19,6 +19,7 @@
       width = 3840;
       height = 2160;
       refreshRate = 120;
+      scale = "1.25";
       workspace = "1";
       primary = true;
     }

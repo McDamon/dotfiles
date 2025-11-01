@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
+  # Enable wallpaper management
+  wallpaper.enable = lib.mkDefault true;
+
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -7,21 +10,17 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload = [
-        # Add your wallpaper paths here
-        # Example: "~/Pictures/Wallpapers/wallpaper.png"
+      preload = lib.mkIf config.wallpaper.enable [
+        config.wallpaper.path
       ];
 
-      wallpaper = [
-        # Set wallpapers per monitor
-        # Example: ",~/Pictures/Wallpapers/wallpaper.png"
-        # Or per specific monitor: "DP-1,~/Pictures/Wallpapers/wallpaper.png"
+      wallpaper = lib.mkIf config.wallpaper.enable [
+        "${config.wallpaper.monitor},${config.wallpaper.path}"
       ];
     };
   };
 
   home.packages = with pkgs; [
-    # Additional wallpaper tools
     hyprpaper
   ];
 }

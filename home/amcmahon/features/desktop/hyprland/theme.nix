@@ -74,8 +74,8 @@ in
       };
       size = mkOption {
         type = types.int;
-        default = 12;
-        description = "Font size";
+        default = 10;
+        description = "Font size (scaled for fractional scaling; use lower values than X11)";
       };
     };
   };

@@ -19,9 +19,15 @@ in
         position = "top";
         layer = "top";
 
-        modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
+        modules-left = [ "custom/menu" "hyprland/workspaces" "hyprland/submap" ];
         modules-center = [ "clock" ];
         modules-right = [ "tray" "pulseaudio" "network" "cpu" "memory" "battery" ];
+
+        "custom/menu" = {
+          format = "";
+          tooltip = false;
+          on-click = "wofi --show drun";
+        };
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -154,12 +160,25 @@ in
       #network,
       #cpu,
       #memory,
-      #battery {
+      #battery,
+      #custom-menu {
         background: ${colors.surface0};
         color: ${colors.foreground};
         padding: 0 12px;
         margin: 6px 4px;
         border-radius: 8px;
+      }
+
+      #custom-menu {
+        background: ${colors.primary};
+        color: ${colors.background};
+        font-size: 18pt;
+        padding: 0 14px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      #custom-menu:hover {
+        background: ${colors.warning};
       }
 
       #workspaces {

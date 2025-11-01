@@ -35,6 +35,7 @@ in
         "col.inactive_border" = hexToRgba config.theme.colors.borderInactive 255;
         resize_on_border = true;
         layout = "dwindle";
+        allow_tearing = false;
       };
 
       decoration = {
@@ -143,10 +144,22 @@ in
 
       # Startup applications
       exec-once = [
+        # Environment setup
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        # SSH_AUTH_SOCK points to 1Password agent socket (configured in terminal.nix)
+        # KWallet does NOT provide SSH agent, so no conflict!
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SSH_AUTH_SOCK"
+        
+        # KWallet is started automatically by PAM at login, no need to start it here
+        
+        # Polkit authentication agent (handles privilege escalation for 1Password and other apps)
         "${lib.getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-authentication-agent-1"}"
+        
+        # UI components
         "${lib.getExe config.programs.waybar.package}"
+        
+        # 1Password (uses KWallet for session persistence, provides SSH agent via ~/.1password/agent.sock)
+        "1password --silent"
       ];
 
       monitor =
@@ -226,5 +239,7 @@ in
   home.packages = with pkgs; [
     wofi
     xfce.thunar
+    kdePackages.kwallet
+    kdePackages.kwalletmanager  # GUI for managing KWallet
   ];
 }
