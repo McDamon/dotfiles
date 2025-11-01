@@ -38,7 +38,7 @@ in
           inner_color = colors.surface0;
           font_color = colors.foreground;
           fade_on_empty = false;
-          placeholder_text = "<span foreground='${colors.foreground}'>Enter Password...</span>";
+          placeholder_text = "Enter Password...";
           hide_input = false;
           position = "0, -120";
           halign = "center";

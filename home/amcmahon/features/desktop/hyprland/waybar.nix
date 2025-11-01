@@ -14,17 +14,17 @@ in
       primary = {
         exclusive = false;
         passthrough = false;
-        height = 40;
-        margin = "6";
+        height = 28;
+        margin = "1";
         position = "top";
         layer = "top";
 
         modules-left = [ "custom/menu" "hyprland/workspaces" "hyprland/submap" ];
         modules-center = [ "clock" ];
-        modules-right = [ "tray" "pulseaudio" "network" "cpu" "memory" "battery" ];
+        modules-right = [ "tray" "pulseaudio" "network" "cpu" "memory" ];
 
         "custom/menu" = {
-          format = "";
+          format = " ";
           tooltip = false;
           on-click = "wofi --show drun";
         };
@@ -122,19 +122,6 @@ in
           format = " {}%";
           tooltip-format = "{used:0.1f}G / {total:0.1f}G used";
         };
-
-        battery = {
-          bat = "BAT0";
-          interval = 60;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon} {capacity}%";
-          format-charging = " {capacity}%";
-          format-plugged = " {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
-        };
       };
     };
 
@@ -160,7 +147,6 @@ in
       #network,
       #cpu,
       #memory,
-      #battery,
       #custom-menu {
         background: ${colors.surface0};
         color: ${colors.foreground};
@@ -237,23 +223,6 @@ in
 
       #memory {
         color: ${colors.primary};
-      }
-
-      #battery {
-        color: ${colors.success};
-      }
-
-      #battery.warning {
-        color: ${colors.warning};
-      }
-
-      #battery.critical {
-        color: ${colors.urgent};
-        animation: blink 1s linear infinite;
-      }
-
-      #battery.charging {
-        color: ${colors.success};
       }
 
       @keyframes blink {
