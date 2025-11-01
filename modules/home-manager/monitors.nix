@@ -1,4 +1,7 @@
-{ lib, config, ... }:
+{ lib
+, config
+, ...
+}:
 let
   inherit (lib) mkOption types;
 in
@@ -27,13 +30,13 @@ in
             type = types.int;
             default = 60;
           };
-          x = mkOption {
-            type = types.int;
-            default = 0;
+          position = mkOption {
+            type = types.str;
+            default = "auto";
           };
-          y = mkOption {
-            type = types.int;
-            default = 0;
+          scale = mkOption {
+            type = types.str;
+            default = "1";
           };
           enabled = mkOption {
             type = types.bool;

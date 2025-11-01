@@ -1,12 +1,8 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
-let
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
-in
 {
   home.pointerCursor = {
     gtk.enable = true;
@@ -22,8 +18,7 @@ in
       size = 12;
     };
     theme = {
-      name = "${config.colorscheme.slug}";
-      package = gtkThemeFromScheme { scheme = config.colorscheme; };
+      name = "adwaita";
     };
     iconTheme = {
       name = "Papirus-Dark";

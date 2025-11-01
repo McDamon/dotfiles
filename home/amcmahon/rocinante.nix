@@ -1,17 +1,10 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
+{ ...
 }:
-let
-  inherit (inputs.nix-colors) colorSchemes;
-in
 {
   imports = [
     ./common
     ./features/tools
-    ./features/desktop/plasma
+    ./features/desktop/hyprland
   ];
 
   home.sessionVariables = {
@@ -20,18 +13,12 @@ in
     BROWSER = "google-chrome";
   };
 
-  wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
-  colorscheme = lib.mkDefault colorSchemes.paraiso;
-  specialisation = {
-    light.configuration.colorscheme = colorSchemes.paraiso;
-  };
-
   monitors = [
     {
-      name = "eDP-2";
-      width = 1920;
-      height = 1200;
-      refreshRate = 60;
+      name = "HDMI-A-2";
+      width = 3840;
+      height = 2160;
+      refreshRate = 120;
       workspace = "1";
       primary = true;
     }

@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./terminal.nix
@@ -40,7 +40,7 @@
     neofetch
     networkmanager
     nil
-    nixfmt-rfc-style
+    nixpkgs-fmt
     nvtopPackages.full
     neovim
     onedrive

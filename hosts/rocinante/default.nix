@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   pkgs,
   ...
@@ -8,8 +7,8 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+    ../optional/hyprland.nix
     ../optional/1password.nix
-    ../optional/plasma.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix
     ../optional/libvirtd.nix
@@ -57,6 +56,9 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+
+  # Hyprland uses Wayland and does not need an X11 session
+  services.xserver.enable = false;
 
   hardware.nvidia = {
     modesetting.enable = true;
