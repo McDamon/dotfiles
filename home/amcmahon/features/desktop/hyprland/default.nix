@@ -1,6 +1,14 @@
 { pkgs, lib, config, ... }:
 let
   defaultApp = type: "${lib.getExe pkgs.handlr-regex} launch ${type}";
+  
+  # Convert hex color to rgba format for Hyprland
+  hexToRgba = hex: alpha: let
+    # Remove the # if present
+    cleanHex = lib.removePrefix "#" hex;
+    # Convert alpha to hex string (00-ff)
+    alphaHex = lib.toLower (builtins.substring 0 2 (lib.toHexString (256 + alpha)));
+  in "rgba(${cleanHex}${alphaHex})";
 in
 {
   imports = [
@@ -10,6 +18,10 @@ in
     ./mako.nix
     ./waybar.nix
     ./wofi.nix
+    ./theme.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -19,7 +31,123 @@ in
         gaps_in = 15;
         gaps_out = 20;
         border_size = 2;
+        "col.active_border" = hexToRgba config.theme.colors.border 255;
+        "col.inactive_border" = hexToRgba config.theme.colors.borderInactive 255;
+        resize_on_border = true;
+        layout = "dwindle";
       };
+
+      decoration = {
+        rounding = 8;
+
+        blur = {
+          enabled = true;
+          size = 8;
+          passes = 3;
+          new_optimizations = true;
+          ignore_opacity = true;
+          xray = true;
+        };
+
+        shadow = {
+          enabled = true;
+          range = 20;
+          render_power = 3;
+        };
+      };
+
+      animations = {
+        enabled = true;
+        bezier = [
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "winIn, 0.1, 1.1, 0.1, 1.1"
+          "winOut, 0.3, -0.3, 0, 1"
+          "liner, 1, 1, 1, 1"
+        ];
+        animation = [
+          "windows, 1, 6, wind, slide"
+          "windowsIn, 1, 6, winIn, slide"
+          "windowsOut, 1, 5, winOut, slide"
+          "windowsMove, 1, 5, wind, slide"
+          "border, 1, 1, liner"
+          "borderangle, 1, 30, liner, loop"
+          "fade, 1, 10, default"
+          "workspaces, 1, 5, wind"
+        ];
+      };
+
+      input = {
+        kb_layout = "us";
+        follow_mouse = 1;
+        sensitivity = 0;
+        accel_profile = "flat";
+        touchpad = {
+          natural_scroll = true;
+          disable_while_typing = true;
+          tap-to-click = true;
+        };
+      };
+
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+        smart_split = false;
+        smart_resizing = true;
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        mouse_move_enables_dpms = true;
+        key_press_enables_dpms = true;
+        vrr = 1;
+        focus_on_activate = true;
+        enable_swallow = true;
+        swallow_regex = "^(kitty)$";
+      };
+
+      # Window rules
+      windowrulev2 = [
+        # Picture-in-Picture
+        "float,title:^(Picture-in-Picture)$"
+        "pin,title:^(Picture-in-Picture)$"
+        "size 25% 25%,title:^(Picture-in-Picture)$"
+        "move 74% 74%,title:^(Picture-in-Picture)$"
+
+        # File pickers
+        "float,title:^(Open File)$"
+        "float,title:^(Save File)$"
+        "size 60% 60%,title:^(Open File)$"
+        "size 60% 60%,title:^(Save File)$"
+        "center,title:^(Open File)$"
+        "center,title:^(Save File)$"
+
+        # Thunar
+        "float,class:^(thunar)$,title:^(File Operation Progress)$"
+
+        # 1Password
+        "float,class:^(1Password)$"
+        "center,class:^(1Password)$"
+        "size 60% 70%,class:^(1Password)$"
+
+        # Opacity rules
+        "opacity 0.95 0.85,class:^(kitty)$"
+        "opacity 0.95 0.85,class:^(thunar)$"
+        "opacity 1.0 1.0,class:^(firefox)$"
+        "opacity 1.0 1.0,class:^(chromium)$"
+
+        # Workspace assignments (examples)
+        "workspace 2 silent,class:^(firefox)$"
+        "workspace 3 silent,class:^(code)$"
+      ];
+
+      # Startup applications
+      exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        "${lib.getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-authentication-agent-1"}"
+        "${lib.getExe config.programs.waybar.package}"
+      ];
 
       monitor =
         let
@@ -87,7 +215,7 @@ in
             wofi = lib.getExe config.programs.wofi.package;
           in
           lib.optionals config.programs.wofi.enable [
-            "SUPER,x,exec,${wofi} -S drun -x 10 -y 10 -W 25% -H 60%"
+            "SUPER,x,exec,${wofi} -S drun"
             "SUPER,s,exec,specialisation $(specialisation | ${wofi} -S dmenu)"
             "SUPER,d,exec,${wofi} -S run"
           ]

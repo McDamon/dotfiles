@@ -7,18 +7,7 @@
 
     bind =
       let
-        workspaces = [
-          "0"
-          "1"
-          "2"
-          "3"
-          "4"
-          "5"
-          "6"
-          "7"
-          "8"
-          "9"
-        ];
+        workspaces = map toString (lib.range 1 10);
         # Map keys (arrows and hjkl) to hyprland directions (l, r, u, d)
         directions = rec {
           left = "l";
@@ -58,9 +47,13 @@
 
         "SUPER,u,togglespecialworkspace"
         "SUPERSHIFT,u,movetoworkspacesilent,special"
-        "SUPER,y,toggleswallow"
-        "SUPER,i,pin"
-        "SUPER,i,fullscreenstate,0 3"
+        "SUPER,p,pin"
+
+        # Screenshots
+        ",Print,exec,grim - | wl-copy"
+        "SHIFT,Print,exec,grim -g \"$(slurp)\" - | wl-copy"
+        "SUPER,Print,exec,grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
+        "SUPERSHIFT,Print,exec,grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
       ]
       ++
       # Change workspace
