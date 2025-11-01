@@ -22,6 +22,7 @@
       scale = "1.25";
       workspace = "1";
       primary = true;
+      hdr = true;
     }
   ];
 }

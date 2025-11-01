@@ -46,6 +46,11 @@ in
             type = types.nullOr types.str;
             default = null;
           };
+          hdr = mkOption {
+            type = types.bool;
+            default = false;
+            description = "Enable HDR on this monitor. Requires compatible hardware and display.";
+          };
         };
       }
     );

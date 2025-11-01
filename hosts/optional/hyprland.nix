@@ -10,15 +10,6 @@
       General = {
         InputMethod = "";
       };
-      # Explicit keyboard layout entries for SDDM (ensures indicator shows correct layout)
-      X11 = {
-        KeyboardLayout = "gb";
-        KeyboardVariant = "";
-      };
-      Input = {
-        Layout = "gb";
-        Variant = "";
-      };
     };
   };
 
@@ -28,7 +19,7 @@
     enable = lib.mkForce true;  # Override the false setting in rocinante/default.nix
     xkb = {
       layout = "gb";
-      variant = "";
+      variant = "intl";
       options = "";
     };
   };

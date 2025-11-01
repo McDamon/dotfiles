@@ -28,8 +28,8 @@ in
     enable = true;
     settings = {
       general = {
-        gaps_in = 15;
-        gaps_out = 20;
+        gaps_in = 5;
+        gaps_out = 12;
         border_size = 2;
         "col.active_border" = hexToRgba config.theme.colors.border 255;
         "col.inactive_border" = hexToRgba config.theme.colors.borderInactive 255;
@@ -194,11 +194,11 @@ in
         ]
         ++ (map
           (
-            m: "${m.name},${
-            if m.enabled
-            then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}"
-            else "disable"
-          }"
+            m: let
+              baseConfig = if m.enabled
+                then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}${lib.optionalString m.hdr ",bitdepth,10"}"
+                else "disable";
+            in "${m.name},${baseConfig}"
           )
           (config.monitors));
 
