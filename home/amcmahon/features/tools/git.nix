@@ -2,15 +2,12 @@
 {
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
-    userName = "Andrew McMahon";
-    userEmail = "andrew.p.mcmahon@gmail.com";
     lfs.enable = true;
     ignores = [
       ".direnv"
       "result"
     ];
-    extraConfig = {
+    settings = {
       gpg = {
         format = "ssh";
       };
@@ -22,6 +19,8 @@
       };
 
       user = {
+        name = "Andrew McMahon";
+        email = "andrew.p.mcmahon@gmail.com";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJiE8XwKjtHZ7qaus5y4CbQn7+lsi3F5bI0wrCgWl/14";
       };
     };

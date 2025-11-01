@@ -4,10 +4,10 @@ let
 in
 {
   options.wallpaper = mkOption {
-    type = types.path;
-    default = "";
+    type = types.nullOr types.path;
+    default = null;
     description = ''
-      Wallpaper path
+      Wallpaper path (optional). Use `null` to omit.
     '';
   };
 }

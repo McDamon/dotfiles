@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  evaluate-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v22
+        with:
+          nix_path: nixpkgs=github:nixos/nixpkgs/nixos-unstable
+
+      - name: Show flake (evaluate)
+        run: |
+          nix flake show
+
+      - name: Eval home config (quick check)
+        run: |
+          nix eval --json ".#homeConfigurations"
+
+      - name: Check nixpkgs-fmt
+        run: |
+          # run nixpkgs-fmt from nixpkgs (fail on formatting issues)
+          nix run nixpkgs#nixpkgs-fmt -- --check .
+
+      - name: Check alejandra (Nix linter/formatter)
+        run: |
+          # fail on style/lint problems
+          nix run nixpkgs#alejandra -- --check .
+
+      - name: Build home activation (rocinante)
+        run: |
+          # build the home activation package to catch build-time issues
+          nix build .#homeConfigurations."amcmahon@rocinante".activationPackage
+
+      - name: Build NixOS toplevel (rocinante)
+        run: |
+          # build the NixOS system toplevel (non-root) to catch evaluation/build errors
+          nix build .#nixosConfigurations.rocinante.config.system.build.toplevel

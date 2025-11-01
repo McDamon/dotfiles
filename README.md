@@ -16,7 +16,6 @@ Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/
   - `common`: Shared configurations consumed by the machine-specific ones.
     - `common`: Configurations that are applied to all machines.
     - `optional`: Opt-in configurations any machines can use.
-  - `razorback`: Asus TUF A17 2023 Laptop
   - `rocinante`: AMD 9950X3D / RTX 4090 Workstation
 - `home`: Home-manager configuration
 - `modules`: Modules (with options).
@@ -25,12 +24,12 @@ Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/
 
 ## How to bootstrap
 
-Using `razorback` as an example:
+Using `rocinante` as an example:
 
 1. Add following to `/etc/nixos/configuration.nix`:
 
   ```nix
-  networking.hostName = "razorback";
+  networking.hostName = "rocinante";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -58,7 +57,7 @@ Using `razorback` as an example:
 4. Clone the generated hardware configuration (we will modify this later):
 
   ```bash
-  cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/razorback/
+  cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/rocinante/
   ```
 
 5. Add the following lines to `hardware-configuration.nix`:
@@ -72,8 +71,8 @@ Using `razorback` as an example:
 6. Rebuild
 
   ```bash
-  sudo nixos-rebuild switch --flake .#razorback
-  home-manager switch --flake .#amcmahon@razorback
+  sudo nixos-rebuild switch --flake .#rocinante
+  home-manager switch --flake .#amcmahon@rocinante
   ```
 
 7. Reboot, and enable Secure Boot in BIOS

@@ -11,6 +11,13 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -48,15 +55,6 @@
       formatter = forEachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
       nixosConfigurations = {
-        razorback = lib.nixosSystem {
-          modules = [
-            ./hosts/razorback
-            lanzaboote.nixosModules.lanzaboote
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
         rocinante = lib.nixosSystem {
           modules = [
             ./hosts/rocinante
@@ -69,15 +67,6 @@
       };
 
       homeConfigurations = {
-        "amcmahon@razorback" = lib.homeManagerConfiguration {
-          modules = [
-            ./home/amcmahon/razorback.nix
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-        };
         "amcmahon@rocinante" = lib.homeManagerConfiguration {
           modules = [
             ./home/amcmahon/rocinante.nix

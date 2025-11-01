@@ -19,7 +19,6 @@
     fluxcd
     gh
     glances
-    glxinfo
     gthumb
     gvfs
     htop
@@ -36,6 +35,7 @@
     lutris
     lunarvim
     lshw
+    mesa-demos
     minio-client
     neofetch
     networkmanager
