@@ -170,8 +170,8 @@ in
       }
 
       #custom-menu {
-        background: ${colors.primary};
-        color: ${colors.background};
+        background: ${colors.surface0};
+        color: ${colors.primary};
         font-size: 18pt;
         padding: 0 14px;
         margin: 6px 4px;
@@ -180,11 +180,14 @@ in
       }
 
       #custom-menu:hover {
-        background: ${colors.warning};
+        background: ${colors.surface1};
       }
 
       #workspaces {
+        background: ${colors.surface0};
         padding: 0 4px;
+        margin: 6px 4px;
+        border-radius: 8px;
       }
 
       #workspaces button {
@@ -200,8 +203,8 @@ in
       }
 
       #workspaces button.active {
-        color: ${colors.background};
-        background: ${colors.primary};
+        color: ${colors.primary};
+        background: ${colors.surface1};
       }
 
       #workspaces button.urgent {
