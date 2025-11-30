@@ -19,7 +19,7 @@
         "**/hardware-configuration.nix"
       ];
     };
-    
+
     prettier = {
       excludes = [
         # Don't format SOPS encrypted files

@@ -10,7 +10,7 @@ in
 {
   programs.waybar = {
     enable = true;
-    systemd.enable = false; # Disable systemd integration, we'll start it from Hyprland
+    systemd.enable = true;
     settings = {
       primary = {
         exclusive = false;

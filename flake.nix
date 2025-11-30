@@ -51,7 +51,7 @@
           config.allowUnfree = true;
         }
       );
-      
+
       # treefmt configuration
       treefmtEval = forEachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in

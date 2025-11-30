@@ -163,8 +163,7 @@ in
         # Polkit authentication agent (handles privilege escalation for 1Password and other apps)
         "${lib.getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-authentication-agent-1"}"
 
-        # UI components
-        "${lib.getExe config.programs.waybar.package}"
+        # UI components (waybar started by systemd)
 
         # 1Password (uses KWallet for session persistence, provides SSH agent via ~/.1password/agent.sock)
         "1password --silent"
@@ -193,7 +192,7 @@ in
           let
             baseConfig =
               if m.enabled then
-                "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}${lib.optionalString m.hdr ",bitdepth,10"}"
+                "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}"
               else
                 "disable";
           in
