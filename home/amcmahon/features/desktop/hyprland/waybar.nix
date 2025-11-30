@@ -154,7 +154,6 @@ in
         background: transparent;
       }
 
-      #workspaces,
       #submap,
       #clock,
       #tray,
@@ -173,7 +172,7 @@ in
         background: ${colors.surface0};
         color: ${colors.primary};
         font-size: 18pt;
-        padding: 0 14px;
+        padding: 0 12px;
         margin: 6px 4px;
         border-radius: 8px;
         transition: all 0.3s ease-in-out;
@@ -242,15 +241,6 @@ in
 
       #memory {
         color: ${colors.secondary};
-      }
-
-      @keyframes blink {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0.5;
-        }
       }
 
       tooltip {
