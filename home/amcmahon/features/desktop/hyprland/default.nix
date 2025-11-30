@@ -36,8 +36,8 @@ in
     enable = true;
     settings = {
       general = {
-        gaps_in = 5;
-        gaps_out = 12;
+        gaps_in = 3;
+        gaps_out = 8;
         border_size = 2;
         "col.active_border" = hexToRgba config.theme.colors.border 255;
         "col.inactive_border" = hexToRgba config.theme.colors.borderInactive 255;
@@ -173,15 +173,14 @@ in
         let
           waybarSpace =
             let
-              inherit (config.wayland.windowManager.hyprland.settings.general) gaps_in gaps_out;
+              inherit (config.wayland.windowManager.hyprland.settings.general) gaps_out;
               inherit (config.programs.waybar.settings.primary) position height width;
-              gap = gaps_out - gaps_in;
             in
             {
-              top = if (position == "top") then height + gap else 0;
-              bottom = if (position == "bottom") then height + gap else 0;
-              left = if (position == "left") then width + gap else 0;
-              right = if (position == "right") then width + gap else 0;
+              top = if (position == "top") then height + gaps_out + 4 else 0;
+              bottom = if (position == "bottom") then height + gaps_out else 0;
+              left = if (position == "left") then width + gaps_out else 0;
+              right = if (position == "right") then width + gaps_out else 0;
             };
         in
         [
