@@ -170,7 +170,7 @@ in
 
       #custom-menu {
         background: ${colors.surface0};
-        color: ${colors.primary};
+        color: ${colors.foreground};
         font-size: 18pt;
         padding: 0 12px;
         margin: 6px 4px;
@@ -192,7 +192,7 @@ in
       #workspaces button {
         padding: 0 8px;
         color: ${colors.foreground};
-        background: transparent;
+        background: ${colors.surface0};
         border-radius: 8px;
         transition: all 0.3s ease-in-out;
       }
@@ -203,7 +203,7 @@ in
 
       #workspaces button.active {
         color: ${colors.primary};
-        background: ${colors.surface1};
+        background: ${colors.surface0};
       }
 
       #workspaces button.urgent {
