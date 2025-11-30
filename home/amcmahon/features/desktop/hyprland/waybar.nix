@@ -16,7 +16,7 @@ in
         exclusive = false;
         passthrough = false;
         height = 28;
-        margin = "1";
+        margin = "1 4 1 4";
         position = "top";
         layer = "top";
 
@@ -163,8 +163,8 @@ in
       #memory {
         background: ${colors.surface0};
         color: ${colors.foreground};
-        padding: 0 12px;
-        margin: 6px 4px;
+        padding: 0 14px;
+        margin: 3px 2px;
         border-radius: 8px;
       }
 
@@ -172,8 +172,8 @@ in
         background: ${colors.surface0};
         color: ${colors.foreground};
         font-size: 18pt;
-        padding: 0 12px;
-        margin: 6px 4px;
+        padding: 0 14px;
+        margin: 3px 2px;
         border-radius: 8px;
         transition: all 0.3s ease-in-out;
       }
@@ -185,7 +185,7 @@ in
       #workspaces {
         background: ${colors.surface0};
         padding: 0 4px;
-        margin: 6px 4px;
+        margin: 3px 2px;
         border-radius: 8px;
       }
 
@@ -241,6 +241,7 @@ in
 
       #memory {
         color: ${colors.secondary};
+        margin-right: 6px;
       }
 
       tooltip {
