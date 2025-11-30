@@ -161,8 +161,7 @@ in
       #pulseaudio,
       #network,
       #cpu,
-      #memory,
-      #custom-menu {
+      #memory {
         background: ${colors.surface0};
         color: ${colors.foreground};
         padding: 0 12px;
@@ -175,6 +174,8 @@ in
         color: ${colors.background};
         font-size: 18pt;
         padding: 0 14px;
+        margin: 6px 4px;
+        border-radius: 8px;
         transition: all 0.3s ease-in-out;
       }
 
@@ -237,7 +238,7 @@ in
       }
 
       #memory {
-        color: ${colors.primary};
+        color: ${colors.secondary};
       }
 
       @keyframes blink {
