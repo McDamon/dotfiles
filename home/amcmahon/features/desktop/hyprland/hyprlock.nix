@@ -80,9 +80,4 @@ in
       ];
     };
   };
-
-  # Add lockscreen keybinding to Hyprland
-  wayland.windowManager.hyprland.settings.bind = [
-    "SUPER,l,exec,${lib.getExe config.programs.hyprlock.package}"
-  ];
 }

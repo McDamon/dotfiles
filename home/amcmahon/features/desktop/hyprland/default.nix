@@ -206,6 +206,7 @@ in
         "SUPER,Return,exec,${defaultApp "x-scheme-handler/terminal"}"
         "SUPER,e,exec,${defaultApp "text/plain"}"
         "SUPER,b,exec,${defaultApp "x-scheme-handler/https"}"
+        "SUPER,l,exec,${lib.getExe pkgs.hyprlock}"
       ]
       ++
         # Notification manager
