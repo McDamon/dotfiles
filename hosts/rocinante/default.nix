@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -26,8 +22,7 @@
       git
       wget
       vim
-      docker-compose
-      podman-compose
+      podman-compose # Use podman-compose instead of docker-compose
     ];
   };
 
@@ -72,24 +67,15 @@
   virtualisation = {
     podman = {
       enable = true;
+      dockerCompat = true; # Provides 'docker' command via podman
+      defaultNetwork.settings.dns_enabled = true;
       autoPrune = {
         enable = true;
         dates = "daily";
       };
     };
-    docker = {
-      enable = true;
-      package = pkgs.docker;
-      autoPrune = {
-        enable = true;
-        dates = "daily";
-      };
-      daemon.settings = {
-        features = {
-          cdi = true;
-        };
-      };
-    };
+    # Docker disabled in favor of Podman with Docker compatibility
+    docker.enable = false;
   };
 
   programs = {

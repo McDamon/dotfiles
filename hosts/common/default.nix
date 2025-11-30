@@ -1,8 +1,4 @@
-{
-  inputs,
-  outputs,
-  ...
-}:
+{ inputs, outputs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -10,23 +6,18 @@
     ./locale.nix
     ./nix.nix
     ./openssh.nix
-  ] ++ (builtins.attrValues outputs.nixosModules);
+  ]
+  ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {
-      inherit inputs outputs;
-    };
+    extraSpecialArgs = { inherit inputs outputs; };
   };
 
   nixpkgs = {
     config = {
       allowUnfree = true;
     };
-  };
-
-  environment = {
-    enableAllTerminfo = true;
   };
 
   programs.dconf.enable = true;

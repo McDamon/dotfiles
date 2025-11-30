@@ -14,6 +14,12 @@
       sops
       ssh-to-age
       wget
+
+      # Formatters
+      treefmt
+      nixfmt-rfc-style
+      nodePackages.prettier
+      shfmt
     ];
   };
 }

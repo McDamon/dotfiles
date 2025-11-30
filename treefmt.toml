@@ -1,3 +1,32 @@
+# Treefmt configuration
+# Run with: nix fmt
+
 [formatter.nix]
 command = "nixfmt"
+options = ["--strict"]
 includes = ["*.nix"]
+excludes = [
+  # Exclude hardware configuration (auto-generated)
+  "hardware-configuration.nix",
+  # Exclude any generated files
+  "result",
+]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = [
+  "*.md",
+  "*.json",
+  "*.yaml",
+  "*.yml",
+]
+excludes = [
+  # Don't format SOPS encrypted files
+  "secrets/**/*.yaml",
+]
+
+[formatter.shfmt]
+command = "shfmt"
+options = ["-i", "2", "-s", "-w"]
+includes = ["*.sh"]

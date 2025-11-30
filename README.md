@@ -28,52 +28,52 @@ Using `rocinante` as an example:
 
 1. Add following to `/etc/nixos/configuration.nix`:
 
-  ```nix
-  networking.hostName = "rocinante";
+```nix
+networking.hostName = "rocinante";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-  ];
+environment.systemPackages = with pkgs; [
+  vim
+  wget
+  git
+];
 
-  services.openssh.enable = true;
-  ```
+services.openssh.enable = true;
+```
 
 2. Run `sudo nixos-rebuild switch`
 
 3. Then:
 
-  ```bash
-  mkdir -p Sources
-  cd Sources
-  git clone git@github.com:McDamon/dotfiles.git
-  cd dotfiles
-  nix develop
-  ```
+```bash
+mkdir -p Sources
+cd Sources
+git clone git@github.com:McDamon/dotfiles.git
+cd dotfiles
+nix develop
+```
 
 4. Clone the generated hardware configuration (we will modify this later):
 
-  ```bash
-  cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/rocinante/
-  ```
+```bash
+cp /etc/nixos/hardware-configuration.nix ~/Sources/dotfiles/hosts/rocinante/
+```
 
 5. Add the following lines to `hardware-configuration.nix`:
 
-  ```nix
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  ```
+```nix
+# Bootloader.
+boot.loader.systemd-boot.enable = true;
+boot.loader.efi.canTouchEfiVariables = true;
+```
 
 6. Rebuild
 
-  ```bash
-  sudo nixos-rebuild switch --flake .#rocinante
-  home-manager switch --flake .#amcmahon@rocinante
-  ```
+```bash
+sudo nixos-rebuild switch --flake .#rocinante
+home-manager switch --flake .#amcmahon@rocinante
+```
 
 7. Reboot, and enable Secure Boot in BIOS
 
@@ -81,8 +81,8 @@ Using `rocinante` as an example:
 
 9. Enable TPM boot:
 
-  ```bash
-  sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/nvme1n1p2
-  ```
+```bash
+sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/nvme1n1p2
+```
 
 10. Rebuild and Reboot

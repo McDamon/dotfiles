@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 let
   mkFontOption = kind: {
     family = lib.mkOption {
@@ -34,21 +30,30 @@ in
     fonts.fontconfig.hinting = "slight";
     fonts.fontconfig = {
       defaultFonts = {
-        serif = [
-          cfg.serif.family
-        ];
-        sansSerif = [
-          cfg.sansSerif.family
-        ];
-        monospace = [ 
-          cfg.monospace.family 
-        ];
+        serif = [ cfg.serif.family ];
+        sansSerif = [ cfg.sansSerif.family ];
+        monospace = [ cfg.monospace.family ];
       };
     };
     home.packages = [
       cfg.monospace.package
       cfg.serif.package
       cfg.sansSerif.package
+    ];
+
+    assertions = [
+      {
+        assertion = cfg.monospace.family != null -> cfg.monospace.package != null;
+        message = "fontProfiles.monospace.package must be set when family is specified";
+      }
+      {
+        assertion = cfg.serif.family != null -> cfg.serif.package != null;
+        message = "fontProfiles.serif.package must be set when family is specified";
+      }
+      {
+        assertion = cfg.sansSerif.family != null -> cfg.sansSerif.package != null;
+        message = "fontProfiles.sansSerif.package must be set when family is specified";
+      }
     ];
   };
 }

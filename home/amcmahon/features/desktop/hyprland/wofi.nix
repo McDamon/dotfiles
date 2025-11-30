@@ -14,21 +14,21 @@ in
       run-cache_file = "/dev/null";
       run-exec_search = true;
       matching = "multi-contains";
-      
+
       # Window configuration
       width = "25%";
       height = "60%";
       location = "top_left";
       x = 10;
       y = 10;
-      
+
       # Appearance
       prompt = "";
       normal_window = false;
       layer = "overlay";
       term = "${lib.getExe config.programs.kitty.package}";
     };
-    
+
     style = ''
       * {
         font-family: "${font.name}";

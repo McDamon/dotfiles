@@ -1,14 +1,22 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   defaultApp = type: "${lib.getExe pkgs.handlr-regex} launch ${type}";
-  
+
   # Convert hex color to rgba format for Hyprland
-  hexToRgba = hex: alpha: let
-    # Remove the # if present
-    cleanHex = lib.removePrefix "#" hex;
-    # Convert alpha to hex string (00-ff)
-    alphaHex = lib.toLower (builtins.substring 0 2 (lib.toHexString (256 + alpha)));
-  in "rgba(${cleanHex}${alphaHex})";
+  hexToRgba =
+    hex: alpha:
+    let
+      # Remove the # if present
+      cleanHex = lib.removePrefix "#" hex;
+      # Convert alpha to hex string (00-ff)
+      alphaHex = lib.toLower (builtins.substring 0 2 (lib.toHexString (256 + alpha)));
+    in
+    "rgba(${cleanHex}${alphaHex})";
 in
 {
   imports = [
@@ -78,7 +86,7 @@ in
       };
 
       input = {
-        kb_layout = "us";
+        kb_layout = "gb";
         follow_mouse = 1;
         sensitivity = 0;
         accel_profile = "flat";
@@ -149,15 +157,15 @@ in
         # SSH_AUTH_SOCK points to 1Password agent socket (configured in terminal.nix)
         # KWallet does NOT provide SSH agent, so no conflict!
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SSH_AUTH_SOCK"
-        
+
         # KWallet is started automatically by PAM at login, no need to start it here
-        
+
         # Polkit authentication agent (handles privilege escalation for 1Password and other apps)
         "${lib.getExe' pkgs.kdePackages.polkit-kde-agent-1 "polkit-kde-authentication-agent-1"}"
-        
+
         # UI components
         "${lib.getExe config.programs.waybar.package}"
-        
+
         # 1Password (uses KWallet for session persistence, provides SSH agent via ~/.1password/agent.sock)
         "1password --silent"
       ];
@@ -171,46 +179,35 @@ in
               gap = gaps_out - gaps_in;
             in
             {
-              top =
-                if (position == "top")
-                then height + gap
-                else 0;
-              bottom =
-                if (position == "bottom")
-                then height + gap
-                else 0;
-              left =
-                if (position == "left")
-                then width + gap
-                else 0;
-              right =
-                if (position == "right")
-                then width + gap
-                else 0;
+              top = if (position == "top") then height + gap else 0;
+              bottom = if (position == "bottom") then height + gap else 0;
+              left = if (position == "left") then width + gap else 0;
+              right = if (position == "right") then width + gap else 0;
             };
         in
         [
           ",addreserved,${toString waybarSpace.top},${toString waybarSpace.bottom},${toString waybarSpace.left},${toString waybarSpace.right}"
         ]
-        ++ (map
-          (
-            m: let
-              baseConfig = if m.enabled
-                then "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}${lib.optionalString m.hdr ",bitdepth,10"}"
-                else "disable";
-            in "${m.name},${baseConfig}"
-          )
-          (config.monitors));
+        ++ (map (
+          m:
+          let
+            baseConfig =
+              if m.enabled then
+                "${toString m.width}x${toString m.height}@${toString m.refreshRate},${m.position},${m.scale}${lib.optionalString m.hdr ",bitdepth,10"}"
+              else
+                "disable";
+          in
+          "${m.name},${baseConfig}"
+        ) (config.monitors));
 
       # Normal bindings
-      bind =
-        [
-          # Program bindings
-          "SUPER,Return,exec,${defaultApp "x-scheme-handler/terminal"}"
-          "SUPER,e,exec,${defaultApp "text/plain"}"
-          "SUPER,b,exec,${defaultApp "x-scheme-handler/https"}"
-        ]
-        ++
+      bind = [
+        # Program bindings
+        "SUPER,Return,exec,${defaultApp "x-scheme-handler/terminal"}"
+        "SUPER,e,exec,${defaultApp "text/plain"}"
+        "SUPER,b,exec,${defaultApp "x-scheme-handler/https"}"
+      ]
+      ++
         # Notification manager
         (
           let
@@ -221,7 +218,7 @@ in
             "SUPERSHIFT,w,exec,${makoctl} restore"
           ]
         )
-        ++
+      ++
         # Launcher
         (
           let
@@ -240,6 +237,6 @@ in
     wofi
     xfce.thunar
     kdePackages.kwallet
-    kdePackages.kwalletmanager  # GUI for managing KWallet
+    kdePackages.kwalletmanager # GUI for managing KWallet
   ];
 }

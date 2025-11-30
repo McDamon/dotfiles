@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./kitty.nix
-  ];
+  imports = [ ./kitty.nix ];
   home.packages = with pkgs; [
     grim
     gtk3 # For gtk-launch

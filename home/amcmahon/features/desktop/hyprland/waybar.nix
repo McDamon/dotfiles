@@ -1,7 +1,8 @@
-{ lib
-, config
-, pkgs
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 let
   inherit (config.theme) colors font;
@@ -9,7 +10,7 @@ in
 {
   programs.waybar = {
     enable = true;
-    systemd.enable = false;  # Disable systemd integration, we'll start it from Hyprland
+    systemd.enable = false; # Disable systemd integration, we'll start it from Hyprland
     settings = {
       primary = {
         exclusive = false;
@@ -19,9 +20,19 @@ in
         position = "top";
         layer = "top";
 
-        modules-left = [ "custom/menu" "hyprland/workspaces" "hyprland/submap" ];
+        modules-left = [
+          "custom/menu"
+          "hyprland/workspaces"
+          "hyprland/submap"
+        ];
         modules-center = [ "clock" ];
-        modules-right = [ "tray" "pulseaudio" "network" "cpu" "memory" ];
+        modules-right = [
+          "tray"
+          "pulseaudio"
+          "network"
+          "cpu"
+          "memory"
+        ];
 
         "custom/menu" = {
           format = " ";
@@ -97,7 +108,11 @@ in
             phone = "";
             portable = "";
             car = "";
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = "${lib.getExe pkgs.pavucontrol}";
         };

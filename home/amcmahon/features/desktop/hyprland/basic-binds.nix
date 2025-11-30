@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     bindm = [
       "SUPER,mouse:272,movewindow"
@@ -56,33 +57,27 @@
         "SUPERSHIFT,Print,exec,grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"
       ]
       ++
-      # Change workspace
-      (map (n: "SUPER,${n},workspace,${n}") workspaces)
+        # Change workspace
+        (map (n: "SUPER,${n},workspace,${n}") workspaces)
       ++
-      # Move window to workspace
-      (map (n: "SUPERSHIFT,${n},movetoworkspacesilent,${n}") workspaces)
+        # Move window to workspace
+        (map (n: "SUPERSHIFT,${n},movetoworkspacesilent,${n}") workspaces)
       ++
-      # Move focus
-      (lib.mapAttrsToList (key: direction: "SUPER,${key},movefocus,${direction}") directions)
+        # Move focus
+        (lib.mapAttrsToList (key: direction: "SUPER,${key},movefocus,${direction}") directions)
       ++
-      # Swap windows
-      (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},swapwindow,${direction}") directions)
+        # Swap windows
+        (lib.mapAttrsToList (key: direction: "SUPERSHIFT,${key},swapwindow,${direction}") directions)
       ++
-      # Move windows
-      (lib.mapAttrsToList
-        (
-          key: direction: "SUPERCONTROL,${key},movewindow,${direction}"
-        )
-        directions)
+        # Move windows
+        (lib.mapAttrsToList (key: direction: "SUPERCONTROL,${key},movewindow,${direction}") directions)
       ++
-      # Move monitor focus
-      (lib.mapAttrsToList (key: direction: "SUPERALT,${key},focusmonitor,${direction}") directions)
+        # Move monitor focus
+        (lib.mapAttrsToList (key: direction: "SUPERALT,${key},focusmonitor,${direction}") directions)
       ++
-      # Move workspace to other monitor
-      (lib.mapAttrsToList
-        (
+        # Move workspace to other monitor
+        (lib.mapAttrsToList (
           key: direction: "SUPERALTSHIFT,${key},movecurrentworkspacetomonitor,${direction}"
-        )
-        directions);
+        ) directions);
   };
 }

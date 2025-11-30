@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   # Enable wallpaper management
   wallpaper.enable = lib.mkDefault true;
@@ -10,9 +15,7 @@
       splash = false;
       splash_offset = 2.0;
 
-      preload = lib.mkIf config.wallpaper.enable [
-        config.wallpaper.path
-      ];
+      preload = lib.mkIf config.wallpaper.enable [ config.wallpaper.path ];
 
       wallpaper = lib.mkIf config.wallpaper.enable [
         "${config.wallpaper.monitor},${config.wallpaper.path}"
@@ -20,7 +23,5 @@
     };
   };
 
-  home.packages = with pkgs; [
-    hyprpaper
-  ];
+  home.packages = with pkgs; [ hyprpaper ];
 }

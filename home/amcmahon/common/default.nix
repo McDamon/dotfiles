@@ -1,11 +1,11 @@
-{ lib
-, config
-, outputs
-, ...
+{
+  lib,
+  config,
+  outputs,
+  ...
 }:
 {
-  imports = [
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
+  imports = [ ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;

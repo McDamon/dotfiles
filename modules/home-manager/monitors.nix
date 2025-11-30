@@ -1,7 +1,4 @@
-{ lib
-, config
-, ...
-}:
+{ lib, config, ... }:
 let
   inherit (lib) mkOption types;
 in
@@ -63,6 +60,27 @@ in
           ((lib.length config.monitors) != 0)
           -> ((lib.length (lib.filter (m: m.primary) config.monitors)) == 1);
         message = "Exactly one monitor must be set to primary.";
+      }
+      {
+        assertion = lib.all (m: m.width > 0) config.monitors;
+        message = "Monitor width must be greater than 0.";
+      }
+      {
+        assertion = lib.all (m: m.height > 0) config.monitors;
+        message = "Monitor height must be greater than 0.";
+      }
+      {
+        assertion = lib.all (m: m.refreshRate > 0) config.monitors;
+        message = "Monitor refresh rate must be greater than 0.";
+      }
+      {
+        assertion = lib.all (
+          m:
+          # Scale is a string that should be a positive number
+          # We'll just check it's not empty and doesn't start with 0 or negative
+          m.scale != "" && m.scale != "0" && !(lib.hasPrefix "-" m.scale)
+        ) config.monitors;
+        message = "Monitor scale must be a positive number (e.g., '1', '1.25', '1.5').";
       }
     ];
   };

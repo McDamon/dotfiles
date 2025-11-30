@@ -1,6 +1,4 @@
-{ config
-, ...
-}:
+{ config, ... }:
 {
   # Set as default terminal
   xdg.mimeApps = {
@@ -22,6 +20,7 @@
       scrollback_lines = 10000;
       scrollback_pager_history_size = 2048;
       linux_display_server = "wayland";
-      wayland_titlebar_color = "system";    };
+      wayland_titlebar_color = "system";
+    };
   };
 }

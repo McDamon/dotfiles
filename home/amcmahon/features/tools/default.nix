@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./terminal.nix
@@ -6,72 +6,8 @@
     ./direnv.nix
     ./screen.nix
     ./ssh.nix
-  ];
-  home.packages = with pkgs; [
-    age
-    ansible
-    appimage-run
-    atop
-    bc
-    bind
-    bottom
-    ffmpeg
-    fluxcd
-    gh
-    glances
-    gthumb
-    gvfs
-    htop
-    imagemagick
-    iotop
-    jq
-    killall
-    kodi
-    kompose
-    kubeconform
-    kubectl
-    kubernetes-helm
-    kustomize
-    lutris
-    lunarvim
-    lshw
-    mesa-demos
-    minio-client
-    neofetch
-    networkmanager
-    nil
-    nixpkgs-fmt
-    nvtopPackages.full
-    neovim
-    onedrive
-    p7zip
-    pciutils
-    picocom
-    sbctl
-    sbctl
-    screen
-    simplescreenrecorder
-    sops
-    ssh-to-age
-    terraform
-    tmux
-    tpm2-tss
-    traceroute
-    tree
-    usbutils
-    vim
-    vlc
-    wget
-    wireguard-tools
-    xarchiver
-    xclip
-    xdg-utils
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xorg.xauth
-    xorg.xclock
-    xorg.xkill
-    xreader
-    yq-go
+    ./development.nix
+    ./media.nix
+    ./utilities.nix
   ];
 }
