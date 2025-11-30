@@ -9,7 +9,7 @@ in
       general = {
         disable_loading_bar = false;
         hide_cursor = true;
-        grace = 0;
+        grace = 3;
         no_fade_in = false;
         no_fade_out = false;
       };
@@ -38,9 +38,9 @@ in
           inner_color = colors.surface0;
           font_color = colors.foreground;
           fade_on_empty = false;
-          placeholder_text = "Enter Password...";
-          hide_input = false;
-          position = "0, -120";
+          placeholder_text = "Password";
+          hide_input = true;
+          position = "0, -140";
           halign = "center";
           valign = "center";
         }
@@ -51,7 +51,7 @@ in
         {
           text = "cmd[update:1000] echo \"<span>$(date +'%H:%M')</span>\"";
           color = colors.foreground;
-          font_size = 120;
+          font_size = 96;
           font_family = font.name;
           position = "0, 300";
           halign = "center";
@@ -69,11 +69,11 @@ in
         }
         # User
         {
-          text = "    $USER";
+          text = "  $USER";
           color = colors.foreground;
           font_size = 18;
           font_family = font.name;
-          position = "0, -60";
+          position = "0, -80";
           halign = "center";
           valign = "center";
         }

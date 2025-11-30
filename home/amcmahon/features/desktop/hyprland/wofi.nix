@@ -16,11 +16,11 @@ in
       matching = "multi-contains";
 
       # Window configuration
-      width = "25%";
-      height = "60%";
-      location = "top_left";
-      x = 10;
-      y = 10;
+      width = "35%";
+      height = "50%";
+      location = "center";
+      x = 0;
+      y = 0;
 
       # Appearance
       prompt = "";
@@ -31,8 +31,8 @@ in
 
     style = ''
       * {
-        font-family: "${font.name}";
-        font-size: ${toString font.size}pt;
+        font-family: "${config.fontProfiles.sansSerif.family}";
+        font-size: ${toString (font.size + 2)}pt;
       }
 
       window {
@@ -86,6 +86,10 @@ in
 
       #entry:hover {
         background-color: ${colors.surface1};
+      }
+
+      #entry:hover #text {
+        color: ${colors.foreground};
       }
     '';
   };

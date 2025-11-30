@@ -142,7 +142,7 @@ in
 
     style = ''
       * {
-        font-family: "${font.name}";
+        font-family: "${config.fontProfiles.sansSerif.family}";
         font-size: ${toString font.size}pt;
         font-weight: bold;
         border-radius: 0;

@@ -11,8 +11,8 @@
       package = pkgs.eb-garamond;
     };
     sansSerif = {
-      family = "Overpass";
-      package = pkgs.overpass;
+      family = "Inter";
+      package = pkgs.inter;
     };
   };
 }
