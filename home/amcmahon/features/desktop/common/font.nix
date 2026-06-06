@@ -7,12 +7,12 @@
       package = pkgs.nerd-fonts.jetbrains-mono;
     };
     serif = {
-      family = "EB Garamond";
-      package = pkgs.eb-garamond;
+      family = "Cantarell";
+      package = pkgs.cantarell-fonts;
     };
     sansSerif = {
-      family = "Overpass";
-      package = pkgs.overpass;
+      family = "Cantarell";
+      package = pkgs.cantarell-fonts;
     };
   };
 }

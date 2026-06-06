@@ -2,7 +2,7 @@
 let
   theme = {
     qt = {
-      name = "adwaita-dark";
+      name = "adwaita";
       package = pkgs.adwaita-qt6;
     };
   };
