@@ -4,9 +4,6 @@
   pkgs,
   ...
 }:
-let
-  inherit (inputs.nix-colors) colorSchemes;
-in
 {
   imports = [
     ./common
@@ -21,10 +18,6 @@ in
   };
 
   wallpaper = pkgs.wallpapers.aurora-borealis-water-mountain;
-  colorscheme = lib.mkDefault colorSchemes.paraiso;
-  specialisation = {
-    light.configuration.colorscheme = colorSchemes.paraiso;
-  };
 
   monitors = [
     {

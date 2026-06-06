@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nix-colors.url = "github:misterio77/nix-colors";
     hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -45,18 +44,9 @@
 
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       devShells = forEachSystem (pkgs: import ./bootstrap-shell.nix { inherit pkgs; });
-      formatter = forEachSystem (pkgs: pkgs.nixfmt-rfc-style);
+      formatter = forEachSystem (pkgs: pkgs.nixfmt);
 
       nixosConfigurations = {
-        razorback = lib.nixosSystem {
-          modules = [
-            ./hosts/razorback
-            lanzaboote.nixosModules.lanzaboote
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
         rocinante = lib.nixosSystem {
           modules = [
             ./hosts/rocinante
@@ -69,15 +59,6 @@
       };
 
       homeConfigurations = {
-        "amcmahon@razorback" = lib.homeManagerConfiguration {
-          modules = [
-            ./home/amcmahon/razorback.nix
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-        };
         "amcmahon@rocinante" = lib.homeManagerConfiguration {
           modules = [
             ./home/amcmahon/rocinante.nix

@@ -6,14 +6,9 @@
   outputs,
   ...
 }:
-let
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) nixWallpaperFromScheme;
-in
 {
-  imports = [
-    inputs.nix-colors.homeManagerModule
-  ] ++ (builtins.attrValues outputs.homeManagerModules);
-
+  imports = builtins.attrValues outputs.homeManagerModules;
+  
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
@@ -36,7 +31,7 @@ in
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "24.11";
+    stateVersion = "26.05";
 
     sessionPath = [ "$HOME/.local/bin" ];
 
@@ -45,17 +40,4 @@ in
       protontricks-launch = "flatpak run --command=protontricks-launch com.github.Matoking.protontricks";
     };
   };
-
-  wallpaper =
-    let
-      largest = f: xs: builtins.head (builtins.sort (a: b: a > b) (map f xs));
-      largestWidth = largest (x: x.width) config.monitors;
-      largestHeight = largest (x: x.height) config.monitors;
-    in
-    lib.mkDefault (nixWallpaperFromScheme {
-      scheme = config.colorscheme;
-      width = largestWidth;
-      height = largestHeight;
-      logoScale = 4;
-    });
 }

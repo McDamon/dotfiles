@@ -12,7 +12,7 @@
     ../optional/plasma.nix
     ../optional/firewall.nix
     ../optional/fwupd.nix
-    ../optional/libvirtd.nix
+    #../optional/libvirtd.nix
     ../optional/pipewire.nix
     ../optional/steam.nix
     ../users/amcmahon
@@ -46,7 +46,7 @@
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
   };
@@ -90,16 +90,6 @@
     };
   };
 
-  # Lid settings
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "lock";
-  };
-
-  programs = {
-    light.enable = true;
-  };
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.11";
+  system.stateVersion = "26.05";
 }

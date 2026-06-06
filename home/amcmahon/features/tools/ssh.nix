@@ -1,39 +1,14 @@
 { ... }:
 let
-  onePassPath = "/home/amcmahon/.1password/agent.sock";
+  onePassPath = "~/.1password/agent.sock";
 in
 {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*" = {
         identityAgent = onePassPath;
-      };
-
-      "alnilam" = {
-        hostname = "alnilam.lab.apm-games.com";
-        user = "amcmahon";
-      };
-
-      "antares" = {
-        hostname = "antares.lab.apm-games.com";
-        user = "root";
-      };
-
-      "arcturus" = {
-        hostname = "arcturus.lab.apm-games.com";
-        user = "amcmahon";
-      };
-
-      "donnager" = {
-        hostname = "donnager.lab.apm-games.com";
-        user = "root";
-      };
-
-      "nauvoo" = {
-        hostname = "nauvoo.lab.apm-games.com";
-        user = "root";
       };
     };
   };

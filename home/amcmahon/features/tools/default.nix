@@ -18,11 +18,13 @@
     ffmpeg
     fluxcd
     gh
+    ghostty
     glances
-    glxinfo
+    mesa-demos
     gthumb
     gvfs
     htop
+    hyfetch
     imagemagick
     iotop
     jq
@@ -34,13 +36,11 @@
     kubernetes-helm
     kustomize
     lutris
-    lunarvim
     lshw
     minio-client
-    neofetch
     networkmanager
     nil
-    nixfmt-rfc-style
+    nixfmt
     nvtopPackages.full
     neovim
     onedrive
@@ -66,11 +66,11 @@
     xarchiver
     xclip
     xdg-utils
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xorg.xauth
-    xorg.xclock
-    xorg.xkill
+    thunar
+    thunar-archive-plugin
+    xauth
+    xclock
+    xkill
     xreader
     yq-go
   ];
