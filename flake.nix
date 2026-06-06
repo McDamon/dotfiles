@@ -24,7 +24,11 @@
     }:
     let
       inherit (self) outputs;
-      lib = nixpkgs.lib // home-manager.lib;
+      baseLib = nixpkgs.lib // home-manager.lib;
+      homeManagerModules = import ./modules/home-manager;
+      lib = baseLib // {
+        inherit homeManagerModules;
+      };
       systems = [ "x86_64-linux" ];
       forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
       pkgsFor = lib.genAttrs systems (
@@ -38,7 +42,6 @@
     {
       inherit lib;
       nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
 
       overlays = import ./overlays { inherit inputs outputs; };
 

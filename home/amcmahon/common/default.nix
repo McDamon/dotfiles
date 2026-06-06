@@ -7,7 +7,7 @@
   ...
 }:
 {
-  imports = builtins.attrValues outputs.homeManagerModules;
+  imports = builtins.attrValues outputs.lib.homeManagerModules;
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
