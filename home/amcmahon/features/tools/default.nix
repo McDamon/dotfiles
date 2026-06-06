@@ -29,7 +29,6 @@
     iotop
     jq
     killall
-    kodi
     kompose
     kubeconform
     kubectl
