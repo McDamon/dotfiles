@@ -8,7 +8,7 @@
   imports = [
     ./common
     ./features/tools
-    ./features/desktop/plasma
+    ./features/desktop/gnome
   ];
 
   home.sessionVariables = {
