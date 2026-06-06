@@ -53,7 +53,9 @@
         in
         wallpapers
         // {
-          default = builtins.head (builtins.attrValues wallpapers);
+          default = lib.attrByPath [ "abstract-blue-red" ] (builtins.head (
+            builtins.attrValues wallpapers
+          )) wallpapers;
         }
       );
       devShells = forEachSystem (pkgs: import ./bootstrap-shell.nix { inherit pkgs; });

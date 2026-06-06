@@ -15,7 +15,6 @@
         wayland = true;
       };
     };
-    displayManager.sddm.wayland.enable = true;
   };
 
   programs.seahorse.enable = true;

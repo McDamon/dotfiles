@@ -16,8 +16,6 @@ in
     ++ ifTheyExist [
       "audio"
       "networkmanager"
-      "docker"
-      "podman"
       "git"
       "i2c"
       "libvirtd"

@@ -2,7 +2,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      # Harden
+      # Harden. verify-required enforces user verification for security-key auth.
       PubkeyAuthentication = "yes";
       PubkeyAuthOptions = "verify-required";
       PermitRootLogin = "prohibit-password";

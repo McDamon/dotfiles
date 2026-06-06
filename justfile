@@ -6,10 +6,10 @@ fmt:
 check:
   nix flake check
 
-home-switch:
+switch-home:
   home-manager switch --flake .#amcmahon@rocinante
 
-rebuild-switch:
+rebuild-host:
   sudo nixos-rebuild switch --flake .#rocinante
 
 update:
