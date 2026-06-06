@@ -42,7 +42,17 @@
 
       overlays = import ./overlays { inherit inputs outputs; };
 
-      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+      packages = forEachSystem (
+        pkgs:
+        let
+          customPkgs = import ./pkgs { inherit pkgs; };
+          wallpapers = lib.filterAttrs (_: value: lib.isDerivation value) customPkgs.wallpapers;
+        in
+        wallpapers
+        // {
+          default = builtins.head (builtins.attrValues wallpapers);
+        }
+      );
       devShells = forEachSystem (pkgs: import ./bootstrap-shell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixfmt);
 

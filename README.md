@@ -22,6 +22,18 @@ Shamelessly inspired/ripped-off from [misterio77](https://github.com/misterio77/
 - `overlays`: Patches and version overrides for some packages. Accessible via `nix build`.
 - `pkgs`: Custom packages. Also accessible via `nix build`.
 
+## Just Commands
+
+This repo includes a `justfile` with common maintenance tasks:
+Run these from inside `nix develop` (which provides `just`).
+
+- `just fmt`: Run formatting via `treefmt`.
+- `just check`: Run `nix flake check`.
+- `just switch-home`: Apply Home Manager config for `amcmahon@rocinante`.
+- `just rebuild-host`: Apply NixOS config for `rocinante`.
+- `just update`: Update flake inputs, then format and check.
+- `just clean`: Run Nix garbage collection.
+
 ## How to bootstrap
 
 Using `rocinante` as an example:

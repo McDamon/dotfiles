@@ -1,6 +1,6 @@
-{ ... }:
+{ config, ... }:
 let
-  onePassPath = "~/.1password/agent.sock";
+  onePassPath = "${config.home.homeDirectory}/.1password/agent.sock";
 in
 {
   programs.ssh = {
@@ -11,10 +11,5 @@ in
         identityAgent = onePassPath;
       };
     };
-  };
-
-  home.file.".ssh/config" = {
-    target = ".ssh/config_source";
-    onChange = ''cat .ssh/config_source > .ssh/config'';
   };
 }

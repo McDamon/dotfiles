@@ -47,7 +47,7 @@
     p7zip
     pciutils
     picocom
-    sbctl
+    libreoffice
     sbctl
     screen
     simplescreenrecorder

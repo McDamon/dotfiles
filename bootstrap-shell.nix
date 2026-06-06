@@ -8,11 +8,14 @@
       git
       gnupg
       home-manager
+      just
       lshw
       nix
+      nixfmt
       sbctl
       sops
       ssh-to-age
+      treefmt
       wget
     ];
   };

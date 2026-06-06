@@ -6,13 +6,13 @@
 let
   mkFontOption = kind: {
     family = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.nullOr lib.types.str;
       default = null;
       description = "Family name for ${kind} font profile";
       example = "Fira Code";
     };
     package = lib.mkOption {
-      type = lib.types.package;
+      type = lib.types.nullOr lib.types.package;
       default = null;
       description = "Package for ${kind} font profile";
       example = "pkgs.fira-code";
@@ -29,6 +29,21 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.monospace.family != null && cfg.monospace.package != null;
+        message = "fontProfiles.monospace.family and fontProfiles.monospace.package must be set when fontProfiles.enable = true";
+      }
+      {
+        assertion = cfg.serif.family != null && cfg.serif.package != null;
+        message = "fontProfiles.serif.family and fontProfiles.serif.package must be set when fontProfiles.enable = true";
+      }
+      {
+        assertion = cfg.sansSerif.family != null && cfg.sansSerif.package != null;
+        message = "fontProfiles.sansSerif.family and fontProfiles.sansSerif.package must be set when fontProfiles.enable = true";
+      }
+    ];
+
     fonts.fontconfig.enable = true;
     fonts.fontconfig.antialiasing = true;
     fonts.fontconfig.hinting = "slight";
@@ -40,8 +55,8 @@ in
         sansSerif = [
           cfg.sansSerif.family
         ];
-        monospace = [ 
-          cfg.monospace.family 
+        monospace = [
+          cfg.monospace.family
         ];
       };
     };
