@@ -7,18 +7,19 @@
         layout = "gb";
         variant = "intl";
       };
-      desktopManager.gnome = {
-        enable = true;
-      };
-      displayManager.gdm = {
-        enable = true;
-      };
+    };
+    desktopManager.gnome = {
+      enable = true;
+    };
+    displayManager.gdm = {
+      enable = true;
     };
   };
 
   programs.seahorse.enable = true;
 
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  # Keep GNOME keyring available, but avoid PAM replacing SSH_AUTH_SOCK.
+  security.pam.services.gdm.enableGnomeKeyring = false;
 
   services.gnome.gnome-keyring.enable = true;
 
