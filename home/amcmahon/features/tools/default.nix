@@ -57,6 +57,7 @@
     tpm2-tss
     traceroute
     tree
+    ripgrep
     usbutils
     vim
     vlc

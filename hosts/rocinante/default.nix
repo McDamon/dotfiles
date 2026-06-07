@@ -64,6 +64,10 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     open = true;
+    powerManagement = {
+      enable = false;
+      finegrained = false;
+    };
     nvidiaPersistenced = true;
   };
 
