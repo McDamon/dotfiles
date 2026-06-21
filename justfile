@@ -20,3 +20,8 @@ update:
 clean:
   nix-collect-garbage -d
   nix store gc
+
+clean-all:
+  just clean
+  sudo nix-collect-garbage -d
+  sudo nix store gc

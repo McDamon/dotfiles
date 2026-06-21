@@ -18,8 +18,10 @@
     ];
   };
 
-  # Configure console keymap
-  console.keyMap = "uk";
+  # Use US physical key mapping while keeping UK locale/region settings.
+  console.keyMap = "us";
+
+  services.xserver.xkb.layout = lib.mkDefault "us";
 
   time.timeZone = "Europe/London";
 }

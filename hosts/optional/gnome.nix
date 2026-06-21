@@ -4,8 +4,7 @@
     xserver = {
       enable = true;
       xkb = {
-        layout = "gb";
-        variant = "intl";
+        layout = "us";
       };
     };
     desktopManager.gnome = {

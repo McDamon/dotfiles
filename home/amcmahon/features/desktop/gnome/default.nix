@@ -10,6 +10,9 @@
       "disable-log-out" = false;
       "disable-user-switching" = false;
     };
+    "org/gnome/shell" = {
+      "always-show-log-out" = true;
+    };
     "org/gnome/desktop/session" = {
       "idle-delay" = 0;
     };

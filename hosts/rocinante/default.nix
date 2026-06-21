@@ -36,7 +36,7 @@
 
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
 
     settings = {
       General = {
@@ -45,6 +45,8 @@
     };
   };
 
+  hardware.enableAllFirmware = true;
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -52,7 +54,9 @@
       libvdpau-va-gl
     ];
   };
-
+  
+  services.fwupd.enable = true;
+  
   services.fprintd = {
     enable = true;
   };
