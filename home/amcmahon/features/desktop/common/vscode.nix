@@ -11,6 +11,7 @@
       };
       "github.copilot.inlineSuggest.enable" = false;
       "editor.inlineSuggest.enabled" = false;
+      "claudeCode.preferredLocation" = "panel";
     };
   };
 }
