@@ -25,13 +25,17 @@
   networking.networkmanager.enable = true;
 
   environment = {
-    systemPackages = with pkgs; [
-      git
-      wget
-      vim
-      docker-compose
-      podman-compose
-    ];
+    systemPackages =
+      (with pkgs; [
+        git
+        wget
+        vim
+        docker-compose
+        podman-compose
+      ])
+      ++ [
+        inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
+      ];
   };
 
   hardware.bluetooth = {
