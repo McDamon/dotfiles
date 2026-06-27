@@ -58,9 +58,9 @@
       libvdpau-va-gl
     ];
   };
-  
+
   services.fwupd.enable = true;
-  
+
   services.fprintd = {
     enable = true;
   };

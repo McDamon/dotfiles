@@ -26,6 +26,7 @@ in
     monospace = mkFontOption "monospace";
     serif = mkFontOption "serif";
     sansSerif = mkFontOption "sansSerif";
+    emoji = mkFontOption "emoji";
   };
 
   config = lib.mkIf cfg.enable {
@@ -48,22 +49,24 @@ in
     fonts.fontconfig.antialiasing = true;
     fonts.fontconfig.hinting = "slight";
     fonts.fontconfig = {
-      defaultFonts = {
-        serif = [
-          cfg.serif.family
-        ];
-        sansSerif = [
-          cfg.sansSerif.family
-        ];
-        monospace = [
-          cfg.monospace.family
-        ];
-      };
+      defaultFonts =
+        let
+          # Append the emoji family to every text chain so emoji render inline
+          # regardless of the surrounding font, and degrade gracefully.
+          emoji = lib.optional (cfg.emoji.family != null) cfg.emoji.family;
+        in
+        {
+          serif = [ cfg.serif.family ] ++ emoji;
+          sansSerif = [ cfg.sansSerif.family ] ++ emoji;
+          monospace = [ cfg.monospace.family ] ++ emoji;
+          emoji = lib.mkIf (cfg.emoji.family != null) [ cfg.emoji.family ];
+        };
     };
     home.packages = [
       cfg.monospace.package
       cfg.serif.package
       cfg.sansSerif.package
-    ];
+    ]
+    ++ lib.optional (cfg.emoji.package != null) cfg.emoji.package;
   };
 }

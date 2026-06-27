@@ -22,5 +22,16 @@
     };
 
   # Modifies existing packages
-  modifications = final: prev: { };
+  modifications = final: prev: {
+    # cantarell-fonts 0.311 fails to build under afdko 5.0.1: otfautohint
+    # crashes on Cantarell-VF.otf during the variable-font build. Autohinting
+    # is a cosmetic rendering step, so make just that call non-fatal and let
+    # the (unhinted) font build. Drop once nixpkgs ships a fixed afdko.
+    cantarell-fonts = prev.cantarell-fonts.overrideAttrs (old: {
+      postPatch = (old.postPatch or "") + ''
+        substituteInPlace scripts/make-variable-font.py \
+          --replace-fail "subprocess.check_call(" "subprocess.call("
+      '';
+    });
+  };
 }
